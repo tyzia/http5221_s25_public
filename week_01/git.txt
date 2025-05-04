@@ -1,0 +1,175 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+git
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+git - is a "camera" to take "snapshots" of your code.
+
+https://git-scm.com/book/en/v2/Getting-Started-Installing-Git
+
+
+
+
+
+
+
+
+
+repo (repository)
+
+This is a location where git will store all data.
+It can be local or remote.
+
+branch
+
+Each git repo by default has one branch, main.
+You can create as many branches as you wish.
+Look at branches as on versions of your code.
+
+IMPORTANT!
+Always create your own branch when working on your assignment!
+
+commit
+
+Snapshot of your code. The main building block in git.
+
+git clone
+
+Command to copy remote repository to your machine.
+
+git status
+
+The main command which will tell you everything about what is currently
+happening with your code and git.
+Please, use it as often as possible.
+
+files
+
+Now let's talk about 4 different states of your files in git:
+
+1) Untracked files.
+New files which you have added.
+
+2) Changes not staged for commit.
+You made change to existing file. It will appear in this section.
+
+3) Changes to be committed.
+You made a change in existing file and prepared it for
+commit.
+
+git add
+
+Command to move file from working directory into staging area.
+
+staging area
+
+Virtual area from where git will pick changes for a commit.
+
+
+
+
+
+
+
+
+
+Demo (in the terminal)
+
+> cd my_folder
+> mkdir new_folder
+> cd new_folder
+> git status
+> git init
+> git status
+> git branch test
+> git branch
+> git checkout test
+create a file index.txt
+> git add index.txt
+> git commit -m "Create index.txt"
+> git log --one-line
+
+
+
+git commit
+
+This command will open terminal editor for you
+(usually, nano or vim). If you are not familiar
+with these, use:
+
+git commit -m "your message"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+demo of assignment
+
+
+
+
+
+Copy link to the Assignment
+Accept the Assignment
+Go to your private repo for the Assignment
+Copy the link to the repo
+> git clone <link>
+Open this folder in your IDE
+> git checkout -b solution
+> git add .
+> git commit -m "Add form for lab 1"
+> git push -u origin solution
+Got to "Pull requests"
+Click "New pull request"
+Select base: main and compare: solution
+Click "Create pull request"
+Show failing tests in Actions tab
+Show PR title and description
+Show files changed
+
+
+
+
+

@@ -1,0 +1,505 @@
+
+
+
+
+
+
+
+
+
+
+
+
+Welcome to the course!
+
+
+
+
+
+
+
+
+
+
+
+
+Andrei
+
+https://www.linkedin.com/in/andreinavumau/
+
+
+
+
+
+
+
+
+
+
+
+
+The course materials are available online:
+
+https://github.com/tyzia/http5221_s25_public
+
+
+
+
+
+
+
+
+
+
+
+
+
+What is your goal in this course?
+
+
+
+
+
+
+
+
+
+
+
+
+To become a web developer.
+
+
+
+
+
+
+
+
+
+
+To achieve this goal, you need to learn.
+I am here to help you learn.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Friends vs enemies
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Best friends
+
+
+
+
+
+
+
+
+
+
+
+
+
+1 You
+2 Teacher
+3 AI
+
+
+
+
+
+
+
+
+
+
+
+
+Best enemies
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Copy-Paste AI generated code
+
+
+
+
+
+
+
+
+
+
+
+0
+
+
+
+
+
+
+
+
+
+
+
+
+I have 0 tolerance for copy-paste from AI.
+
+Why?
+
+- You don't learn. This is the problem.
+- AI makes mistakes. You need experience and
+knowledge to spot them.
+
+Use AI to learn. Ask questions. Ask for explanations.
+
+
+
+
+
+
+I have seen many lines of different code during my career.
+I have an idea how a person, learning to code, will be writing their code.
+I have a good understanding of how AI will create code for you.
+
+I enjoy spotting typos, badly formatted
+code in your work, because this proves to me
+that you are learning and trying.
+
+
+
+
+
+
+
+
+
+
+
+
+Copying your own code
+
+
+
+
+
+
+
+What may be wrong here?
+
+Ask yourself - 'Why I need to copy the same lines of code?'
+
+I might mean that you need the same functionality.
+If it is a case - create a method to do this task.
+Use this method.
+
+Why is it preferred?
+
+When you need to refactor or change this code,
+the change will be done in one place.
+This is a good practice.
+
+Copying your own code almost always
+triggers unexpected errors (forgot to change id or click handle).
+You might struggle debugging this error longer,
+than you would spend to retype the necessary part of code.
+
+My advice - always type your code, don't copy.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Expectations
+
+
+
+
+
+
+
+
+
+
+
+What I expect from you:
+
+
+
+Hard work
+The course is relatively easy, learning new material
+might be hard.
+
+Honesty
+Please, don't submit the code which is not yours.
+
+Desire to learn
+I appreciate questions from you, I appreciate your attention.
+
+Timely submissions
+Assignments may quickly pile up for you, please submit on time.
+
+Attendance
+You can't be late to your interview, or meetings, or work.
+Same applies to your classes.
+
+Do not disturb
+If you need to talk, you may leave the classroom any time and come back.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Your questions
+
+
+You might have a lot of questions, it is always nice to hear them.
+I will pause and ask for your questions.
+
+I will not be able to spend too much time on questions, as I need
+to move on with the material, but after the lecture, you are
+more than welcome to reach out to me and I will clarify anything what you
+didn't understand.
+
+
+
+
+
+
+
+
+
+
+
+
+What to do when your code doesn't work
+and assignment is due soon or overdue?
+
+
+
+
+
+
+
+
+
+
+
+Don't panic.
+
+Submit your solution as is (not working),
+add comments to your submission, what is
+not working and what you tried.
+
+I will guide you how to fix it.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Contacting me
+
+
+If you need clarification, or you have a question
+the best is to send me message through Blackboard.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Attendance
+
+
+
+
+
+
+
+
+Please, attend classes.
+This helps to achieve your goal.
+
+I will be marking attendance during first
+20 minutes of each lecture.
+Coming after attendance is taken, means
+you are late.
+
+If you can't attend,
+send me a message before the start of the class
+or within 48 hours after it.
+Please, provide the reason.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Handwritten code
+
+
+
+
+
+
+
+
+Please, get ready to write the code
+by hand. It will be either during quiz
+or I might ask you to write a simple
+code by hand to evaluate code understanding.
+
+In all my technical interviews when I was applying
+for a job, I was asked to write code by hand.
+It is a common practice in the industry.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Critical Path
+
+
+
+We will cover three important topics:
+
+- JavaScript
+- Accessibility
+- Usability
+
+
+
+demo /critical_path/http5221_critical_path_s25.html
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Submissions and Marks
+
+
+
+
+
+
+
+
+
+
+
+demo marking.pdf
+
+
+

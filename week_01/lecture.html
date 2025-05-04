@@ -1,0 +1,1556 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>HTTP5221 Lecture</title>
+		<style>
+			body {
+				margin: 0;
+				text-align: center;
+				color: #023047;
+				font-size: 22px;
+			}
+
+			section {
+				margin-bottom: 1000px;
+			}
+
+			.example {
+				padding: 200px 0;
+			}
+
+			.keys {
+				display: flex;
+				justify-content: center;
+				gap: 20px;
+			}
+
+			ul {
+				display: flex;
+				justify-content: center;
+				gap: 18px;
+			}
+
+			ol {
+				text-align: left;
+				max-width: 730px;
+				margin: 0 auto;
+			}
+
+			#content-wrapper {
+				width: 730px;
+				padding: 20px;
+				margin: 0 auto;
+			}
+
+			.nav {
+				margin-bottom: 15px;
+				text-decoration: none;
+			}
+
+			.nav li {
+				list-style: none;
+				border: 1px solid black;
+				padding: 5px 15px;
+			}
+
+			.nav a {
+				text-decoration: none;
+			}
+
+			.form {
+				max-width: 730px;
+				margin: 0 auto;
+			}
+
+			.entry {
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				gap: 20px;
+				margin: 30px 0;
+			}
+
+			#location-data {
+				display: none;
+			}
+
+			input {
+				padding: 5px 10px;
+				margin: 10px 20px 10px 5px;
+				font-family: monospace;
+			}
+
+			input[type=submit] {
+				background-color: #b0c4b1;
+				color: #344e41;
+				padding: 15px 20px;
+				border-color: transparent;
+				border-radius: 5px;
+				font-family: sans-serif;
+			}
+
+			input[type=submit]:hover {
+				cursor: pointer;
+				background-color: #dedbd2;
+				color: #344e41;
+			}
+		</style>
+		<script>
+			window.onload = () => {
+
+
+
+				// Never use 'var'
+
+
+
+
+
+
+
+
+
+
+
+
+				// Plan
+
+				// naming conventions
+				// variables
+				// scopes
+				// values
+				// objects
+				// classes
+				// events
+				// window
+				// forms
+
+
+
+
+
+
+
+
+
+
+				// What is the hardest thing in programming?
+
+
+
+
+
+
+
+
+
+
+				// naming variables
+
+
+
+
+
+
+
+
+
+
+				// Short
+
+
+
+
+
+
+				// const x
+				// const arr
+				// const tmp
+
+				// Short names: The problem here - we don't know what is inside.
+
+
+
+
+
+
+
+
+				// Long
+
+
+
+
+
+				// const numberOfActiveUsersInTheCurrentSessionForBrokerUser
+
+				// Long names: The problem here - it is hard to read.
+
+
+
+
+
+
+
+
+
+
+				// If both short and long names are bad,
+				// what to choose?
+
+				// We need a balance.
+
+
+
+
+
+
+
+
+
+
+				// Best practice in naming your variables
+
+
+
+
+
+
+
+
+				// Best practice:
+
+				// 1) Use meaningful names.
+
+				// Bad:
+				// let x = 10;
+				// let str = 'Hello';
+
+				// Good
+				// let numberOfRetries = 10;
+				// let welcomeMessage = 'Hello';
+
+				// 2) Use nouns for variables
+				// & verbs for functions.
+
+				// Bad:
+				// let calculateTotalPrice = 25;
+				// function userAge() {}
+
+				// Good:
+				// let userAge = 25;
+				// function calculateTotalPrice() {}
+
+				// 3) Avoid abbreviations.
+
+				// Bad:
+				// let usrCnt = 10;
+
+				// Good:
+				// let userCount = 10;
+
+				// 4) Consider scope when naming
+				// i.e. how long will variable 'live'.
+
+				// -- Larger scope => longer name
+				// -- Smaller scope => shorter name
+
+				// Large (Global) scope:
+				// const maximumAllowedConnections = 100;
+
+				// Small (local) scope:
+				// for (let i = 0; i < 2; i++) { console.log(i) }
+
+				// 5) Avoid reserved words.
+
+				// Bad:
+				// const class = 'Math';
+
+				// Good:
+				// const className = 'Math';
+
+				// 6) Name of a variable with boolean value
+				// should answer: true or false
+				// and start with 'is' or 'has'.
+
+				// Bad:
+				// let visible = true;
+				// let activities = true;
+
+				// Good:
+				// let isVisible = true;
+				// let hasActivities = true;
+
+
+
+
+
+
+
+
+
+
+				// Variables
+
+
+
+
+
+
+
+
+
+
+				// What variable types do you know?
+
+
+				// Answer:
+
+
+
+
+
+
+
+
+
+
+				// There are two variable types in JS.
+
+				// let
+				// const
+
+
+
+
+
+
+
+
+
+
+				// Let's talk about scopes first
+
+				// -- Global (outside any function)
+				// -- Function (inside a function)
+				// -- Block (inside a block)
+
+
+
+
+
+
+
+
+
+
+				// Global scope
+
+				// Variables declared in global scope can be accessed
+				// from anywhere in the code.
+
+				// const name = 'Andrei';
+				// function greet() {
+				//     console.log(name);
+				// }
+				// greet(); // Andrei
+
+
+				// Function scope
+
+				// Variables declared inside a function are local to that function
+				// and cannot be accessed outside of it.
+
+				// function iceAge() {
+				//     const age = 1;
+				// }
+				// console.log(age); // ReferenceError: age is not defined
+
+				// function iceAge() {
+				//     const age = 1;
+				//     console.log(age); // 1
+				// }
+				// iceAge();
+
+
+				// Block scope
+
+				// Variables declared inside a block are only
+				// accessible within this block.
+				// Block scope is created by { }.
+
+				// if (true) {
+				//     let a = 10;
+				// }
+				// console.log(a); // ReferenceError: a is not defined
+
+
+
+
+
+
+
+
+
+
+				// Scopes protect your code from accidental
+				// change of your variables and unexpected results.
+
+
+
+
+
+
+
+
+
+
+				// Why not var?
+
+
+
+
+
+
+
+
+
+
+				// 1) var is accessible outside the block where it was declared
+
+				// if (true) {
+				//     var x = 10;
+				// }
+				// console.log(x); // 10
+
+
+				// 2) var is hoisted to the top of its scope,
+				// meaning you can reference them before declaring them
+				// and get unexpected results instead of error.
+
+				// console.log(y); // undefined
+				// var y = 20;
+
+				// console.log(y + 1); // NaN
+				// var y = 20;
+
+				// you can't do the same with 'let'
+				// console.log(y); // ReferenceError: Cannot access 'c' before initialization
+				// let y = 20;
+
+				// 3) var can be redeclared
+				// var z = 5;
+				// var z = 15;
+				// console.log(z); // 15
+
+				// you can't do the same with 'let'
+				// let z = 5;
+				// let z = 10; // SyntaxError: Identifier 'z' has already been declared
+
+				// 4) var doesn't create new scope in the loop
+				// for (var i = 0; i < 3; i++) {
+				//     setTimeout(() => console.log(i)); // 3, 3, 3 (not 0, 1, 2 as expected)
+				// }
+
+				// if you use let, the behavior is as expected
+				// for (let i = 0; i < 3; i++) {
+				//     setTimeout(() => console.log(i)); // 0, 1, 2
+				// }
+
+				// you can't use const, as it can't be reassigned a value
+				// for (const i = 0; i < 3; i++) { // TypeError: Assignment to constant variable
+				//     setTimeout(() => console.log(i));
+				// }
+
+
+
+
+
+
+
+
+				// var allows you to do many 'crazy' things
+				// and give no errors
+				// which can lead to dangerous and unexpected results.
+
+
+
+
+
+
+
+
+
+				// Never use 'var'
+
+
+
+
+
+
+
+
+
+
+				// Explanation (for further reference):
+
+				// console.log(y); // undefined
+				// var y = 20;
+
+				// JavaScript parses the script and finds var y = 20.
+				// During the parsing phase, var y is hoisted to the top of its scope (global scope in this case), but the assignment y = 20 is not hoisted.
+				// The variable y is declared at the top of the scope with an initial value of undefined.
+				// The script then executes console.log(y), which logs undefined because the assignment has not occurred yet.
+				// After logging, the assignment y = 20 is executed, and y is assigned the value 20.
+
+
+				// for (var i = 0; i < 3; i++) {
+				//     setTimeout(() => console.log(i)); // 3, 3, 3 (not 0, 1, 2 as expected)
+				// }
+
+				// The for loop starts with var i = 0.
+				// The setTimeout function is called, which schedules the console.log(i) to run after the loop finishes.
+				// The loop increments i to 1 and repeats the process. Encounters setTimeout again, and schedules another console.log(i) to run after the loop finishes.
+				// The loop increments i to 2 and repeats the process. Encounters setTimeout again, and schedules another console.log(i) to run after the loop finishes.
+				// The loop increments i to 3, which ends the loop as i is no longer less than 3.
+				// At this point, the loop has finished, and i is 3. The setTimeout callbacks are now executed from the asynchronous queue.
+				// Since var is globally scoped, all three setTimeout callbacks reference the same i, which is now 3. Therefore, console.log(i) outputs 3 three times.
+
+
+
+
+
+
+
+
+
+
+				// const
+
+
+
+
+
+
+
+
+
+
+				// By default always use 'const' to declare your variables.
+
+				// Examples
+
+				// const pi = 3.14;
+				// const city = 'Toronto';
+				// const person = { name: 'Leo', age: 1 };
+				// const arr = [ 1, 2, 3, 4 ];
+				// const greet = function() { console.log('Hello!'); };
+
+
+
+
+
+
+
+
+
+
+				// Can I add new value to const arr?
+
+				// const arr = [ 1, 2, 3, 4 ];
+				// arr.push(5);
+				// console.log(arr);
+
+
+
+
+
+				// Answer:
+
+
+
+
+
+
+
+
+
+
+				// Can I update or add new property of const person?
+
+				// const person = { name: 'Leo', age: 1 };
+				// person.name = 'Andrei';
+				// person.location = 'Canada';
+				// console.log(person);
+
+				// Answer:
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+				// I can:
+
+
+
+
+				// 1) Update element of const array
+
+				// const numbers = [ 1, 2, 3, 4 ];
+				// console.log(numbers);
+				// numbers[0] = -1;
+				// console.log(numbers);
+
+				// 2) Add new value to const array
+
+				// const numbers = [ 1, 2, 3, 4 ];
+				// console.log(numbers);
+				// numbers.push(5);
+				// console.log(numbers);
+
+				// 3) Update property of const object
+
+				// const person = { name: 'Mark', age: 1 };
+				// console.log(person.name);
+				// person.name = 'John';
+				// console.log(person.name);
+
+				// 4) Add new property to const object
+
+				// const person = { name: 'Mark', age: 1 };
+				// person.location = 'Canada';
+				// console.log(person);
+
+				// This happens because:
+				// -- The const variable is a pointer to a specific memory location
+				//    where the object or array is stored.
+				// -- The pointer itself cannot be changed, but the contents of the
+				//    object or array at that memory location can be modified.
+
+
+
+
+
+
+
+
+
+
+				// I can't:
+
+
+
+
+
+
+				// 1) Change primitive value:
+				// number, string, boolean.
+
+				// const pi = 3.14;
+				// pi = 3.15; // TypeError: Assignment to constant variable.
+
+				// const city = 'Toronto';
+				// city = 'Ottawa'; // TypeError: Assignment to constant variable.
+
+				// const isDisabled = true;
+				// isDisabled = false; // TypeError: Assignment to constant variable.
+
+				// 2) Reassign const array
+
+				// const numbers = [ 1, 2, 3, 4 ];
+				// numbers = [ 1, 2, 3, 4 ]; // TypeError: Assignment to constant variable.
+
+				// 3) Reassign const object
+
+				// const person = { name: 'Mark', age: 1 };
+				// person = { name: 'Mark', age: 1 }; // TypeError: Assignment to constant variable.
+
+				// 4) Declare const without initial value
+				// const country; // SyntaxError: Missing initializer in const declaration
+
+
+
+
+
+
+
+
+
+
+				// let
+
+
+
+
+
+
+				// Use let whenever const is not appropriate:
+				// -- for variable content like counters, iterators, or something changing.
+
+
+
+
+
+
+
+
+
+
+				// Types of values of your variables
+
+
+
+				// primitive values:
+
+				// const name = 'Andrei'; // string ("", '', ``)
+				// const age = 18; // number
+				// const isLogged = true; // boolean true/false
+
+				// non-primitive values:
+
+				// const colors = [ 'red', 'white', 'black' ]; // array
+				// const person = { name: 'Leo', age: 1 }; // object
+				// const greet = function() { console.log('Hello!'); }; // function
+
+
+
+
+				// special values in JavaScript
+
+				// undefined - a variable that has been declared but not assigned a value
+				// null - an assignment value that represents no value
+				// NaN - a value representing Not-a-Number
+
+
+
+
+
+
+
+				// Classes
+
+
+
+
+
+
+
+
+
+
+				// Let's recap what is an object
+
+
+
+
+
+
+
+
+
+
+				// Task: create person data
+
+				// let name = 'Andrei';
+				// let age = 18;
+				// let location = 'Toronto';
+
+
+
+
+
+				// Task: create another person data
+
+
+				// We can NOT copy & update
+				// we will get SyntaxError
+
+				// let name = 'Michael';
+				// let age = 4;
+				// let location = 'Quebec';
+
+
+
+
+				// try to solve the issue by removing let:
+				// name = 'Michael';
+				// age = 4;
+				// location = 'Quebec';
+
+				// now let's see what we have in our variables
+				//    console.log(name);
+				//    console.log(age);
+
+
+
+
+
+
+
+
+
+
+				// How we can solve our problem? Rename variables!
+
+				//    let name2 = 'Michael';
+				//    let age2 = 4;
+				//    let location2 = 'Quebec';
+				//
+				//    console.log(name2);
+				//    console.log(age2);
+
+
+
+
+
+
+
+
+
+
+				// Another issue - we can have the same data for different things
+
+
+
+
+
+
+
+
+
+				// Task: create car data
+
+				//    let name = 'BMW'; // make
+				//    let age = 2;
+				//    let location = 'London';
+
+
+
+
+
+
+
+
+
+
+				// To solve problem - we use Objects
+
+				// Object is a collection of related properties.
+
+				const man = {
+					name: 'Andrei',
+					age: 18,
+					location: 'Toronto',
+				};
+
+				// console.log(man);
+
+				const car = {
+					name: 'BMW',
+					age: 2,
+					location: 'London',
+				};
+
+				// console.log(car);
+
+
+
+
+
+
+
+
+
+
+				// Object can have methods/functions
+
+				const developer = {
+					name: 'Bill',
+					showName: function () {
+						return this.name;
+					},
+					showNameIfTrue: function (isTrue) {
+						return isTrue ? this.name : false;
+					}
+				}
+
+				// console.log(developer.showName());
+				// console.log(developer.showNameIfTrue(true));
+				// console.log(developer.showNameIfTrue(false));
+
+
+
+
+
+
+
+
+
+
+				// What if we want to create similar objects?
+
+				// We can copy
+
+				const developer2 = {
+					name: 'Marshal',
+					showName: function () {
+						return this.name;
+					},
+					showNameIfDay: function (isDay) {
+						return isDay ? this.name : null;
+					}
+				}
+
+
+
+
+
+
+
+
+
+
+				// That's where idea of a class comes in.
+				// Class is like a template
+
+				class Developer {
+					name;
+					income = 0;
+					realEstate = [];
+
+					showName() {
+						return this.name;
+					}
+				}
+
+				// Create object using Developer class
+				const webDev = new Developer();
+				//    console.log(webDev);
+				//    console.log(webDev.s  howName());
+
+
+
+
+
+
+
+
+
+
+				// Class constructor
+
+				// To customize our object we can do something like this:
+
+				const dev1 = new Developer();
+				dev1.name = '1';
+
+				const dev2 = new Developer();
+				dev2.name = '2';
+
+
+
+
+
+
+
+
+
+
+				// Instead let's have constructors
+
+				// while creating object we can pass parameters to customize the object
+
+				class Animal {
+					name;
+					age;
+					breed;
+
+					constructor(nameIn, ageIn) {
+						this.name = nameIn;
+						this.age = ageIn;
+					}
+				}
+
+				const dog = new Animal(null, null);
+				//    console.log(dog);
+
+				const mouse = new Animal('Micky', 1);
+				//    console.log(mouse);
+
+
+
+
+
+
+
+
+
+
+				// We can extend other classes
+
+				class Zoo extends Animal {
+					city;
+
+					constructor(cityIn, nameIn, ageIn) {
+						super(nameIn, ageIn);
+						this.city = cityIn;
+					}
+				}
+
+				const monkey = new Zoo('Vancouver', 'ABC', 2);
+				//    console.log(monkey);
+
+
+
+
+
+
+
+
+
+
+				// Events
+
+
+
+
+
+
+
+
+
+
+				// What are the event?
+
+				// Answer:
+
+
+
+
+
+
+
+
+
+
+				// Events are actions that happen in the browser:
+				// -- user clicking a button
+				// -- user pressing a key
+				// -- user resizing the window
+				// -- user submitting the form
+				// and many more
+
+
+
+
+
+
+
+
+
+
+				// JavaScript allows you to listen for these events
+				// and respond to them by executing code.
+
+
+
+
+
+
+
+
+				// There are three main concepts related to events:
+
+				// target
+				// listener
+				// object
+
+
+
+
+
+
+
+
+
+
+				// Event Target - The element that the event occurs on:
+				// -- a button
+				// -- an input field
+				// -- form
+
+				// Event Listener - our code (function) for a specific event.
+
+				// Event Object - an object that contains information about the event:
+				// -- which key was pressed
+				// -- the mouse position
+				// etc.
+
+
+
+
+
+
+
+
+				// How to use events in JavaScript?
+
+
+
+
+
+
+
+
+
+
+				// 1) Select the element
+				// document.querySelector()
+				// document.getElementById()
+
+				// Example:
+				// const btn = document.querySelector('#change_color');
+
+
+				// 2) Attach an event listener
+				// addEventListener()
+
+				// Example:
+				// btn.addEventListener('click', clickHandler);
+
+
+				// 3) Define the event handler
+				// a function that will execute when the event occurs.
+
+				// Example:
+				// function clickHandler() {
+				//     const rndCol = `rgb(${random(255)} ${random(255)} ${random(255)})`;
+				//     document.body.style.backgroundColor = rndCol;
+				// }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+				// Demo of button click event
+
+				const btn = document.querySelector('#change_color');
+
+				function random(number) {
+					return Math.floor(Math.random() * (number + 1));
+				}
+
+				function clickHandler() {
+					document.body.style.backgroundColor = `rgb(${random(255)} ${random(255)} ${random(255)})`;
+				}
+
+				btn.addEventListener('click', clickHandler);
+
+
+
+
+
+
+
+
+				const btnFontChange = document.querySelector('#change_font');
+				btnFontChange.addEventListener('click', () => {
+					const fontWrapper = document.querySelector('#change_font_wrapper');
+					const size = Math.floor(Math.random() * 50);
+					fontWrapper.style.fontSize = `${size}px`;
+				});
+
+
+
+
+
+
+
+
+
+
+				// Demo of event object
+
+				const btnChangeEvent = document.querySelector('#change_event');
+				btnChangeEvent.addEventListener('click', changeHandler);
+
+				function changeHandler(event) {
+					console.log(event);
+				}
+
+
+
+
+
+
+
+
+
+
+				// Demo key events
+
+
+
+				const txtIn = document.querySelector("#input-text");
+
+				txtIn.addEventListener('keydown', keydownHandler);
+
+				function keydownHandler(e) {
+					const keydownDiv = document.querySelector('#keydown');
+					keydownDiv.innerHTML = `<p>${e.keyCode}</p>${keydownDiv.innerHTML}`;
+				}
+
+
+				txtIn.addEventListener('keyup', keyupHandler);
+
+				function keyupHandler(e) {
+					const keyupDiv = document.querySelector('#keyup');
+					keyupDiv.innerHTML = `<p>${e.keyCode}</p>${keyupDiv.innerHTML}`;
+				}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+				// window
+
+
+
+
+
+
+
+
+
+				// window.onload is a JavaScript event
+				// that fires when the entire webpage has fully loaded.
+				// we wait for this event
+				// before executing any JavaScript code.
+
+
+
+
+
+
+
+				// Example:
+
+				// window.onload = function() {
+				//     console.log("The page has fully loaded!");
+				// };
+
+
+
+
+
+
+
+				// What will happen if I don't listen to window.onload?
+
+				// demo: window.html
+				// demo: window.js
+
+
+
+
+
+
+
+
+
+
+				// window.location
+
+
+
+
+
+
+
+
+				// The window.location object is a powerful tool
+				// in JavaScript. It allows you to interact
+				// with the current URL of the page.
+
+
+
+
+
+
+
+				// You can:
+
+				// - read the URL
+				// - modify the URL
+				// - redirect users
+				// - extract query strings
+
+
+
+
+
+
+
+
+
+				// Query strings
+
+
+
+
+
+
+
+				// Demo
+				// open google.com
+				// and search for 'humber'
+
+				// https://www.google.com/search?q=humber&sca_esv=4ad496d1768baf99&source=hp&ei=x7_gZ_zLEdWP0PEPxoDOkAo&iflsig=ACkRmUkAAAAAZ-DN17_AN5eilh0D_z-67yuPu3Biy33C&ved=0ahUKEwi8y7qy0qGMAxXVBzQIHUaAE6IQ4dUDCBg&uact=5&oq=humber&gs_lp=Egdnd3Mtd2l6IgZodW1iZXIyBRAAGIAEMgUQABiABDIOEC4YgAQYxwEYjgUYrwEyBRAAGIAEMgsQLhiABBjRAxjHATIFEAAYgAQyBRAAGIAEMgUQABiABDIFEAAYgAQyBRAAGIAESLEeUMsTWJ8acAF4AJABAJgBmwGgAYQFqgEDMy4zuAEDyAEA-AEBmAIGoAK9BagCAMICBRAuGIAEmAMD8QU1Nt9hLVCxiZIHAzAuNqAHv0CyBwMwLja4B70F&sclient=gws-wiz
+
+
+				// Anything after question (?) mark in the URL
+				// is a query string.
+
+				// The syntax of query string is:
+
+				// url ? paramOne = value1 & paramTwo = value2 & ...
+				// (in real life no spaces between)
+
+
+				// So from google search example we have:
+
+				// q = humber
+				// sca_esv = 4ad496d1768baf99
+				// source = hp
+				// ...
+
+
+
+
+
+
+
+
+
+
+				// Properties of the window.location object
+
+
+				// href = the full URL of the current page.
+				// host = the hostname and port of the URL.
+				// hostname = the hostname of the URL (without the port).
+				// path = the path of the URL after the hostname.
+				// search = the query string.
+				// hash = the fragment identifier (everything after the #).
+
+
+
+
+
+				// Examples
+
+
+				// console.log(window.location.href); // "https://example.com/about.html?link=menu"
+				// console.log(window.location.host); // "example.com:8080"
+				// console.log(window.location.hostname); // "example.com"
+				// console.log(window.location.pathname); // "/about.html"
+				// console.log(window.location.search); // "?link=menu"
+				// console.log(window.location.hash); // "#section1"
+
+
+
+
+
+
+
+
+
+
+				// demo of code with window.location
+				// query.html
+
+
+
+
+
+
+
+
+
+
+				// Let's change window.location
+
+				const link = document.getElementById('google-link');
+				link.onclick = () => {
+					// window.location = 'https://humber.ca';
+					// return false;
+				}
+
+
+
+
+
+
+
+
+
+				// Forms
+
+
+
+
+
+
+
+
+
+
+				const locationsForm = document.forms.location_form;
+				const locationData = document.getElementById('location-data');
+
+				locationsForm.onsubmit = submitHandle;
+
+				function submitHandle() {
+					let locationName;
+					let locationAddress;
+					storeFormValues();
+					showFormValues();
+					return false;
+				}
+
+				function storeFormValues() {
+					locationName = locationsForm.name1.value;
+					locationAddress = locationsForm.address1.value;
+//        console.log(locationName, locationAddress);
+				}
+
+				function showFormValues() {
+					locationData.textContent = `Location name: ${locationName} and address: ${locationAddress}`;
+//        console.log(locationData.textContent);
+					locationData.style.display = 'block';
+				}
+
+
+
+
+
+
+
+
+
+
+				// Hint for the Lab
+
+
+				// const names = [
+				//      { name: 'Andrei' },
+				//      { name: 'Justine' },
+				// ];
+				// let listOfNames = '';
+				// for (let i = 0; i < 3; i++) {
+				//     listOfNames += `<li>Name is ${names[i].name}</li>`;
+				// }
+				//
+				// const listElem = document.getElementById('names-list');
+				// listElem.innerHTML = listOfNames;
+			}
+		</script>
+	</head>
+
+	<body>
+
+		<h1>Demo for the Lesson!</h1>
+
+
+		<section>
+			<h2>Events</h2>
+			<div class="example">
+				<p>Example of button click with named function</p>
+				<button id="change_color">Change color</button>
+			</div>
+			<div class="example" id="change_font_wrapper">
+				<p>Example of button click with anonymous function</p>
+				<button id="change_font">Change font size</button>
+			</div>
+			<div class="example">
+				<p>Example of event object</p>
+				<button id="change_event" class="test-button">See event object</button>
+			</div>
+			<div class="example">
+				<p>Keyboard Events</p>
+				<div class="keys">
+					<div class="input-field">
+						<label for="input-text">Click inside and type any char</label>
+						<input type="text" id="input-text" name="input-text">
+					</div>
+					<div>Code of key up: <div id="keyup"></div></div>
+					<div>Code of key down: <div id="keydown"></div></div>
+				</div>
+			</div>
+		</section>
+
+		<section>
+			<div class="example">
+				<h2>Forms</h2>
+				<form name="location_form" action="#" method="get">
+					<fieldset>
+						<legend>Enter locations</legend>
+						<div class="entry">
+							<p>Location 1</p>
+							<div class="field">
+								<label for="name_1">Name:</label>
+								<input type="text" name="name1" id="name_1"/>
+							</div>
+							<div class="field">
+								<label for="address_1">Address:</label>
+								<input type="text" name="address1" id="address_1"/>
+							</div>
+						</div>
+					</fieldset>
+					<input type="submit" value="Show location" />
+				</form>
+				<div id="location-data">Here we will see the data</div>
+			</div>
+		</section>
+
+		<section>
+			<div class="example">
+				<p>Let's change where link will lead us</p>
+				<a href="https://google.com" id="google-link">Google.com</a>
+			</div>
+		</section>
+
+	</body>
+</html>
