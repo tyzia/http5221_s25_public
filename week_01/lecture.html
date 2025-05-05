@@ -123,7 +123,6 @@
 				// objects
 				// classes
 				// events
-				// window
 				// forms
 
 
@@ -414,6 +413,48 @@
 
 
 
+
+
+
+
+
+
+				// Timeline
+
+
+				// early 2000s
+				// JS devs started raising concerns about var
+
+				// 2005
+				// Firefox introduced experimental type 'let'
+
+				// 2015
+				// const & let became a standard (ES6)
+
+
+
+
+
+
+
+
+				// var is:
+
+				// - A legacy construct
+				// - Created before JavaScript used for large app development
+				// - Currently superseded by safer and clearer alternatives (let and const).
+
+
+
+
+
+
+
+
+
+
+
+				// Examples
 
 
 
@@ -1237,195 +1278,6 @@
 
 
 
-
-
-
-
-
-
-
-				// window
-
-
-
-
-
-
-
-
-
-				// window.onload is a JavaScript event
-				// that fires when the entire webpage has fully loaded.
-				// we wait for this event
-				// before executing any JavaScript code.
-
-
-
-
-
-
-
-				// Example:
-
-				// window.onload = function() {
-				//     console.log("The page has fully loaded!");
-				// };
-
-
-
-
-
-
-
-				// What will happen if I don't listen to window.onload?
-
-				// demo: window.html
-				// demo: window.js
-
-
-
-
-
-
-
-
-
-
-				// window.location
-
-
-
-
-
-
-
-
-				// The window.location object is a powerful tool
-				// in JavaScript. It allows you to interact
-				// with the current URL of the page.
-
-
-
-
-
-
-
-				// You can:
-
-				// - read the URL
-				// - modify the URL
-				// - redirect users
-				// - extract query strings
-
-
-
-
-
-
-
-
-
-				// Query strings
-
-
-
-
-
-
-
-				// Demo
-				// open google.com
-				// and search for 'humber'
-
-				// https://www.google.com/search?q=humber&sca_esv=4ad496d1768baf99&source=hp&ei=x7_gZ_zLEdWP0PEPxoDOkAo&iflsig=ACkRmUkAAAAAZ-DN17_AN5eilh0D_z-67yuPu3Biy33C&ved=0ahUKEwi8y7qy0qGMAxXVBzQIHUaAE6IQ4dUDCBg&uact=5&oq=humber&gs_lp=Egdnd3Mtd2l6IgZodW1iZXIyBRAAGIAEMgUQABiABDIOEC4YgAQYxwEYjgUYrwEyBRAAGIAEMgsQLhiABBjRAxjHATIFEAAYgAQyBRAAGIAEMgUQABiABDIFEAAYgAQyBRAAGIAESLEeUMsTWJ8acAF4AJABAJgBmwGgAYQFqgEDMy4zuAEDyAEA-AEBmAIGoAK9BagCAMICBRAuGIAEmAMD8QU1Nt9hLVCxiZIHAzAuNqAHv0CyBwMwLja4B70F&sclient=gws-wiz
-
-
-				// Anything after question (?) mark in the URL
-				// is a query string.
-
-				// The syntax of query string is:
-
-				// url ? paramOne = value1 & paramTwo = value2 & ...
-				// (in real life no spaces between)
-
-
-				// So from google search example we have:
-
-				// q = humber
-				// sca_esv = 4ad496d1768baf99
-				// source = hp
-				// ...
-
-
-
-
-
-
-
-
-
-
-				// Properties of the window.location object
-
-
-				// href = the full URL of the current page.
-				// host = the hostname and port of the URL.
-				// hostname = the hostname of the URL (without the port).
-				// path = the path of the URL after the hostname.
-				// search = the query string.
-				// hash = the fragment identifier (everything after the #).
-
-
-
-
-
-				// Examples
-
-
-				// console.log(window.location.href); // "https://example.com/about.html?link=menu"
-				// console.log(window.location.host); // "example.com:8080"
-				// console.log(window.location.hostname); // "example.com"
-				// console.log(window.location.pathname); // "/about.html"
-				// console.log(window.location.search); // "?link=menu"
-				// console.log(window.location.hash); // "#section1"
-
-
-
-
-
-
-
-
-
-
-				// demo of code with window.location
-				// query.html
-
-
-
-
-
-
-
-
-
-
-				// Let's change window.location
-
-				const link = document.getElementById('google-link');
-				link.onclick = () => {
-					// window.location = 'https://humber.ca';
-					// return false;
-				}
-
-
-
-
-
-
-
-
-
 				// Forms
 
 
@@ -1542,13 +1394,6 @@
 					<input type="submit" value="Show location" />
 				</form>
 				<div id="location-data">Here we will see the data</div>
-			</div>
-		</section>
-
-		<section>
-			<div class="example">
-				<p>Let's change where link will lead us</p>
-				<a href="https://google.com" id="google-link">Google.com</a>
 			</div>
 		</section>
 
