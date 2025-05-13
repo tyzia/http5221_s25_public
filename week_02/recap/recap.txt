@@ -1,0 +1,362 @@
+Recap from Week 1
+
+
+
+
+
+
+
+Naming conventions
+
+
+
+1. Meaningful names
+const x = 10 -> const numberOfRetries = 10
+
+2. Nouns for variables
+const y = 25 -> const userAge = 25
+
+3. Verbs for functions
+const userAge() -> const getUserAge()
+
+4. No abbreviations
+const usrCnt = 10 -> const userCount = 10
+
+5. Short name for small scope
+for (let i = 0; i < 2; i++) { console.log(i) }
+
+6. Longer name for larger scope
+const maximumAllowedConnections = 100
+
+7. No reserved words (class, etc)
+const class = 'math' -> const className = 'math'
+
+8. Boolean names start with 'is' or 'has'
+const visible = true -> const isVisible = true
+const activities = false -> const hasActivities = false
+
+
+
+
+
+Scopes of variables
+
+
+
+Scopes protect your code from accidental
+change of your variables and unexpected results.
+
+1. Global
+
+const name = 'Andrei';
+function greet() {
+    console.log(name);
+}
+console.log(name);
+
+'name' is declared globally and can be
+accessed from anywhere.
+
+2. Function
+
+function greet() {
+    const name = 'Andrei';
+    console.log(name);
+}
+console.log(name); <- ReferenceError
+
+'name' is declared inside of function and
+can't be accessible outside of this function.
+
+3. Block
+
+if (true) {
+    const name = 'Andrei';
+    console.log(name);
+}
+console.log(name); <- ReferenceError
+
+'name' is declared inside a block and
+can't be accessible outside of this block.
+
+
+
+
+
+
+Types of variables
+
+
+1. const
+2. let
+
+Rule of thumb - always create your variable as const.
+
+With const type I can:
+
+1) Update, add or delete element of const array
+const numbers = [ 1, 2, 3, 4 ];
+numbers[0] = -1;
+numbers.push(5);
+numbers.pop();
+
+2) Update, add or delete property of const object
+const person = { name: 'Mark', age: 1 };
+person.name = 'John';
+person.location = 'Canada';
+delete person.age;
+
+3) Create a primitive value, which will not change
+const pi = 3.14;
+const city = 'Toronto';
+const isValid = true;
+
+
+If const doesn't fit, use let (iterators, counters, flags).
+
+
+
+
+
+
+Types of values
+
+
+
+primitive values:
+
+const name = 'Andrei'; <- string ("", '', ``)
+const age = 18; <- number
+const isLogged = true; <- boolean true/false
+
+non-primitive values:
+
+const colors = [ 'red', 1, true ]; <- array
+const person = { name: 'Leo', age: 1 }; <- object
+const greet = function() { ... }; <- function
+
+special values:
+
+undefined - a variable that has been declared but not assigned a value
+null - an assignment value that represents no value
+NaN - a value representing Not-a-Number
+
+
+
+Objects
+
+
+
+Object is a collection of related data.
+
+const man = { name: 'Andrei', age: 18, location: 'Toronto' };
+
+Here 'name', 'age' and 'location' are data related to a person.
+
+Object can have methods associated with these data
+
+const man = {
+    name: 'Andrei',
+    getName: function() { return this.name; }
+};
+
+Method 'getName' will return 'name' property for this object.
+
+
+
+
+
+
+Classes
+
+
+
+Class is 'instruction' how to create an object.
+
+class Developer {
+	name;
+	income = 0;
+	realEstate = [];
+
+	showName() { return this.name; }
+}
+
+const webDev = new Developer();
+
+constructor method allows to pass data when
+object is created
+
+class Developer {
+	name;
+	income = 0;
+	realEstate = [];
+    constructor(nameIn) {
+        this.name = nameIn;
+    }
+	showName() { return this.name; }
+}
+
+const webDev = new Developer('Andrei');
+
+
+We can extend classes.
+
+This class will 'inherit' all properties from
+base (extended) class.
+To pass parameters to base class constructor,
+use super().
+
+class Fullstack extends Developer {
+	city;
+	constructor(cityIn, nameIn) {
+		super(nameIn);
+		this.city = cityIn;
+	}
+}
+
+const dev = new Fullstack('Vancouver', 'Andrei');
+
+
+
+
+
+
+
+Events
+
+
+
+We can listen to events in the browser
+and react to them with our custom code.
+
+1) Select the element
+const btn = document.querySelector('#change_color');
+
+2) Attach an event listener
+btn.addEventListener('click', clickHandler);
+
+3) Define the event handler
+function clickHandler() {
+	const rndCol = `rgb(${random(255)} ${random(255)} ${random(255)})`;
+	document.body.style.backgroundColor = rndCol;
+}
+
+
+Event object
+
+If I need, I can use event object
+which is always passed to my event handler by JS.
+If I don't need this object, I am not
+required to use it.
+
+
+const btnChangeEvent = document.querySelector('#change_event');
+btnChangeEvent.addEventListener('click', (event) => {
+    console.log(event);
+});
+
+
+
+
+
+
+
+Forms and inputs
+
+
+I can access form from HTML by name.
+
+HTML
+<form name="location_form"> ... </form>
+
+JS
+const locationsForm = document.forms.location_form;
+
+
+Once I have form in JS, I can listen to its 'submit' event
+
+locationsForm.onsubmit = submitHandle;
+function submitHandle() { ... }
+
+
+I can get value of any input field by name.
+
+HTML
+<form name="location_form">
+    <input name="phone">
+</form>
+
+JS
+const locationsForm = document.forms.location_form;
+const phoneInput = locationsForm.phone.value;
+
+
+
+
+
+
+Updating styles
+
+
+I can update style of any DOM (HTML) element with JS.
+
+
+I can hide element:
+
+HTML
+<span id="location"></span>
+
+JS
+const locationData = document.getElementById('location');
+locationData.style.display = 'none';
+
+Result
+<span id="location" style="display: none;"></span>
+
+
+I can show element:
+
+HTML
+<span id="location" style="display: none;"></span>
+
+JS
+const locationData = document.getElementById('location');
+locationData.style.display = 'block';
+
+Result
+<span id="location" style="display: block;"></span>
+
+
+I can update content of element:
+
+HTML
+<span id="location"></span>
+
+JS
+const locationData = document.getElementById('location');
+locationData.textContent = 'Hello world';
+
+Result
+<span id="location">Hello world</span>
+
+
+I can update HTML content of the element:
+
+HTML
+<ul id="location"></ul>
+
+JS
+const locationData = document.getElementById('location');
+locationData.innerHTML = '<li>Hello world</li>';
+
+Result
+<ul id="location">
+    <li>Hello world</li>
+</ul>
+
+
+
+
+
+
+Thank you

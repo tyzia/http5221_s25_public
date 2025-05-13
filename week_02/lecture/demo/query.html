@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>HTTP5221 Lecture</title>
+	<style>
+		body {
+			margin: 0;
+			text-align: center;
+			color: #023047;
+			font-size: 22px;
+		}
+
+		/* Block: Example Section */
+		.example {
+			padding: 20px 0;
+		}
+
+		/* Block: Navigation */
+		.nav {
+			display: flex;
+			justify-content: center;
+			gap: 18px;
+			margin-bottom: 15px;
+			text-decoration: none;
+		}
+
+		/* Element: Navigation Item */
+		.nav__item {
+			list-style: none;
+			border: 1px solid black;
+			padding: 5px 15px;
+		}
+
+		/* Element: Navigation Link */
+		.nav__link {
+			text-decoration: none;
+		}
+
+		/* Modifier: Red Background */
+		.color--red {
+			background-color: red;
+		}
+
+		/* Modifier: Yellow Background */
+		.color--yellow {
+			background-color: yellow;
+		}
+	</style>
+	<script>
+		window.onload = load;
+		function load(e) {
+			e.preventDefault();
+			const queryParam = window.location.search;
+
+			const locationSpan = document.getElementById('location');
+
+			if (queryParam === '?lang=en') {
+				locationSpan.textContent = 'English Page';
+			} else if (queryParam === '?lang=fr') {
+				locationSpan.textContent = 'French Page';
+			}
+
+			const colorSpan = document.getElementById('color');
+			if (queryParam === '?red') {
+				colorSpan.classList.add('color--red');
+			} else if (queryParam === '?yellow') {
+				colorSpan.classList.add('color--yellow');
+			}
+		}
+	</script>
+</head>
+
+<body>
+
+<h1>Welcome to your Lesson!</h1>
+
+<section>
+	<!-- Block: Example Section -->
+	<section class="example">
+		<h2><span id="location">English Page</span></h2>
+
+		<p>By clicking on the buttons below, the content above should change.</p>
+
+		<!-- Block: Navigation -->
+		<ul class="nav">
+			<!-- Element: Navigation Item -->
+			<li class="nav__item">
+				<!-- Element: Navigation Link -->
+				<a class="nav__link" href="query.html?lang=en">English</a>
+			</li>
+			<li class="nav__item">
+				<a class="nav__link" href="query.html?lang=fr">French</a>
+			</li>
+		</ul>
+	</section>
+
+	<!-- Block: Example Section -->
+	<section class="example">
+		<h2><span id="color">This header has background color</span></h2>
+
+		<p>By clicking on the buttons below, the background color for the header above should change.</p>
+
+		<!-- Block: Navigation -->
+		<ul class="nav">
+			<!-- Element: Navigation Item -->
+			<li class="nav__item">
+				<!-- Element: Navigation Link -->
+				<a class="nav__link" href="query.html?red">Red</a>
+			</li>
+			<li class="nav__item">
+				<a class="nav__link" href="query.html?yellow">Yellow</a>
+			</li>
+		</ul>
+	</section>
+
+</section>
+
+</body>
+</html>

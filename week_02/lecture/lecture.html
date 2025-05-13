@@ -1,0 +1,1505 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Lecture</title>
+</head>
+
+<body>
+	<div class="output"></div>
+	<div class="test_output"></div>
+	<section>
+		<div class="example">
+			<p>Let's change where link will lead us</p>
+			<a href="https://google.com" id="google-link">Google.com</a>
+		</div>
+	</section>
+	<script>
+
+
+
+
+		// Return early & use short-circuit
+
+
+
+
+
+
+
+
+
+
+
+
+
+		// Plan
+
+		// Comments
+		// "use strict"
+		// Naming convention: B.E.M.
+		// truthy vs falsy
+		// Functions
+		// Short notations
+		// Logical operators
+		// Nullish Coalescing
+		// ===
+		// Optional chaining
+		// Type coercion
+		// window
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		// Comments
+
+
+
+
+
+
+
+
+
+		// Rule of thumb - your code speaks for itself
+		// and doesn't need comments.
+
+
+
+
+
+
+
+
+
+
+
+		// Do NOT
+
+
+
+
+
+
+
+
+		// Do not explain obvious things:
+
+		let numberOfItems = 10;  // Set number of items to 10
+		// e.preventDefault(); // Prevent the default form submission
+
+		// Do not clarify the naming
+
+		let total;  // The total cost of all items
+
+		// Better give descriptive name to your variable:
+
+		let totalCostAllItems;
+
+		// Do not leave commented out code:
+
+		// console.log('test');
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		// You may use comments when you start developing
+
+		// Write your pseudocode!
+
+		// Create form
+		// Get value of the fields
+		// Validate fields
+		// If validation passed display success message
+		// Else display error
+
+		// But after you added code, please
+		// remove all your comments!
+
+
+
+
+
+
+
+
+
+
+
+		// If you add a comment to code:
+		// -- explain why, not what
+		// -- explain complex logic
+		// -- document functions
+
+
+
+
+		// Example
+
+		// Keeping legacy format for backward compatibility
+		// const apiResponse = convertToNewFormat(data, { legacy: true });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		// "use strict"
+
+
+
+
+
+
+
+
+
+		// "use strict" is a directive
+		// that enables strict mode in JavaScript.
+		// In other words it is enforcing
+		// stricter rules for writing JavaScript code.
+
+
+
+
+
+
+
+
+
+
+		// How to use?
+
+		// 1) Add "use strict"; to the top of your JS file.
+		// It will apply strict rules to all JS code:
+
+		// "use strict";
+		// function myFunction() {
+		//     ...
+		// }
+
+		// 2) Add "use strict"; inside any function.
+		// It will apply strict rules only to function scope.
+
+		// function myFunction() {
+		//     "use strict";
+		//     ...
+		// }
+
+
+
+
+
+
+
+		// Example
+
+
+
+
+		// x = 1;
+
+
+
+
+
+
+
+
+
+
+
+
+		// "use strict";
+		// x = 1;
+
+
+
+
+
+
+
+
+
+		// Modern browsers encourage using 'const' and 'let',
+		// which reduce the need for "use strict".
+
+		// For legacy JavaScript code, adding "use strict" is
+		// highly recommended to catch common mistakes.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		// B.E.M. (Block, Element, Modifier)
+
+
+
+
+
+
+
+
+
+
+
+
+
+		// It is example of naming convention
+		// how you should name your CSS classes
+		// so that it is easier to understand the structure.
+
+
+
+
+
+
+
+
+
+
+		// Example of B.E.M. syntax is:
+
+		// .blockClass__element--modifier
+
+
+		// HTML
+		// <section class="blockClass">
+		//      <p class="blockClass__element"> ... </p>
+		//      <p class="blockClass__element--modifier"> ... </p>
+		// </section>
+
+		// CSS
+		// .blockClass { ... }
+		// .blockClass__element { ... }
+		// .blockClass__element--modifier { ... }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		// 3 Parts of B.E.M.
+
+
+
+
+
+
+
+		// 1) B = Block
+
+		// A standalone component or section of the page.
+
+		// Example:
+		// - navigation bar (.nav)
+		// - header (.header)
+		// - button (.button)
+
+
+
+		// HTML
+		// <button class="button">Click Me</button>
+
+		// CSS
+		// .button { padding: 10px 20px; }
+
+
+
+
+
+
+
+		// 2) E = Element
+
+		// A part inside a block.
+
+		// Example:
+		// - a button inside a navigation bar (.nav__button)
+		// - a title inside a header (.header__title)
+
+
+
+		// HTML
+		/*
+        <button class="button">
+            <span class="button__icon">+</span> Add Item
+        </button>
+         */
+
+		// CSS
+		// .button__icon { margin-right: 5px; }
+
+
+
+
+
+
+		// 3) M = Modifier
+
+		// A variation of a block or element.
+
+		// Example:
+		// - a red button (.nav__button--red)
+		// - a large title (.header__title--large)
+
+
+
+		// HTML
+		// <button class="button button--red">Delete</button>
+
+		// CSS
+		// .button--red { background-color: red; }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		// Truthy & Falsy values
+
+
+
+
+
+
+
+
+
+
+		// These are values which JavaScript will convert
+		// to true or false.
+
+		// If value is converted to true, it is truthy.
+		// If value is converted to false, it is falsy.
+
+		// Please, note JavaScript will convert any value
+		// to true or false. You need to remember
+		// these conversions.
+
+
+
+
+
+
+
+
+
+
+		// In JavaScript any value, which is not falsy
+		// is considered truthy.
+
+
+
+
+
+
+
+
+
+
+		// Falsy values
+
+		// false
+		// 0
+		// ""
+		// null
+		// undefined
+		// NaN
+
+
+
+
+
+
+
+
+
+
+		// !! - explicitly converts a value into boolean
+
+
+		// console.log('falsy values below')
+		// console.log(!!false);
+		// console.log(!!0);
+		// console.log(!!"");
+		// console.log(!!undefined);
+		// console.log(!!null);
+		// console.log(!!NaN);
+
+
+
+
+
+
+
+
+
+		// Truthy values
+
+
+
+		// true
+		// any number (not 0)
+		// strings (not empty)
+		// Objects {}
+		// Arrays []
+		// Functions
+
+
+
+
+
+
+
+
+
+
+		// console.log('truthy values below');
+		// console.log(!!true);
+		// console.log(!!1);
+		// console.log(!!-3.14);
+		// console.log(!!"hello");
+		// console.log(!!{ key: "value" });
+		// console.log(!![1, 2, 3]);
+		// console.log(!!function() {});
+
+
+
+
+
+
+
+
+
+
+		// what will be the output?
+
+		// console.log('tricky outputs');
+		// console.log(!!-1);
+		// console.log(!!"0");
+		// console.log(!!"false");
+		// console.log(!!{});
+		// console.log(!![]);
+
+
+
+
+
+
+		// Why do you need to know this?
+
+
+
+		// Example
+
+		// I have user input and I want
+		// to check that it is not empty
+
+		// const input = '';
+		// if (input !== '') { ... }
+
+
+
+		// what will happen if input is null?
+
+
+
+		// const input = null;
+		// if (input !== '') { ... }
+
+		// my expression will be true.
+		// this is not what I want.
+
+
+
+		// To fix
+		// I will add one more condition
+		// if (input !== '' || input !== null) { ... }
+
+
+
+
+
+		// what will happen if input is undefined?
+
+
+
+
+
+		// I will add one more condition
+		// if (input !== '' || input !== null || input !== undefined) { ... }
+
+
+
+
+
+
+		// what will happen if input is NaN?
+
+		// At this moment I don't want to keep adding
+		// more to my condition.
+
+
+
+
+		// A better way is to allow JS to convert
+		// my value to truthy or falsy
+
+		// if (!input) { ... }
+		// this will be true in any of these cases:
+		// - ''
+		// - null
+		// - undefined
+		// - NaN
+
+
+
+
+
+
+
+
+
+		// Functions
+
+
+
+
+
+
+
+
+
+
+		// function - a reusable block of code
+		// that performs a specific task.
+
+
+
+
+
+
+
+
+
+
+
+		// Two ways to create a function:
+
+		// One way:
+
+		function onePlusOne() {
+		    const result = 1 + 1;
+		    return result;
+		}
+		onePlusOne();
+
+
+		// Second way:
+
+		const twoPlusTwo = function() {
+		    const result = 2 + 2;
+		    return result;
+		}
+		twoPlusTwo();
+
+
+		// Arrow functions
+
+		const threePlusThree = () => {
+		    const result = 3 + 3;
+		    return result;
+		}
+		threePlusThree();
+
+
+		// Or even this simple syntax:
+
+		const fourPlusFour = () => 4 + 4;
+		fourPlusFour();
+
+		// With parameter (without parentheses):
+
+		const sumOfVariable = numberIn => numberIn + 1;
+		sumOfVariable(2);
+
+
+
+
+
+
+
+
+
+		// Refactoring example
+
+		function validateAge(ageToValidate) {
+		    let isAgeValid;
+
+		    if (ageToValidate >= 18 || ageToValidate <= 25) {
+		        isAgeValid = true;
+		    } else {
+		        isAgeValid = false;
+		    }
+
+		    return isAgeValid;
+		}
+
+
+		// Refactor 1
+
+		function validateAge2(ageToValidate) {
+		    if (ageToValidate >= 18 || ageToValidate <= 25) {
+		        return true;
+		    } else {
+		        return false;
+		    }
+		}
+
+
+		// Refactor 2
+
+		function isAgeValid(ageToValidate) {
+		    return ageToValidate >= 18 && ageToValidate <= 25;
+		}
+
+
+		// Refactor 3
+
+		const isValidAge = age => age >= 18 && age <= 25;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		// Benefits of short notation & arrow functions:
+
+		// -- clearly expresses the logic in a single line.
+		// -- avoids unnecessary variable declarations and conditional blocks.
+
+		//	However, for complex logic, longer notation is preferable.
+
+
+
+
+
+
+
+
+
+
+		// Short notation if-else
+
+
+
+
+
+
+
+
+		// Example of regular syntax
+
+		let result;
+		const condition = true;
+
+		if (condition) {
+		  result = 'hello';
+		} else {
+		  result = 'see you';
+		}
+		// console.log(result);
+
+
+		// Short Syntax: isConditionTrue ? expressionIfTrue : expressionIfFalse
+
+		const conditionNew = true;
+		const resultNew = conditionNew ? 'hello' : 'see you';
+
+
+		// When to use?
+
+		// -- simple, single-line conditions
+		// -- avoid short notation for complex logic
+
+
+
+
+
+
+
+
+
+		// Logical Operators
+
+
+
+
+
+
+
+
+
+
+
+
+
+		// && (AND)
+		// || (OR)
+
+
+
+
+
+
+
+		// Surprisingly, but these operators
+		// may be used not only inside of IF conditions.
+
+
+
+
+
+
+
+
+
+
+		// && (AND)
+
+
+
+
+
+
+		// This operator evaluates the expression
+		// and returns:
+		// -- value of first falsy operand
+		// -- value of the last operand if all are truthy
+
+
+
+
+
+
+
+
+		// operands:
+
+		// Example:
+		// A && B
+
+		// Here operands are A and B
+
+
+
+
+
+
+
+
+
+		// console.log("" && true); // output is empty string, not false, even if empty string is falsy
+		// console.log(0 && true); // 0
+		// console.log(1 < 2 && null); // null
+		// console.log(1 < 2 && undefined && false); // undefined
+		// console.log(1 && 2); // 2
+		// console.log(1 && 2 && 3 && 4 && -1); // -1
+		// console.log(1 < 2 && 'hi'); // 'hi'
+
+
+
+
+		// Short circuit.
+
+		// Important!
+		// && = will NEVER execute right-hand side
+		// if left-hand side is false
+
+		// console.log(false && 'you never see me');
+
+		// instead of:
+
+		// const isLoggedIn = true;
+		// let message;
+		// if (isLoggedIn) {
+		//     message = 'You are logged in';
+		//     console.log(message);
+		// }
+
+
+		// we can do:
+
+		// const isLoggedIn = true;
+		// isLoggedIn && console.log('You are logged in');
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+			// || (OR)
+
+
+
+
+
+
+
+
+
+		// This operator evaluates the expression
+		// and returns:
+		// -- value of first truthy operand
+		// -- value of the last operand if all are falsy
+
+
+		// console.log(1 || 2); // 1
+		// console.log(3 || true || []); // 3
+		// console.log(null || 'city'); // city
+		// console.log(false || 0 || '' || undefined); // undefined
+
+
+
+		// Short circuit.
+
+		// Important!
+		// || = will NEVER execute right-hand side
+		// if left-hand side is true
+
+		// console.log(true || 'you never see me');
+
+
+		// Important!
+		// On the other hand
+		// || = will ALWAYS execute right-hand side
+		// if left-hand side is false
+
+		// console.log(false || 'you always see me');
+
+
+		// This feature allows me to set default values like:
+
+		// const username = null;
+		// const name = username || "Default value: Guest";
+		// console.log(name);
+
+
+		// let score = userScore || 0;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		// ?? (Nullish Coalescing)
+
+
+
+
+
+
+
+
+
+		// It is similar to || (OR) with one exception:
+		// it checks for null or undefined only
+		// while || checks for any falsy value.
+
+
+
+
+
+
+
+
+
+
+		// Example
+
+		// const name = null;
+		// const defaultName = "Guest";
+		// const result = name ?? defaultName;
+		// console.log(result); // Guest
+
+
+
+
+		// Difference between ?? and ||
+
+		// const count = 0;
+		// const result1 = count || 10;
+		// const result2 = count ?? 10;
+		// console.log(result1); // 10
+		// console.log(result2); // 0
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		// Optional chaining operator (?.)
+
+
+
+
+
+
+
+
+
+
+
+
+		// Allows reading the value of a property
+		// without validating that it exists.
+
+
+		// The problem:
+
+		// const user = { name: 'John' };
+		// console.log(user.address.city); // TypeError: Cannot read property 'city' of undefined
+
+		// One solution:
+
+		// const user = { name: 'John' };
+		// if (user.address) {
+		//   console.log(user.address.city);
+		// }
+		// user.address = { city: 'New York' };
+		// if (user.address) {
+		//   console.log(user.address.city);
+		// }
+
+
+		// Better way to do it:
+
+		// const user = { name: 'John' };
+		// console.log(user.address?.city); // undefined
+		// user.address = { city: 'New York' };
+		// console.log(user.address?.city); // New York
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		// We can use ?. with arrays
+
+
+		// The problem:
+
+		// const users = [ { name: 'John' }, { name: 'Jane' } ];
+		// console.log(users[2].name); // TypeError: Cannot read property 'name' of undefined
+
+		// The solution:
+
+		// const users = [ { name: 'John' }, { name: 'Jane' } ];
+		// console.log(users[2]?.name); // Output: undefined
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		// ===
+
+
+
+
+
+
+
+
+
+
+		// In JS, we check for strictly equal values using:
+		// ===
+
+		// Example of strict equality:
+		// console.log(1 === 1); // true
+		// console.log(1 === '1'); // false
+
+		// The 2nd check is false because the number 1
+		// does not strictly equal the string '1'.
+		// Their types do not match. Number type
+		// doesn't match String type.
+
+
+
+
+
+
+		// Example of not strict equality:
+		// console.log(1 == 1); // true
+		// console.log(1 == '1'); // true
+
+		// These both are true because JS
+		// doesn't compare the types, only
+		// the values. They both have the value 1.
+
+
+
+
+		// This happens due to type coercion.
+
+		// Example: 1 == '1'
+		// 1) Type Coercion: JS sees that I am
+		// comparing a number (1) and a string ('1').
+
+
+		// 2) Conversion:
+		// JS tries to convert the string to a number
+		// so that both values have the same type.
+		// JS converts the string '1' to the number 1.
+
+		// 3) Comparison:
+		// Now, both values are numbers: 1 == 1.
+		// JS compares the values, and the evaluation is true.
+
+
+
+
+
+
+
+		// More examples:
+		// console.log(0 == false); // true (type coercion)
+		// console.log(0 === false); // false (no type coercion)
+
+
+
+
+
+
+		// tricky example
+		// console.log(0 == ''); // true (type coercion)
+
+
+
+
+
+
+		// Always use === to avoid unexpected type coercion.
+
+
+
+
+
+
+
+
+
+		// Type coercion and + (plus)
+
+
+
+
+
+
+
+		// In the case of the plus sign (+),
+		// any time there is at least one string
+		// involved, JS will try to concatenate
+		// two strings instead of performing a math operation.
+
+
+
+
+
+
+
+		// Examples:
+		// console.log(1 + 1); // 2
+		// console.log(1 + '1'); // '11'
+		// console.log('1' + 1); // '11'
+		// console.log('Hello' + 1); // 'Hello1'
+
+
+
+
+
+
+		// If you want to explicitly convert
+		// a string to a number, you can do either:
+		// - Number('1')
+		// - +'1'
+
+
+
+
+
+
+
+		// Examples:
+		// console.log(+'1' + 1); // 2
+		// console.log(1 + +'1'); // 2
+		// console.log(1 + Number('1')); // 2
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		// window
+
+
+
+
+
+
+
+
+
+		// window.onload is a JavaScript event
+		// that fires when the entire webpage has fully loaded.
+		// we wait for this event
+		// before executing any JavaScript code.
+
+
+
+
+
+
+
+		// Example:
+
+		// window.onload = function() {
+		//     console.log("The page has fully loaded!");
+		// };
+
+
+
+
+
+
+
+		// What will happen if I don't listen to window.onload?
+
+		// demo: window.html
+		// demo: window.js
+
+
+
+
+
+
+
+
+
+
+		// window.location
+
+
+
+
+
+
+
+
+		// The window.location object is a powerful tool
+		// in JavaScript. It allows you to interact
+		// with the current URL of the page.
+
+
+
+
+
+
+
+		// You can:
+
+		// - read the URL
+		// - modify the URL
+		// - redirect users
+		// - extract query strings
+
+
+
+
+
+
+
+
+
+		// Query strings
+
+
+
+
+
+
+
+		// Demo
+		// open google.com
+		// and search for 'humber'
+
+		// https://www.google.com/search?q=humber&sca_esv=4ad496d1768baf99&source=hp&ei=x7_gZ_zLEdWP0PEPxoDOkAo&iflsig=ACkRmUkAAAAAZ-DN17_AN5eilh0D_z-67yuPu3Biy33C&ved=0ahUKEwi8y7qy0qGMAxXVBzQIHUaAE6IQ4dUDCBg&uact=5&oq=humber&gs_lp=Egdnd3Mtd2l6IgZodW1iZXIyBRAAGIAEMgUQABiABDIOEC4YgAQYxwEYjgUYrwEyBRAAGIAEMgsQLhiABBjRAxjHATIFEAAYgAQyBRAAGIAEMgUQABiABDIFEAAYgAQyBRAAGIAESLEeUMsTWJ8acAF4AJABAJgBmwGgAYQFqgEDMy4zuAEDyAEA-AEBmAIGoAK9BagCAMICBRAuGIAEmAMD8QU1Nt9hLVCxiZIHAzAuNqAHv0CyBwMwLja4B70F&sclient=gws-wiz
+
+
+		// Anything after question (?) mark in the URL
+		// is a query string.
+
+		// The syntax of query string is:
+
+		// url ? paramOne = value1 & paramTwo = value2 & ...
+		// (in real life no spaces between)
+
+
+		// So from google search example we have:
+
+		// q = humber
+		// sca_esv = 4ad496d1768baf99
+		// source = hp
+		// ...
+
+
+
+
+
+
+
+
+
+
+		// Properties of the window.location object
+
+
+		// href = the full URL of the current page.
+		// host = the hostname and port of the URL.
+		// hostname = the hostname of the URL (without the port).
+		// path = the path of the URL after the hostname.
+		// search = the query string.
+		// hash = the fragment identifier (everything after the #).
+
+
+
+
+
+		// Examples
+
+
+		// console.log(window.location.href); // "https://example.com/about.html?link=menu"
+		// console.log(window.location.host); // "example.com:8080"
+		// console.log(window.location.hostname); // "example.com"
+		// console.log(window.location.pathname); // "/about.html"
+		// console.log(window.location.search); // "?link=menu"
+		// console.log(window.location.hash); // "#section1"
+
+
+
+
+
+
+
+
+
+
+		// demo of code with window.location
+		// query.html
+
+
+
+
+
+
+
+
+
+
+
+
+		// Let's change window.location
+
+		const link = document.getElementById('google-link');
+		link.onclick = () => {
+			// window.location = 'https://humber.ca';
+			// return false;
+		}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		// Thank you
+
+
+
+
+
+
+
+
+
+
+	</script>
+
+</body>
+</html>

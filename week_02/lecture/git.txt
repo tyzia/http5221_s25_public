@@ -1,0 +1,187 @@
+git
+
+
+
+
+
+Useful commands
+Best practice for git commits
+
+
+
+
+
+
+
+
+Let's revisit some shorthand commands:
+
+
+> git checkout -b branchName
+
+A short way to create new branch
+and switch to it. 'branchName' is the
+name which you choose yourself.
+
+
+
+
+
+
+
+
+
+> git add .
+
+A short way to say:
+"add changes from all files"
+
+
+
+
+
+
+> git commit -m "Commit description"
+
+A short way to create commit
+with description.
+
+
+
+
+
+
+
+> git commit -am "Commit description"
+
+A short way to add all files and commit.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+git commits
+
+
+
+
+
+
+
+
+
+
+How to create a good commit message?
+
+
+A good commit message should be:
+
+- clear
+- concise
+- descriptive
+
+It should answer the question:
+
+"After applying this commit it will..."
+
+For example:
+
+Good commit message:
+"Add file to homepage"
+"Replace old submit button with new"
+
+Result:
+"After applying this commit it will Add file to homepage"
+"After applying this commit it will Replace old submit button with new"
+
+
+Bad commit message:
+"updated"
+"added new button"
+
+Result:
+"After applying this commit it will updated"
+"After applying this commit it will added new button"
+
+
+
+
+
+
+
+
+
+Recommendations:
+
+1) Write your commit messages in the imperative mood,
+as if you're giving a command or instruction.
+
+Bad:
+"Added link to homepage"
+
+Good:
+"Add link to homepage"
+
+
+2) Keep your commit message short!
+It is a summary of changes.
+
+Bad:
+"Fix a small typo in the README file that was causing confusion"
+
+Good:
+"Fix typo in README"
+
+3) Always start with a capital letter.
+
+Bad:
+"add form element to index.html"
+
+Good:
+"Add form element to index.html"
+
+4) Avoid vague messages.
+Explain what you are fixing.
+
+Bad:
+"Fix stuff"
+"change"
+"update"
+"fix"
+"typo"
+
+Good:
+"Fix broken image on about page"
+
+5) Write for your audience.
+
+- Your future self (we forget things quickly!).
+- Other developers on your team.
+
+Make sure your message is clear enough for all of these audiences.
+
+6) Test your commit message.
+Before finalizing your commit, ask yourself:
+
+- Does this message explain what the change does?
+- Does it explain why the change was made?
+- Is it easy to understand for someone
+who didn't write the code?
+
+
+
+Be consistent!
+Follow a consistent style across all your projects.
+
+
+
