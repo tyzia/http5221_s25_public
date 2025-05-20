@@ -1,0 +1,152 @@
+Recap from Week 2
+
+
+
+
+
+
+Comments
+
+Code speaks for itself.
+Do not: explain obvious, comment out code.
+Do: explain why, not how.
+
+"use strict";
+Applies strict mode in JS. Can be global or in function.
+
+B.E.M.
+Naming convention for CSS classes.
+Easier to understand the structure.
+.block__element--modifier { ... }
+
+Falsy
+- false
+- 0
+- ""
+- null
+- undefined
+- NaN
+
+Truthy
+- true
+- any number (not 0)
+- any string (not empty)
+- any object (even empty)
+- any array (even empty)
+- any function
+
+Functions
+Reusable block of code.
+
+Declarations:
+1)
+function onePlusOne() {
+    const result = 1 + 1;
+    return result;
+}
+2)
+const twoPlusTwo = function() {
+    const result = 2 + 2;
+    return result;
+}
+3) Arrow function
+const threePlusThree = () => {
+    const result = 3 + 3;
+    return result;
+}
+
+Simplified syntax:
+const fourPlusFour = () => 4 + 4;
+const sumOfVariable = numberIn => numberIn + 1;
+
+if-else short notation
+const resultNew = condition ? 'hello' : 'see you';
+
+AND (&&)
+
+Returns:
+- value of first falsy operand: 0 && true -> 0
+- value of the last operand if all are truthy: 1 && 2 -> 2
+
+Never executes right-right-hand side
+if left-hand side is false:
+0 && 'you never see me'
+
+OR (||)
+
+Returns:
+- value of first truthy operand: 1 || 2 -> 1
+- value of the last operand if all are falsy: false || 0 -> 0
+
+Never executes right-right-hand side
+if left-hand side is true:
+true || 'you never see me'
+
+Always executes right-right-hand side
+if left-hand side is false:
+false || 'you always see me'
+
+Used to set defaults:
+let score = userScore || 0;
+
+Nullish Coalescing (??)
+Checks if value is null or undefined.
+
+const count = 0;
+count || 10 -> 10
+count ?? 10 -> 0
+
+Optional chaining operator (?.)
+Allows reading the value of a property
+without validating that it exists.
+
+Without ?.
+const user = { name: 'John' };
+user.address.city -> TypeError
+
+With ?.
+const user = { name: 'John' };
+user.address?.city -> undefined (no error)
+
+const user = { name: 'John', address: { city: 'Toronto' } };
+user.address?.city -> 'Toronto'
+
+Strict equality (===)
+Checks both type & value.
+Is strongly recommended.
+
+1 === 1 -> true
+1 === '1' -> false
+1 == '1' -> true
+
+Type coercion
+If there is at least one string with +,
+JS converts all to strings:
+
+1 + '1' -> '11'
+'Hello' + 1 -> 'Hello1'
+
+To do math convert to number:
+1 + +'1' -> 2
+1 + Number('1') -> 2
+
+window
+Global object, has data about browser window.
+
+window.onload - fires when HTML and all assets
+(images, fonts) are fully loaded and ready for JS.
+
+window.onload = function() {
+	console.log("The page has fully loaded!");
+};
+
+window.location
+Object with data about current browser URL
+
+https://example.com/index?q=a
+window.location.href -> the full URL (https://example.com/index?q=a)
+window.location.protocol -> protocol scheme (https)
+window.location.hostname -> only domain (example.com)
+window.location.pathname -> everything after domain (/index?q=a)
+window.location.search -> the query string (?q=a)
+

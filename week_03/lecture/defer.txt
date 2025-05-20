@@ -1,0 +1,9 @@
+defer
+Attribute used to wait until HTML is loaded.
+Only for external scripts.
+
+<script src="external.js" defer></script>
+
+external.js
+- is downloaded immediately (while HTML is parsed).
+- is executed only after HTML is fully parsed.
