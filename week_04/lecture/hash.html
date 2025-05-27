@@ -1,0 +1,592 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Hash</title>
+</head>
+
+<body>
+	<script>
+		window.onload = onLoadHandle;
+		function onLoadHandle() {
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		// Plan
+
+
+		// Sync vs Async
+		// Promise
+
+		// Sensitive data
+		// Hash
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+			// Sync vs Async
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+			// In JavaScript tasks can be handled in two ways:
+
+			// 1) Synchronous (Sync) means tasks happen one after another,
+			// in the order they are written.
+
+			// console.log("1");
+			// console.log("2");
+			// console.log("3");
+
+			// 2) Asynchronous (Async) means tasks are not
+			// blocked, allowing the program to
+			// keep running without waiting for each task to finish.
+
+			// Example of blocking behaviour (sync)
+
+			// console.log("1");
+			// const startTime = Date.now();
+			// while (Date.now() - startTime < 2000) {
+			// 	console.log('you are blocked');
+			// }
+			// console.log("2");
+			// console.log("3");
+
+			// Example of non-blocking behaviour (async)
+
+			// console.log("1");
+			// const startTime = Date.now();
+			// setTimeout(() => {
+			// 	while (Date.now() - startTime < 2000) {
+			// 		console.log('you are blocked');
+			// 	}
+			// });
+			// console.log("2");
+			// console.log("3");
+
+
+
+
+			// When we talk about asynchronous
+			// we should mention how handle it:
+			// - Promise
+
+
+
+
+
+
+			// Promise
+
+			// A Promise represents a value that will be available in the future.
+
+			// A Promise is a result of asynchronous operation.
+			// It can have two distinct states:
+
+			// -- resolve
+			// -- reject
+
+			// .then() - in case promise resolves (returns data)
+			// .catch() - in case promise is rejected (returns error)
+
+
+
+			// API calls are always async
+			// and return a Promise
+
+
+			// API example
+
+			// function getWeather() {
+			// 	console.log("Start");
+			// 	console.log(fetch('https://api.open-meteo.com/v1/forecast?latitude=52.52&longitude=13.41&hourly=temperature_2m'))
+			// 	console.log("Finish");
+			// }
+			// getWeather();
+
+
+			// fetch('url') - makes a HTTP call to API
+
+
+			// function getWeather() {
+			// 	console.log("Start");
+			// 	fetch('https://api.open-meteo.com/v1/forecast?latitude=52.52&longitude=13.41&hourly=temperature_2m')
+			// 		.then(response => response.json())
+			// 			.then(data => console.log(data))
+			// 		.catch(error => console.log("Error:", error));
+			// 	console.log("Finish");
+			// }
+			// getWeather();
+
+			// Analogy:
+			// fetch() = Ordering a pizza (you get a tracking receipt → Promise).
+			// First .then() = Pizza arrives at your door (box is sealed).
+			// Second .then() = Opening the box to eat the pizza (async, because you might need a knife/utensils).
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+			// Important to remember!
+
+			// Async is a fundamental part of the JavaScript.
+			// You don’t explicitly code for async behavior
+			// (like with `fetch`).
+			// You need to understand how async works.
+			// But it will work this way even
+			// if you don't understand it )))
+
+
+
+
+
+
+
+
+
+
+
+
+
+			// To make async function behave like synchronous
+			// we need to wait for its response using 'await'
+
+			// await - add this keyword to async operation to wait for response
+			// async - add this keyword before function definition
+
+			// Not working:
+
+			// function a() {
+			// 	const response = await fetch('url');
+			// }
+
+
+			// Working:
+			// async function a() {
+			// 	const response = await fetch('url');
+			// }
+
+
+
+
+
+
+
+
+
+			// Adding 'async' keyword to a function
+			// will make this function asynchronous
+			// and it will always return a Promise.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+			// Example
+
+			// Regular arrow function
+
+			// const example = () => 5; // async
+			// console.log(example() + 1);
+
+
+			// To get actual result from async function
+
+			// const example = async () => 5;
+			// example().then(result => console.log(result + 1));
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+			// Let's make async to behave like sync
+
+			// async function getWeather() {
+			// 	console.log("Start");
+			// 	await fetch('https://api.open-meteo.com/v1/forecast?latitude=52.52&longitude=13.41&hourly=temperature_2m')
+			// 			.then(response => response.json())
+			// 				.then(data => console.log(data))
+			// 			.catch(error => console.log("Error:", error));
+			// 	console.log("Finish");
+			// }
+			// getWeather();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+			// Sensitive data
+
+
+
+
+
+		// We do NOT store sensitive data in plain text
+
+
+		// passwords
+		// emails
+		// date of birth
+		// credit card numbers
+
+
+
+
+
+
+
+
+
+		// Hash
+
+
+
+
+
+
+
+		// Hash - is a function that produces a fixed-size unique output
+		// or unique "fingerprint" of data.
+
+		// Hash function converts any kind of data:
+		// -- text
+		// -- number
+		// -- file
+
+
+
+
+
+
+
+
+		// Advantages:
+
+		// FIXED LENGTH: always a fixed number of hexadecimal characters:
+		// -- 32 for MD5
+		// -- 64 for SHA-256
+
+		// ONE-WAY: nearly impossible to guess original input
+
+		// ALWAYS THE SAME: the same hash for the same input
+
+
+
+
+
+
+
+		// Examples
+
+		// a (single letter)
+		// ca978112ca1bbdcafac231b39a23dc4da786eff8147c4e72b9807785afee48bb
+
+		// javascript (word)
+		// b9352494463399aa6a44ed5e39425b8a0bc39b2fc3d0184ba2583ce9bc4e4c1d
+
+		// 1 (number)
+		// 6b86b273ff34fce19d6b804eff5a3f5747ada4eaa22f1d49c01e52ddb7875b4b
+
+		/* (text)
+		Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+		Nulla faucibus eu eros non varius. Vivamus dapibus vestibulum fringilla.
+		Nullam malesuada congue nisi, ac bibendum ante pellentesque sit amet.
+		Vestibulum efficitur sed metus ac aliquam.
+		 */
+		// 638551872b22552411e1ecbeb9b18362e5077f59b01ca5a14d82467039a650c2
+
+		// (empty string)
+		// e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+
+
+
+
+
+		// Hashing Algorithms:
+
+		// - md5
+		// - sha-256
+
+
+
+
+
+
+		// MD5
+
+
+		// MD5 (Message Digest Algorithm 5) was widely used to generate hashes.
+		// Length 32 characters.
+		// But it has a major flaw - vulnerable to collisions.
+
+		// Collision - when two different inputs produce the same hash.
+
+		// Example of collision
+
+		// javascript
+		// b9352494463399aa6a44ed5e39425b8a
+
+		// html
+		// b9352494463399aa6a44ed5e39425b8a
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+			// SHA-256
+
+
+
+			// SHA-256 is more secure and resistant to collisions.
+			// It is a better choice for hashing sensitive information.
+
+			// It is 64 characters long
+
+
+			// How to get SHA-256 hash:
+
+			// 1. Convert your string into byte array
+			// 2. Use built-in JS crypto.subtle.digest() to generate hash (binary data)
+			// 3. Convert binary hash to hexadecimal string
+
+
+
+
+
+
+
+
+
+			// Example function to hash text using SHA-256
+
+			async function generateHash(text) {
+				const encoder = new TextEncoder();
+				const data = encoder.encode(text);
+
+				const hashBuffer = await crypto.subtle.digest('SHA-256', data);
+
+				const hashArray = Array.from(new Uint8Array(hashBuffer));
+				return hashArray.map(byte => byte.toString(16).padStart(2, '0')).join('');
+			}
+			// generateHash('hello world').then(hash => console.log(hash));
+
+
+
+
+
+			// Input: "hello world"
+
+			// SHA-256 output: 8-bit unsigned array
+			// [
+			//      169, 132, 197, 213, 31, 35, 198, 24, 174, 133, 78, 28, 39, 171, 11, 38,
+			// 		221, 217, 248, 9, 41, 100, 12, 235, 139, 1, 246, 116, 140, 222, 42, 155
+			// ]
+
+
+			// Convert SHA-256 output into hexadecimal array:
+			// [
+			//      "a9", "84", "c5", "d5", "1f", "23", "c6", "18", "ae", "85", "4e", "1c",
+			// 		"27", "ab", "0b", "26", "dd", "d9", "f8", "09", "29", "64", "0c", "eb",
+			// 		"8b", "01", "f6", "74", "8c", "de", "2a", "9b"
+			// ]
+
+			// Final result: a 64 character string:
+			// "a984c5d51f23c618ae854e1c27ab0b26ddd9f80929640ceb8b01f6748cde2a9b"
+
+
+
+
+			// Explanation:
+
+			// const encoder = new TextEncoder();
+			// const data = encoder.encode(text);
+			// Converts text into byte array
+
+			// const hashBuffer = await crypto.subtle.digest('SHA-256', data);
+			// Generates hash as byte array
+
+			// new Uint8Array(hashBuffer)
+			// creates a special array of 8-bit unsigned integers
+
+			// const hashArray = Array.from(new Uint8Array(hashBuffer));
+			// creates regular array of numbers and stores it in hashArray
+
+			// byte.toString(16)
+			// converts byte to a hexadecimal string
+			// 255 -> ff
+			// 10 -> a
+
+			// .padStart(2, '0')
+			// to make each value exactly 2 characters long,
+			// we need to pad with 0:
+			// ff -> ff
+			// a  -> 0a
+
+			// hashArray.map(byte => byte.toString(16).padStart(2, '0')).join('');
+			// will convert array into hexadecimal string
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+			// How to combine the result from two or more Promises?
+
+			// Promise.all([promise1, promise2, promise3])
+			//    .then(([data1, data2, data3]) => { ... });
+
+
+
+
+
+
+
+
+
+
+
+
+
+			// Example of usage
+
+			// We have a predefined hashed password
+			// We will ask user for input
+			// We will compare this input to hashed password
+			// If they are identical, we will show welcome message
+
+
+
+
+			// const password = 'r8g#(-0ASD@%';
+			// const userInput = 'a';
+			// Promise.all([generateHash(password), generateHash(userInput)])
+			// 	.then(([passHash, userHash]) => {
+			// 		if (userHash === passHash) {
+			// 			console.log(`"${userInput}" is a success because password is "${password}"`);
+			// 		} else {
+			// 			console.error(`"${userInput}" failed because password is "${password}"`);
+			// 		}
+			// 	});
+
+
+
+
+
+
+
+
+
+
+
+
+
+		// Break
+
+
+
+
+
+
+
+
+
+}
+	</script>
+</body>
+</html>

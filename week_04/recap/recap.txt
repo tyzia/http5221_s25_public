@@ -1,0 +1,225 @@
+Recap from Week 3
+(delivered at Week 4)
+
+
+
+Regex - a tool to work with strings.
+It can search for a match, replace, extract.
+
+Workflow:
+1. Create a regex pattern / /
+2. Test string against this pattern.
+
+Examples:
+/1/.test('1') -> true
+/h/.test('h') -> true
+/[1-9]/.test('02') -> true
+/[a-z]/.test('A') -> false
+/[a-zA-Z]/.test('A') -> true
+/[a-z]/i.test('A') -> true
+
+Regex is looking everywhere:
+/cat/.test('The cat is nice') -> true
+
+Quantifiers in Regex:
+
+. = matches any character
+/c.t/.test('The cot is nice') -> true
+
++ = one or more match of previous character
+/ca+t/.test('The caaat is nice') -> true
+/ca+t/.test('The ct is nice') -> false
+
+* = zero or more match of previous character
+/ca*t/.test('The ct is nice') -> true
+/ca*t/.test('The caaat is nice') -> true
+
+? = preceding character is optional
+/ca?t/.test('The ct is nice') -> true
+/ca?t/.test('The caaat is nice') -> false
+
+{n} = exactly n matches
+/ca{2}t/.test('The caat is nice') -> true
+/ca{2}t/.test('The cat is nice') -> false
+
+Searching for special characters: . + ?
+Need to escape with \
+. -> \.
++ -> \+
+? -> \?
+/\./.test('example.com') -> true
+
+Special markers in Regex:
+
+\d = any number
+\w = any word character (letters, digits, underscores)
+
+/\d/.test('abc123') -> true
+/\w+/.test('abc123') -> true
+
+Other special markers:
+
+^ = marks beginning of the string
+$ = marks the end of the string
+
+/^cat$/.test('cat') -> true
+/^cat$/.test('cat ') -> false
+
+Online tool: https://regex101.com/
+
+
+
+Error Handling
+
+Any time JS will encounter an error,
+it will crash the app and throw
+unhandled error.
+
+To prevent app from crashing use:
+
+try { risky } catch(err) { }
+
+We can throw custom errors from our functions:
+
+function showName(a) {
+    if (a === undefined) {
+ 		throw new Error('You provided undefined value');
+ 	}
+ 	if (a === null) {
+ 		throw new Error('You provided null value');
+ 	}
+  	return a.name;
+}
+
+And catch these errors:
+
+try { showName(null); }
+catch(err) { console.log(`${err}`); }
+
+Best practice: provide error code + description
+
+function showName(a) {
+    if (a === undefined) {
+ 		const error = new Error('You provided undefined value');
+ 		error.code = 'ERR_UNDEFINED';
+ 		throw error;
+ 	}
+    return a.name;
+}
+
+try { showName(undefined); }
+catch(err) { console.log(`${err.code}`); }
+
+
+
+Unit tests
+
+We test unit of code (function) if it:
+- is doing what is supposed to.
+- is not doing what is not supposed to.
+
+Original
+function add(a, b) { return a + b }
+
+Test function
+function testAdd(valueA, valueB, result) {
+    return add(valueA, valueB) === result;
+}
+
+Test cases
+console.log(testAdd(1, 1, 2));
+console.log(testAdd(2, 2, 4));
+console.log(testAdd(-3, 2, -1));
+
+Edge cases - values at the ends of the range.
+
+Testing error handling
+
+Original
+function isValidAge(age) {
+    if (typeof age !== 'number') {
+ 		throw new Error('Invalid input');
+ 	}
+ 	return age >= 18 && age <= 25;
+}
+
+Test function
+function testAdd(value, result) {
+    return isValidAge(value) === result;
+}
+
+Test cases
+try {
+ 	testIsValidAge('18', 'Invalid input');
+} catch(err) {
+    if (err.message === expected) {
+		console.log('Test passed');
+ 	} else {
+		console.error('Test failed');
+	}
+}
+
+
+TDD
+Test Driven Development
+
+We write tests first.
+We run the tests and they fail (good).
+We add actual code.
+We run the tests again and they pass (good).
+
+
+
+Array methods
+
+[1, 2, 3, 4].forEach(num => console.log(num)) -> 1, 2, 3, 4
+[1, 2, 3, 4].slice(1, 3) -> [2, 3]
+[1, 2, 3, 4].slice() -> [1, 2, 3, 4]
+[1, 2, 3, 4].map(num => num * 2) -> [2, 4, 6, 8]
+[1, 2, 3, 4].filter(num => num > 2) -> [3, 4]
+[1, 2, 3, 4].some(num => num > 2) -> true
+[1, 2, 3, 4].some(num => num > 4) -> false
+[1, 2, 3, 4].find(num => num > 1) -> 2
+
+
+Spread operator (...)
+
+Copying
+const originalArray = [1, 2, 3];
+[ ...originalArray ] -> [1, 2, 3]
+
+originalObject = { name: 'John' };
+{ ...originalObject } -> { name: 'John' }
+
+Merging
+const array1 = [1, 2, 3];
+const array2 = ['a', 'b', 'c'];
+[ ...array1, ...array2 ] -> [1, 2, 3, 'a', 'b', 'c']
+
+const object1 = { a: 1, b: 2 };
+const object2 = { c: 3, d: 4 };
+{ ...object1, ...object2 } -> { a: 1, b: 2, c: 3, d: 4 }
+
+Passing arguments
+const sum = (a, b, c) => a + b + c;
+const arguments = [1, 2, 3];
+sum(...arguments) -> 6
+
+
+
+Object destructuring
+
+const person = { name: 'Alice', age: 25, city: 'Wonderland' };
+const { name, age, city } = person;
+
+In function arguments
+
+function greet({ name, age }) {
+     console.log(`Hello, ${name}! You are ${age} years old.`);
+}
+const person = { name: 'Alice', age: 25, city: 'Wonderland' };
+greet(person);
+
+
+
+
