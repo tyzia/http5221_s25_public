@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>XSS Demo - Secure (Sanitization)</title>
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 600px; margin: 20px auto; }
+        input { width: 100%; padding: 8px; margin: 10px 0; }
+        button { padding: 8px 16px; background: #007bff; color: white; border: none; cursor: pointer; }
+        #output { border: 1px solid #ccc; padding: 10px; margin-top: 10px; min-height: 50px; }
+    </style>
+</head>
+<body>
+<h1>XSS Demo (Secured)</h1>
+<p>Enter some text to display:</p>
+<label for="userInput">Type something</label>
+<input type="text" id="userInput" name="user_input" placeholder="Try: <img src='x' onerror='alert(1)'>">
+<button onclick="displayInput()">Display</button>
+
+<div id="output">Your content will appear here.</div>
+
+<script>
+    function sanitize(input) {
+        // Escape HTML special characters
+        return input.replace(/&/g, "&amp;")
+            .replace(/</g, "&lt;")
+            .replace(/>/g, "&gt;")
+            .replace(/"/g, "&quot;")
+            .replace(/'/g, "&#x27;");
+    }
+
+    function displayInput() {
+        const userInput = document.getElementById("userInput").value;
+        document.getElementById("output").innerHTML = sanitize(userInput); // Now safe!
+    }
+</script>
+</body>
+</html>

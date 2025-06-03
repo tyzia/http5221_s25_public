@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Fake Login Page (Victim)</title>
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 500px; margin: 20px auto; padding: 20px; }
+        input, button { padding: 8px; margin: 5px 0; width: 100%; }
+    </style>
+</head>
+<body>
+<h1>Welcome to My Site!</h1>
+<p>Comment section (XSS vulnerable):</p>
+<label for="comment">Type something</label>
+<input type="text" id="comment" placeholder="Try: <img src='x' onerror='stealCookies()'>">
+<button onclick="postComment()">Post Comment</button>
+<div id="comments"></div>
+
+<script>
+    document.cookie = "linkedin=MY_LINKEDIN_COOKIE_LOGIN; path=/";
+
+    function postComment() {
+        const comment = document.getElementById("comment").value;
+        document.getElementById("comments").innerHTML += `<p>${comment}</p>`;
+    }
+</script>
+</body>
+</html>

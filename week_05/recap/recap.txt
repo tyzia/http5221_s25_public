@@ -1,0 +1,191 @@
+Recap from Week 4
+(delivered at Week 5)
+
+
+
+
+
+Sync: Code runs sequentially
+
+console.log("1");
+console.log("2");
+console.log("3");
+
+Blocking behaviour
+
+console.log("1");
+const startTime = Date.now();
+while (Date.now() - startTime < 2000) {
+	console.log('you are blocked');
+}
+console.log("2"); <- blocked
+console.log("3"); <- blocked
+
+
+Async: program continues to run,
+it is not blocked, and async
+operation is in parallel/background.
+
+console.log("1");
+const startTime = Date.now();
+setTimeout(() => while (Date.now() - startTime < 2000) {
+    console.log('you are blocked');
+}); <- runs asynchronously
+console.log("2"); <- not blocked
+console.log("3"); <- not blocked
+
+
+Promise
+Represents future value.
+
+Two states:
+
+.then() <- if promise resolved (return data)
+.catch() <- if promise rejected (return error)
+
+Example
+fetch('url')
+  .then(response => response.json())
+  .then(data => console.log(data))
+  .catch(error => console.log(error));
+
+
+Async/Await
+
+await makes async code look sync.
+await is used only inside async function.
+
+async function getData() {
+  const response = await fetch('url');
+  const data = await response.json();
+  console.log(data);
+}
+
+Example
+
+const example = () => 5;
+console.log(example()); // 5
+
+const example = async () => 5;
+console.log(example()); // Promise
+example().then(five => console.log(five)); // 5
+
+
+Do not store sensitive data in plain text.
+A way to 'hide' the data - create a hash of it.
+
+Hash
+
+- Fixed length (SHA-256: 64 chars).
+- One-way (can't reverse-engineer input).
+- Deterministic (same input → same hash).
+
+a (a single letter)
+ca978112ca1bbdcafac231b39a23dc4da786eff8147c4e72b9807785afee48bb
+
+javascript (a word)
+b9352494463399aa6a44ed5e39425b8a0bc39b2fc3d0184ba2583ce9bc4e4c1d
+
+Hashing algorithms:
+
+- md5 (popular but may have collisions)
+- sha-256 (better choice)
+
+To get SHA-256 hash:
+
+async function generateHash(text) {
+	const encoder = new TextEncoder();
+	const data = encoder.encode(text);
+	const hashBuffer = await crypto.subtle.digest('SHA-256', data);
+	const hashArray = Array.from(new Uint8Array(hashBuffer));
+	return hashArray.map(byte => byte.toString(16).padStart(2, '0')).join('');
+}
+generateHash('hello world').then(hash => console.log(hash));
+
+Jasmine
+
+A JavaScript testing framework for
+writing unit tests in a human-readable way.
+
+Key Features
+- Works in browsers & Node.js
+- Clean syntax (describe, it, expect)
+- Built-in matchers (.toBe, .toEqual, etc.)
+
+Install
+
+> npm init -y
+> npm install jasmine --save-dev
+> npx jasmine init
+
+Run
+
+> npx jasmine
+
+All tests have *.spec.js suffix
+and go inside /spec folder.
+
+Syntax
+
+describe('Math tests', () => {
+   it('should add 1 + 1', () => expect(1 + 1).toBe(2));
+   it('should add 2 + 2', () => expect(2 + 2).toBe(4));
+});
+
+describe() - groups different tests together
+it() - defines a single test
+expect() - allows to evaluate the expression
+
+Matcher methods:
+
+.toBe() (===, primitive values)
+.toEqual() (arrays, objects)
+.toContain() (arrays, strings)
+.toBeTrue()
+etc
+
+.toBe()
+
+function giveMeTwo() { return 2 }
+it('should have result as 2', () =>
+  expect(giveMeTwo()).toBe(2)
+);
+
+.toEqual()
+
+function giveMeObject() { return { name: 'humber' } }
+it('should have result object', () =>
+  expect(giveMeObject()).toEqual({ name: 'humber' })
+);
+
+Not working (.toBe()):
+it('should have result object', () =>
+  expect(giveMeObject()).toBe({ name: 'humber' })
+);
+
+.toContain()
+
+function giveMeArray() { return [1, 2, 3] }
+it('should have 2 in array', () =>
+  expect(giveMeArray()).toContain(4)
+);
+
+function giveMeHelloWorld() { return 1 }
+it('should have "h" in the string', () =>
+  expect(giveMeHelloWorld()).toContain('h')
+);
+
+
+.not - will negate the matcher check
+
+it('not equal', () => expect(1).not.toBe(2));
+
+Why tests matter?
+
+- Catch errors before deployment.
+- Describe how code should work.
+- Enable refactoring: Change code
+confidently with passing tests.
+
+
+

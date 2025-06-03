@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Vulnerable Form Demo</title>
+    <script>
+        function validateForm() {
+            const input = document.getElementById("userInput").value;
+            if (input.includes("bad")) {
+                alert("Dangerous input detected!");
+                return false;
+            }
+            document.getElementById("output").innerHTML = input;
+            return false;
+        }
+    </script>
+</head>
+<body>
+<h1>Contact Form</h1>
+<form action="/submit" method="POST" onsubmit="return validateForm()">
+    <label for="userInput">Your Message:</label><br>
+    <input type="text" id="userInput" name="user_input" required><br>
+    <button type="submit">Submit</button>
+</form>
+<p>Try entering: "bad"</p>
+<div id="output">Your content will appear here.</div>
+</body>
+</html>
