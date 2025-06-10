@@ -1,0 +1,240 @@
+
+
+
+
+
+Plan
+
+
+
+Test Coverage
+Testing Pyramid
+Integration testing
+E2E
+User Testing
+Automated testing
+Cypress
+
+
+
+
+
+
+
+
+
+Test coverage
+
+
+How much % of your code is
+covered with tests.
+
+High coverage reduces the risk of bugs
+but doesn’t guarantee perfection.
+
+
+
+
+Testing Pyramid
+
+A model which specifies three levels of testing
+and sets their priorities.
+
+
+
+Below: Unit testing
+
+We already covered that unit testing
+verifies a unit (function) of code.
+
+Middle: Integration Testing
+
+Test interactions between components
+or modules. Can involve many units
+of code (functions).
+
+Top: End-to-End testing
+
+When we test entire system or app.
+
+
+
+
+The higher in the pyramid
+the more complex and "expensive"
+is to implement the test.
+
+
+Hence you will usually have more tests
+from the bottom (unit tests), little less from
+the middle (integration tests) and less
+from the top (E2E tests).
+
+
+
+
+
+
+
+
+
+
+
+Integration Testing
+
+- Tests how different modules or functions work together.
+- For Example: Testing a function that calls another function
+to ensure they integrate correctly.
+
+
+
+
+
+
+
+
+
+End-to-End (E2E) Testing
+
+
+E2E testing is a critical part
+to make sure your app works as a whole.
+From start to finish.
+E2E simulates real-world user scenarios.
+Unlike unit or integration testing, E2E testing
+focuses on the entire system, including
+external integrations and user workflows.
+
+
+
+
+Why E2E Testing?
+- Catches bugs in user workflows.
+- Ensures all components work together.
+- Validates the system as a whole.
+
+
+
+Types of E2E Testing
+
+1) User Testing
+2) Automated Testing
+
+
+
+
+
+
+
+
+
+User Testing
+
+- A human tester performs common user actions
+(e.g., logging in, submitting a form).
+- Pros: Real user feedback.
+- Cons: Time-consuming and not scalable.
+
+
+
+
+
+
+
+
+
+Automated Testing
+
+- Software performs predefined user actions.
+- Pros: Fast, repeatable, and scalable.
+- Cons: Requires maintenance and initial setup.
+
+
+
+
+
+
+
+Cypress
+
+https://cypress.io
+
+Cypress is a modern JavaScript-based testing framework
+designed for E2E testing.
+
+Here’s why it’s powerful:
+- runs in the browser.
+- simple syntax
+- automating most user interactions
+(clicks, filling in forms, submitting forms)
+- validates the results
+
+
+
+How to install?
+
+1) With NPM:
+> npm init -y
+> npm install cypress --save-dev
+> npx cypress open
+
+2) Manually:
+Download standalone version:
+https://download.cypress.io/app
+
+
+
+
+Demo installation of Cypress
+> mkdir empty
+> cd empty
+> npm init -y
+> npm install cypress --save-dev
+> npx cypress open
+
+
+
+
+Let's imagine I need to open a page
+and click on 'focus' link.
+
+
+Steps:
+
+Go to: https://example.cypress.io/
+Find 'focus'
+Click on it
+
+
+Lecture continues in demo/cypress/e2e/lecture.spec.cy.js
+
+
+
+
+
+
+To demo the Lecture:
+
+open /demo/cypress/e2e/example.spec.cy.js
+
+start Cypress.app, select project /example and run it in browser
+
+
+
+
+For the lab you would need this line:
+
+cy.visit('exercise/lab.html');
+
+
+
+
+
+
+Thank you
+
+
+
+
+
+

@@ -1,0 +1,101 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Subscription Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f4f4f4;
+        }
+        .form-container {
+            background: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            text-align: center;
+        }
+        .form-container label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            text-align: left;
+        }
+        .form-container input {
+            width: 90%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .form-container button {
+            padding: 10px;
+            background-color: #007bff;
+            border: none;
+            border-radius: 5px;
+            color: #fff;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .form-container button:hover {
+            background-color: #0056b3;
+        }
+        .subscription__input_error {
+            background-color: #ffafcc;
+        }
+        fieldset { margin-bottom: 20px; }
+        .output { display: none; }
+        .output__text { font-weight: bold; }
+    </style>
+</head>
+<body>
+<!--
+
+The task:
+
+Create an HTML page with a form that has one input field and a submit button.
+
+If input is empty, apply predefined CSS error class to it so that the input has red background.
+it should also get focus when empty and form is submitted.
+
+If input has a value and form is submitted, display a success message "Welcome [value from input] back!"
+if there was an error style on this field before, it should be cleared as well as its content.
+
+Create Cypress tests to verify your solution.
+
+-- 1 Test if input is empty (the field should contain error styling and have focus).
+-- 1 Test to verify that I am able to type into the field
+-- 1 Test for successful form submission. It should validate that value from input field appears on the page.
+It should also check that the form field is cleared and have no error styling.
+
+
+-->
+<div class="form-container">
+    <h2>Example</h2>
+    <form id="subscription-form" class="subscription" novalidate>
+        <fieldset>
+            <legend>Please provide your details</legend>
+
+            <label for="userName" class="subscription__label">Your Name</label>
+            <input type="text" id="userName" placeholder="Enter your name"
+                   class="subscription__input subscription__name">
+
+        </fieldset>
+
+        <button type="submit" class="subscription__button">Submit</button>
+    </form>
+
+    <div class="output" id="output_container">
+        <p>Welcome <span class="output__text output__name"></span> back!</p>
+    </div>
+</div>
+
+<script src="example.js"></script>
+</body>
+</html>
