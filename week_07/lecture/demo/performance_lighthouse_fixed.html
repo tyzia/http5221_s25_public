@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Lighthouse Load-Time Fail Demo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, minimum-scale=0.5">
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const start = performance.now();
+            const container = document.getElementById('leak-container');
+
+            // Problem 1 solved. Use DocumentFragment to batch DOM operations
+            const fragment = document.createDocumentFragment();
+            for (let i = 0; i < 10000; i++) {
+                const div = document.createElement('div');
+                div.innerHTML = `Node ${i}`;
+                div.style.cssText = `
+                    padding: 10px;
+                    margin: 5px;
+                    border: 1px solid #ccc;
+                    background: hsl(${i % 360}, 80%, 80%);
+                `;
+                fragment.appendChild(div);
+            }
+            container.appendChild(fragment);
+
+            // Problem 2 solved. Break into chunks and use setTimeout
+            const primes = [];
+
+            function calculatePrimes(start, end, chunkSize = 1000) {
+                let i = start;
+                function processChunk() {
+                    const chunkEnd = Math.min(i + chunkSize, end);
+                    for (; i <= chunkEnd; i++) { // Process numbers in current chunk
+                        let isPrime = true;
+                        const maxDivisor = Math.sqrt(i); // Optimized prime check
+                        for (let j = 2; j <= maxDivisor; j++) {
+                            if (i % j === 0) {
+                                isPrime = false;
+                                break;
+                            }
+                        }
+                        isPrime && primes.push(i);
+                    }
+
+                    // Schedule next chunk if needed
+                    if (i <= end) {
+                        setTimeout(processChunk, 0);
+                    } else {
+                        console.log('Prime calculation complete', primes);
+                    }
+                }
+
+                processChunk();
+            }
+
+            calculatePrimes(2, 50000);
+
+            /*
+            NOT WORKING
+            Just making JS code async will not improve performance
+            because the JS code still runs in main thread and
+            still degrades performance with just slight delay.
+
+            function calculatePrimesAsync() {
+              return new Promise(resolve => {
+                setTimeout(() => {
+                  const primes = [];
+                  for (let i = 2; i < 50000; i++) {
+                    let isPrime = true;
+                    for (let j = 2; j < i; j++) {
+                      if (i % j === 0) isPrime = false;
+                    }
+                    if (isPrime) primes.push(i);
+                  }
+                  resolve(primes);
+                }, 0);
+              });
+            }
+             */
+
+            console.log(`Took ${(performance.now() - start).toFixed(0)}ms`);
+        });
+    </script>
+</head>
+<body>
+<h1>Lighthouse Load-Time Fixed</h1>
+<div id="leak-container"></div>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Lighthouse Load-Time Fixed Demo</title>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const start = performance.now();
+            const container = document.getElementById('leak-container');
+
+            // Problem 1: Large DOM Size (~10,000 <div>s with styles and content)
+            for (let i = 0; i < 10000; i++) {
+                const div = document.createElement('div');
+                div.innerHTML = `Node ${i}`;
+                div.style.cssText = `
+                    padding: 10px;
+                    margin: 5px;
+                    border: 1px solid #ccc;
+                    background: hsl(${i % 360}, 80%, 80%);
+                `;
+                container.appendChild(div);
+            }
+
+            // Problem 2: Long-running calculation (blocks main thread)
+            const primes = [];
+            for (let i = 2; i < 50000; i++) {
+                let isPrime = true;
+                for (let j = 2; j < i; j++) {
+                    if (i % j === 0) isPrime = false;
+                }
+                isPrime && primes.push(i);
+            }
+            console.log('Prime calculation complete', primes);
+
+            console.log(`Took ${(performance.now() - start).toFixed(0)}ms`);
+        });
+    </script>
+</head>
+<body>
+<h1>Lighthouse Load-Time Fail</h1>
+<div id="leak-container"></div>
+</body>
+</html>

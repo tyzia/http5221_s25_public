@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Memory Leak Fix Demo</title>
+    <script>
+        let referencesToElements = [];
+        const createElements = () => {
+            clearElements();
+            for (let i = 0; i < 1000; i++) {
+                const element = document.createElement('div');
+                element.textContent = `hello world ${i} times`;
+                document.body.appendChild(element);
+                referencesToElements.push(element);
+            }
+            console.log('Visible Divs:', document.querySelectorAll('div').length);
+            console.log('Detached Divs/Refs:', referencesToElements.length);
+        }
+        const clearElements = () => {
+            referencesToElements.forEach(el => el.remove());
+            referencesToElements.length = 0;
+        }
+    </script>
+</head>
+<body>
+<button onclick="createElements()">Create Elements (Fixed)</button>
+</body>
+</html>

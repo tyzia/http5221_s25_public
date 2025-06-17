@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<!-- WARNING 1: Missing html lang attribute -->
+<html>
+<head>
+    <!-- ERROR 5: Missing required <title> tag -->
+    <meta charset="UTF-8">
+    <!-- ERROR 1-4: Unclosed meta tag (missing >) -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"
+</head>
+
+<!-- ERROR 6: Content outside body/head (div is misplaced) -->
+<div>Floating div</div>
+
+<body>
+<!-- ERROR 7: Incorrect nesting (block element inside inline) -->
+<span><div>Nested wrong</div></span>
+
+    <!-- ERROR 8: Image missing alt text -->
+    <img src="image.jpg">
+
+    <!-- ERROR 9: Duplicate ID -->
+<div id="content">First</div>
+<div id="content">Second</div>
+
+<!-- ERROR 10-11: Deprecated attribute 'border' & 'cellpadding' -->
+<table border="1" cellpadding="5">
+    <tr>
+        <!-- ERROR 12: Deprecated attribute 'align' -->
+        <td align="center">Old-school HTML</td>
+    </tr>
+</table>
+
+<!-- ERROR 13: Stray closing tag (never opened) -->
+</footer>
+</body>

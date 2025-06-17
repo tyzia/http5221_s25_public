@@ -1,0 +1,350 @@
+
+Suggestion:
+Always keep your DevTools open in browser
+
+
+
+
+
+
+
+
+Plan
+
+
+Ad Hoc testing
+Ad Hoc checklist
+Tools
+Memory Leak
+Web Performance
+Lighthouse extension
+WAVE extension
+Validators
+HTML validator
+CSS validator
+Links validator
+Browser compatibility
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Why to test?
+
+- Ensures code works as expected.
+- Catches bugs early.
+- Improves code quality and maintainability.
+
+Types of Testing:
+
+- Unit Testing (Jasmine)
+- Integration Testing
+- End-to-End Testing (Cypress)
+- Ad Hoc Testing
+
+Ad Hoc Testing - Unplanned, unstructured,
+random testing.
+
+We run Ad Hoc testing when
+limited in time (need a quick test).
+
+Ad Hoc testing is effective only if tester
+has in-depth understanding about the system.
+The tester finds defects solely
+based on their intuition and professionalism.
+
+Pros:
+
+- Fast
+- Flexible
+- Finds unexpected bugs
+
+Cons:
+
+- Not reproducible
+
+Suggested Ad Hoc Checklist
+
+Functionality testing:
+- Is HTML valid?
+- Is CSS valid?
+- Are links broken?
+- Is JS valid?
+- Are there any console errors or warnings
+
+Compatibility testing:
+- Does it look good in all major browsers?
+- Does it look good on mobile or tablet?
+
+Performance testing:
+- DevTools for memory leaks
+- Lighthouse extension for Web Performance
+- Load testing (Apache JMeter, Load Runner, etc)
+
+Accessibility testing:
+- WAVE extension
+
+Security testing:
+- Is SSL certificate valid? Who issued it?
+- If manipulate query strings, what happens?
+- Are inputs vulnerable for XSS and SQL injection attacks?
+- Can I access directories via URL?
+- Load website not with HTTPS but HTTP and check the page
+- Does password field have type=“password”?
+
+Tools
+
+Ad hoc testing becomes powerful when
+combined with the right tools.
+
+- Browser DevTools
+Debug JS, audit performance, inspect elements.
+
+- Extensions (WAVE, Lighthouse)
+Test accessibility, SEO, and performance.
+
+- Validators (W3C HTML/CSS/JS validators)
+Catch syntax errors and standards compliance.
+
+
+
+
+
+Memory Leak
+
+A memory leak occurs when a program fails
+to release memory it no longer needs
+and consumes more and more memory as
+it runs. The browser tab would slow down.
+If memory limit is exceeded, your browser
+tab may simply crash.
+
+In JavaScript, memory leak typically happens when:
+
+- Unintended global variables (demo/unintended.html)
+- Detached DOM elements: remain referenced after removal (demo/memory_leak.html)
+
+1) Unintended global variables
+demo/unintended.html
+
+Problem: Missed variable type declaration.
+
+2) Detached DOM elements
+demo/memory_leak.html
+
+Problem: keep references to DOM elements.
+
+- Open file demo/memory_leak.html in browser
+- Open DevTools
+- Go to the "Memory" tab
+- Select "Heap snapshot"
+- Click "Take snapshot" (will create Snapshot 1)
+- Click the "Create elements" button 3 times
+- Click "Take snapshot" (will create Snapshot 2)
+- Select Snapshot 2 → Compare to Snapshot 1
+- You will see on top Detached <div>s
+
+This is your memory leak - your code caused browser
+to use extra memory, which was a mistake.
+
+How to fix?
+
+Clear the array with references to DOM elements.
+
+demo/memory_leak_fixed.html
+
+
+
+
+Web Performance
+
+Performance measures how fast, smooth, and efficient
+a website feels to users.
+
+It includes:
+
+- Load speed (how quickly content appears)
+- Responsiveness (how fast the page reacts to clicks/scrolling)
+- Visual stability (avoiding sudden layout shifts)
+
+Why Web performance matters?
+
+Performance is about retaining users
+
+- 53% of users abandon sites that take >3s to load.
+https://web.dev/why-speed-matters/
+- Slow sites feel frustrating and unprofessional.
+
+SEO & Rankings
+
+- Google uses Core Web Vitals in search rankings.
+
+Lighthouse extension audits Web Performance.
+
+Metrics:
+
+- FCP: First Contentful Paint
+When content first appears (<1.8s)
+
+- LCP: Largest Contentful Paint
+When main content loads (<2.5s)
+
+- TBT: Total Blocking Time
+JS blocking main thread (<200ms)
+
+- CLS: Cumulative Layout Shift
+Visual stability (<0.1)
+
+- TTI: Time to Interactive
+When page becomes usable (<3.8s)
+
+Install:
+https://chromewebstore.google.com/detail/lighthouse/blipmdconlkpinefehnmjammfjpmpbjk?pli=1
+
+demo in demo/performance_lighthouse.html
+
+Problems detected by Lighthouse in this code:
+
+1) "Avoid an excessive DOM size"
+Large DOM Size (~10,000 <div>s)
+
+2) "Minimize main-thread work"
+Long-running calculation in JS
+
+and many more
+
+How to fix?
+
+- Always add <meta> tag:
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, minimum-scale=0.5">
+
+This will remove "Does not have a <meta..." error.
+
+- Delete JS code which is not needed.
+- Refactor JS code to use optimized solutions.
+- Split work into smaller chunks.
+
+demo fix demo/performance_lighthouse_fixed.html
+
+Similar to Lighthouse is PageSpeed:
+
+https://pagespeed.web.dev/
+
+PageSpeed Insights is a free tool by Google
+that analyzes web page performance.
+
+WAVE
+Web Accessibility Evaluation Tool
+
+WAVE evaluates web content for accessibility issues,
+ensuring compliance with standards like the
+Web Content Accessibility Guidelines (WCAG).
+
+It provides visual feedback and offers
+suggestions for fixes.
+
+Install
+https://chromewebstore.google.com/detail/wave-evaluation-tool/jbbplnpkjmmeebjpijfedlgcdilocofh
+
+Demo/wave.html
+Demo fix: demo/wave_fix.html
+
+What was fixed:
+- Added <h1>
+- Added alt to <img>
+- Fixed contrast
+Set color #000 (black) and background #FFF (white)
+- Added <footer>
+
+
+
+Validators
+
+Validators are online tools or services
+which help you catch mistakes in your code.
+
+HTML Validator
+https://validator.w3.org/
+
+Link Validator
+https://validator.w3.org/checklink
+
+CSS Validator
+https://jigsaw.w3.org/css-validator/
+
+JS validator
+ESLint
+
+Validators help:
+
+- Prevent Rendering Issues
+
+Browsers usually "guess" how to handle
+invalid code, leading to layout bugs
+and broken functionality.
+
+Example: Unclosed tags can cause
+elements to nest incorrectly.
+
+- Improve Accessibility
+
+Validators catch missing alt text,
+improper ARIA usage, and other
+accessibility violations.
+
+- Boost SEO
+
+Search engines penalize pages with
+malformed HTML (e.g., duplicate IDs,
+missing semantic tags).
+
+- Ensure Cross-Browser Compatibility
+
+Browsers interpret invalid code differently.
+Validation ensures consistent behavior.
+
+Example: Deprecated attributes
+(like <table border>) may not work in
+modern browsers.
+
+- Save Debugging Time
+
+Fixing validation errors early
+avoids hidden issues that surface later.
+
+HTML demo/html_validator.html
+CSS demo/broken_styles.css
+
+
+Browser compatibility
+
+https://caniuse.com/
+
+This service allows us to see if
+a functionality which we are using on the website
+is supported by all major browsers.
+
+Demo: "CSS Grid" or "Flexbox" or "Backdrop filter"
+
+
+
+Notes for Lab
+
+Make screenshots of all errors and validators
+
+Windows: PrtScr
+Mac: Command + Shift + 4
+
+
+Thank you

@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Unintended Global Variables</title>
+  <script>
+    function createLeak() {
+      leak = "This is now a global variable!"; // no `const`
+    }
+    createLeak();
+  </script>
+</head>
+<body>
+
+</body>
+</html>

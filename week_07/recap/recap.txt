@@ -1,0 +1,83 @@
+Recap from Week 6
+(delivered at Week 7)
+
+
+
+Test Coverage
+
+- Measures % of code tested.
+- High coverage doesn't mean bug-free.
+
+Testing Pyramid
+
+- Unit Tests (functions)
+- Integration Tests (modules)
+- E2E Tests (whole app)
+
+E2E Testing
+Validates real user flows.
+Use Cypress for automation
+
+Install Cypress
+npm init -y
+npm install cypress --save-dev
+npx cypress open
+
+Cypress
+
+Uses describe() and it() syntax
+similar to Jasmine.
+
+Always start tests by visiting
+the page with cy.visit()
+
+Element Selection:
+
+cy.contains(text)
+
+- cy.contains('focus link') -> finds first
+element containing text (fails if not found)
+
+cy.get(selector)
+
+- cy.get('#username') -> by ID
+- cy.get('.btn-submit') -> by class
+- cy.get('input[type="text"]') -> by attribute
+
+Interactions:
+
+.click() - Clicks an element
+.type(text) - Enters text into input fields
+.clear() - Clears input fields
+.submit() - Submits forms
+
+Assertions:
+
+.should()
+.expect()
+.assert()
+
+Common .should() assertions:
+
+.should('be.visible')
+.should('have.value') -> for inputs and exact match
+.should('contain') -> for DOM elements, not exact
+.should('have.class')
+.should('have.focus')
+
+Best Practices:
+
+Use beforeEach() to avoid repeating
+setup code (like cy.visit())
+
+Example
+
+describe('Homepage Tests', () => {
+    beforeEach(() => cy.visit('/'));
+    it('should display the header', () => {
+        cy.get('h1').should('contain', 'Welcome');
+    });
+    it('should have a working search bar', () => {
+       cy.get('#search').type('Cypress').should('have.value', 'Cypress');
+    });
+});
