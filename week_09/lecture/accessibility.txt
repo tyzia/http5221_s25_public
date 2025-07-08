@@ -1,0 +1,855 @@
+
+
+
+
+
+
+
+
+
+
+
+Plan
+
+
+ARIA
+Links
+Tabs
+Labels
+Error Handling
+Grouping
+Voice over
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+WAI-ARIA
+
+Web Accessibility Initiative Accessible Rich Internet Applications
+
+https://www.w3.org/WAI/standards-guidelines/aria/
+
+A way to supplement regular HTML elements to make them accessible.
+
+With the help of ARIA attributes we can add information for screen readers.
+
+For example:
+
+<button (click)="close()"> X </button>
+
+We can add aria attribute to make this button accessible:
+
+<button aria-label="Close menu" (click)="close()"> X </button>
+
+
+Another example:
+
+<button onclick="toggle(this)" aria-label="Collapse"> > </button>
+
+
+demo: toggle.html, toggle.js
+
+
+
+When to use ARIA?
+
+- No native text describing the role of this element.
+- It is not a semantic element: div/span
+
+Examples, when aria is needed:
+
+Bad:
+
+<button (click)="close()"> X </button>
+
+Good:
+
+<button aria-label="Close" (click)="close()"> X </button>
+
+
+More good examples:
+
+<button aria-label="Open Menu" (click)="openMenu()">
+  &#9776; <!-- Hamburger icon -->
+</button>
+
+<button aria-label="Search" (click)="performSearch()">
+  &#128269; <!-- Magnifying glass icon -->
+</button>
+
+<button aria-label="Delete Item" (click)="deleteItem()">
+  &#128465; <!-- Trash icon -->
+</button>
+
+<button aria-label="Edit" (click)="editItem()">
+  &#9998; <!-- Pencil icon -->
+</button>
+
+<button aria-label="Play" (click)="playMedia()">
+  &#9654; <!-- Play icon -->
+</button>
+
+<button aria-label="Download File" (click)="downloadFile()">
+  &#128229; <!-- Download icon -->
+</button>
+
+<button aria-label="Refresh Page" (click)="refreshPage()">
+  &#8635; <!-- Refresh icon -->
+</button>
+
+
+
+What ARIA are available?
+
+https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Techniques
+
+- Define roles: button, link, menuitem, etc.
+- Define state: hidden, disabled, checked, etc.
+
+
+Aria role attribute provides information about element's purpose.
+It just identifies the role, it doesn't create the role for you.
+
+Use native/semantic HTML elements as much as possible.
+
+For example:
+
+Bad:
+
+<div role="button"> Click me </div>
+
+Good:
+
+<button> Click me </button>
+
+
+Don't use these roles:
+
+- article (<article>)
+- banner (<header>)
+- checkbox (<input type="checkbox">)
+- complementary (<aside>)
+- contentinfo (<footer>)
+- form (<form>)
+- heading (<h1>-<h6>)
+- listbox (<select>)
+- main (<main>)
+- navigation (<nav>)
+
+Why these roles exist then?
+
+For example, if there is built-in module/widget/library
+and it uses non-semantic elements, then you would add role.
+
+
+
+Aria states
+
+Specifies the state of the element.
+
+aria-hidden
+
+It will hide non-interactive content from screen readers.
+It will not hide element visually.
+
+can be: true or false
+
+Use aria-hidden for:
+
+- Purely decorative content (icons, images)
+- Duplicated content (repeated text)
+- Collapsed content (menus, modals)
+
+Example
+
+<button>
+   <span aria-hidden="true">&#8635;</span>
+   <span> Refresh </span>
+</button>
+
+Hide purely decorative icon (SVG) from screen readers.
+
+<button>
+  <svg aria-hidden="true" width="24" height="24">
+    <circle cx="12" cy="12" r="10" fill="blue" />
+  </svg>
+  Submit
+</button>
+
+Demo: toggle.html
+
+
+Hiding duplicate content.
+
+The navigation in the footer is hidden from screen readers,
+because it is duplicated. This avoids unnecessary repetition.
+
+<header>
+  <nav aria-label="Main navigation">
+    <ul>
+      <li><a href="#home">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main> ... </main>
+
+<footer>
+  <nav aria-label="Footer navigation" aria-hidden="true">
+    <ul>
+      <li><a href="#home">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+</footer>
+
+Display: none
+
+No need to add aria-hidden="true" to elements with CSS
+display: none. Because these elements are already hidden
+visually and hence hidden from screen readers as well.
+
+Hide content with aria-hidden only if it improves readability.
+
+aria-hidden="true" hides all children of the element as well.
+
+Example
+
+<body>
+  <section aria-hidden="true">
+    <p>This paragraph is hidden from screen readers because its parent has aria-hidden="true".</p>
+    <button>This button is also hidden</button>
+  </section>
+</body>
+
+
+
+When would you need aria-hidden="false"?
+
+When restoring accessibility state with JS.
+
+For example, you have an accordion:
+
+https://www.w3schools.com/howto/howto_js_accordion.asp
+
+By default, all elements in accordion are collapsed.
+They are part of the DOM, but should be hidden from screen readers.
+Hence they will all have aria-hidden="true".
+
+When you click on the element, it is expanded.
+You will set its aria-hidden="false".
+
+Demo: accordion.html, accordion.js
+
+
+
+
+
+
+
+
+
+
+
+aria-label
+
+Provides name to the element.
+
+For example,
+
+We don't need aria-label for a button:
+
+<button (click)="close()"> Close </button>
+
+By default, a button's accessible name is the content
+between the opening & closing tag.
+
+
+We do need aria-label for a button:
+
+<button aria-label="Close" (click)="close()">
+  <svg aria-hidden="true" width="17" height="17">
+    <path
+      d="m.967 14.217 5.8-5.906-5.765-5.89L3.094"
+      fill="#000" />
+  </svg>
+</button>
+
+
+
+
+
+
+
+
+Links
+
+
+
+
+
+
+
+
+
+
+How to create a link in html?
+
+
+
+You answer:
+
+---
+
+
+
+---
+
+
+
+
+
+
+
+
+
+
+
+<a href="/some-link"> Go there </a>
+
+The main issue with links not accessible is
+when the link text doesn't actually say
+what this link is for.
+
+For example,
+
+<a href="path"> Read more </a>
+
+The problem here: read more about what?
+
+A better way to create this link will be:
+
+<a href="path"> Read more about Humber courses </a>
+
+But what if we:
+
+- Want to display only "Read more" label.
+- Want to make this link accessible.
+
+Answer: Use aria-label
+
+Example
+
+<a href="path" aria-label="Link to a page to read more
+about Humber courses"> Read more </a>
+
+
+
+
+
+
+
+
+
+Task:
+
+You are given a short text about Job Opportunities in the company.
+Create a link below this text for further reading.
+The link should be accessible.
+
+You solution:
+---
+
+
+---
+
+
+
+
+
+
+
+Tab
+
+
+
+
+
+
+How tabbing works?
+
+Imagine you don't have a mouse/touchpad,
+how would you navigate the page?
+
+- You can't scroll
+- You can't click on links
+
+
+
+
+
+
+
+
+
+
+Answer: using "TAB" key on your keyboard.
+
+
+When you press the Tab key, the focus moves from
+one element to the next, allowing users to interact
+with items without mouse.
+
+
+What are these items?
+
+Clickable items.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Examples of clickable items:
+
+- form fields: <input>, <select>, <label>, etc.
+- links: <a>
+- buttons: <button>
+
+demo tab_focus.html
+
+
+
+
+
+
+You can create your own clickable items!
+
+tabindex="0"
+
+<div tabindex="0"> This div is focusable </div>
+
+If you add a tabindex attribute to an element,
+it becomes focusable even if it normally wouldn't be.
+
+demo tab_focus.html
+
+
+You can make default clickable items not clickable!
+
+tabindex="-1"
+
+You can remove from tabindex with tabindex="-1"
+
+For example:
+We can take a focusable element - link.
+And make it not focusable:
+
+<a href="path" tabindex="-1"> Read more </a>
+
+You can actually do any negative value like:
+
+tabindex="-2"
+tabindex="-100"
+
+it will be treated exactly as -1
+
+demo: tab_focus.html
+
+
+
+How to change the order of focusable elements?
+
+You control the order with the numbers provided
+to tabindex:
+
+tabindex="1"   <- will be the first to get focus
+tabindex="2"   <- will be the second
+...
+tabindex="100" <- will be 100th
+
+Demo tab_order.html
+
+
+
+
+
+
+
+
+
+What do you think will be the order of these links?
+
+
+<a href="#"> Link 1 </a>
+<a href="#" tabindex="2"> Link 2 </a>
+<a href="#" tabindex="1"> Link 3 </a>
+
+Your answer:
+
+---
+
+
+---
+
+Demo: tab_links.html
+
+
+
+Other way to remove clickable element
+from tabindex - to disable it.
+
+Example:
+
+<button disabled> Can't interact with me </button>
+
+Demo tab_order.html
+
+
+Some things to remember about tabindex:
+
+- Ensure important interactive elements are reachable by keyboard.
+- Make sure users can see where the focus is
+(often handled by browser default styling, but it can be customized).
+
+
+
+
+
+
+
+
+Form controls
+
+Which form controls do you know?
+
+Your answer:
+
+---
+
+
+---
+
+
+
+
+
+
+
+
+
+
+Forms with form controls: are an area where users with
+disabilities often face challenges.
+
+The problem: lack of labels.
+
+Without a label, user doesn't know what
+this form control is for.
+
+Example:
+
+<input type='text'>
+
+What is this input for?
+
+- last name?
+- first name?
+- postal code?
+
+Hm, we don't know without a label.
+
+Fix: add label to form control.
+
+
+
+How to add label?
+
+Your answer:
+---
+
+
+---
+
+
+
+
+Demo: label.html
+
+
+Change 'for' attribute and demo how
+it will affect focusing inside of input field.
+
+To recap:
+
+- Proper labeling is essential for accessibility.
+- Descriptive text in label helps to understand form fields.
+- Every form control (input, select, textarea, etc.) should have
+an associated <label> that describes its purpose.
+- Use 'for' attribute in the <label> and 'id' attribute in the
+form control to connect label to the form control.
+- If 'for' attribute is omitted, screen reader may not know
+which input the label is describing.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Error Handling
+
+
+Let users know what went wrong
+if their input is incorrect.
+
+How to let a screen reader know that
+there is an error in the form?
+
+Add: aria-invalid
+
+For example:
+
+<label for="email"> Email: </label>
+<input type="email" id="email" name="email_field" aria-invalid="true">
+
+
+If there is an error message associated with this field,
+we use:
+
+aria-describedby
+
+It can also be used for help text, instructions or hints.
+
+For example:
+
+<label for="email">Email:</label>
+<input type="email" id="email" name="email_field"
+ aria-invalid="true"
+ aria-describedby="email-error">
+
+<div id="email-error" style="color: red;">
+   Please enter a valid email address.
+</div>
+
+Demo: invalid.html, invalid.js
+
+Here:
+
+- If user enters an invalid email
+- aria-invalid="true" tells the screen reader that
+the field is not valid.
+- aria-describedby="email-error" links the email input
+to the div containing the error message.
+- When a screen reader reads the input field,
+it will also read the error message.
+
+
+To recap:
+
+- Add aria-invalid="true" to form controls with errors.
+- Add aria-describedby="some-id" to link invalid form control
+to error message block or help text.
+- Always provide clear and concise error messages.
+- Screen reader will read both invalid form control
+and error message based on the above aria attributes.
+
+
+
+
+
+
+
+
+
+
+Practice:
+
+Create an input field for username.
+This field is invalid.
+Create error message associated with this field.
+
+Your answer:
+
+---
+
+
+---
+
+
+
+
+
+
+
+
+
+
+
+
+
+Grouping Form Elements
+
+Form controls that belong together (radio buttons or checkboxes)
+should be grouped.
+
+How do we group related form controls?
+
+Your answer:
+
+---
+
+---
+
+
+
+
+
+
+
+
+<fieldset>
+
+&
+
+<legend>
+
+
+<fieldset> groups related form elements together.
+<legend> provides label for the group.
+
+This creates a more understandable structure for screen readers.
+
+
+Which form controls are usually grouped?
+
+<input type="radio">
+<input type="checkbox">
+
+
+
+Example of a fieldset:
+
+<form>
+    <fieldset>
+        <legend> Preferred Contact Method </legend>
+
+        <label for="email">Email:</label>
+        <input type="radio" id="email" name="contact" value="email">
+
+        <label for="phone">Phone:</label>
+        <input type="radio" id="phone" name="contact" value="phone">
+
+    </fieldset>
+</form>
+
+
+Here:
+
+- Radio buttons are grouped using <fieldset>.
+- <legend> describes the purpose of each group.
+
+Demo: radio_checkbox.html
+
+To recap:
+
+- Form controls that belong together should be grouped.
+- <fieldset> groups related form elements together.
+- <legend> provides label for the group, helps
+users to know what options they are selecting from.
+- <input type="radio"> & <input type="checkbox"> most often are grouped.
+
+
+
+
+
+
+Voice over
+
+Let's mimic a screen reader.
+
+I will use Voice over function on my Mac.
+
+To turn it on/off:
+
+COMMAND + F5
+
+On Windows you can use Narrator:
+
+CTRL + WIN + ENTER
+or
+Start Menu -> Search for 'Narrator' ->
+Toggle On in Narrator settings
+
+Demo tab_demo.html with Voice over.
+
+
+
+
+
+
+
+
+
+
+
+
+Skip to main content
+
+This is an important feature and actually required by
+accessibility standard.
+
+A special link that allows users to bypass the navigation menu.
+User can jump directly to the main content of the page.
+
+Usually placed at the very top of the page.
+Often hidden, not visible to regular users.
+Becomes visible if you "tab" into it.
+
+Demo: skip_nav.html
+
+Use devtools and enable focus on the link.
+
+
+
+
+
+
+
+
+
+
+
+Thank you!

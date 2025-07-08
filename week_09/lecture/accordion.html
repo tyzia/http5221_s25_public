@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accessible Accordion</title>
+    <style>
+        .accordion {
+            background-color: #eee;
+            color: #444;
+            cursor: pointer;
+            padding: 18px;
+            width: 100%;
+            text-align: left;
+            border: none;
+            outline: none;
+            transition: background-color 0.3s ease;
+        }
+
+        .accordion:hover {
+            background-color: #ccc;
+        }
+
+        .panel {
+            padding: 0 18px;
+            background-color: white;
+            overflow: hidden;
+            max-height: 0;
+            transition: max-height 0.3s ease-out;
+        }
+
+        .panel[aria-hidden="false"] {
+            max-height: 500px; /* Adjust based on content */
+        }
+    </style>
+</head>
+<body>
+<h2>Accessible Accordion</h2>
+
+<button class="accordion" aria-expanded="false" aria-controls="panel1">
+    Section 1
+</button>
+<div id="panel1" class="panel" aria-hidden="true">
+    <p>Content for Section 1. This is hidden by default and will be revealed when the button is clicked.</p>
+</div>
+
+<button class="accordion" aria-expanded="false" aria-controls="panel2">
+    Section 2
+</button>
+<div id="panel2" class="panel" aria-hidden="true">
+    <p>Content for Section 2. This is hidden by default and will be revealed when the button is clicked.</p>
+</div>
+
+<button class="accordion" aria-expanded="false" aria-controls="panel3">
+    Section 3
+</button>
+<div id="panel3" class="panel" aria-hidden="true">
+    <p>Content for Section 3. This is hidden by default and will be revealed when the button is clicked.</p>
+</div>
+
+<script src="./js/accordion.js"></script>
+</body>
+</html>

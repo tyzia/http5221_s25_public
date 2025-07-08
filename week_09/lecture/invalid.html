@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Validation with aria-invalid</title>
+    <style>
+        /* Style for invalid fields */
+        input[aria-invalid="true"] {
+            border: 2px solid red;
+        }
+
+        /* Style for error messages */
+        .error-message {
+            color: red;
+            font-size: 0.9em;
+            margin-top: 5px;
+        }
+
+        .error-message[aria-hidden="true"] {
+            position: relative;
+            left: -10000px;
+        }
+    </style>
+</head>
+<body>
+<h1>Form Validation Example</h1>
+
+<form id="exampleForm" novalidate>
+    <div>
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email_field" aria-describedby="emailError" required>
+        <span class="error-message" id="emailError" aria-hidden="true"
+              >Email is required.</span>
+    </div>
+
+    <button type="submit">Submit</button>
+</form>
+
+<script src="./js/invalid.js"></script>
+</body>
+</html>

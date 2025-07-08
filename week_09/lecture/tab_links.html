@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tabbing Demo - Focus</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    .header, .footer {
+      background-color: #333;
+      color: #fff;
+      padding: 10px;
+      text-align: center;
+    }
+    .main-content {
+      padding: 20px;
+    }
+    .content-link {
+      display: block;
+      margin: 10px 0;
+      color: #0066cc;
+      text-decoration: none;
+    }
+    .content-link:focus {
+      outline: 2px solid red;
+    }
+    #nav {
+      display: flex;
+      gap: 8px;
+      justify-content: center;
+    }
+    .focus {
+      background-color: aqua;
+      font-size: 24px;
+      padding: 12px;
+    }
+  </style>
+</head>
+<body>
+<header class="header">
+  <h1>Website Header</h1>
+  <nav id="nav">
+    <a href="#"> Link 1 </a>
+    <a href="#" tabindex="2"> Link 2 </a>
+    <a href="#" tabindex="1"> Link 3 </a>
+  </nav>
+</header>
+
+</body>
+</html>

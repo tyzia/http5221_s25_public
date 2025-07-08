@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="./js/toggle.js"></script>
+</head>
+<body>
+
+<button onclick="toggle(this)" aria-label="Collapse"> > </button>
+
+<button aria-label="Open Menu" (click)="openMenu()">
+    &#9776; <!-- Hamburger icon -->
+</button>
+
+<button>
+    <span aria-hidden="true">&#8635;</span>
+    <span> Refresh </span>
+</button>
+
+<button>
+    <svg aria-hidden="true" width="24" height="24">
+        <circle cx="12" cy="12" r="10" fill="blue" />
+    </svg>
+    Submit
+</button>
+
+
+</body>
+</html>

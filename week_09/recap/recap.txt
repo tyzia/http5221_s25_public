@@ -1,0 +1,218 @@
+Recap from Week 8
+(delivered at Week 9)
+
+
+The goal of accessibility is
+to make content available for
+all users.
+
+Correct heading structure makes
+html document semantically correct.
+
+<h1>
+The main heading of the page.
+Should be always present.
+Should be only one per page.
+
+<h2>
+Header for top-level sections of
+the page.
+
+<h3>, <h4>, <h5>, <h6>
+Headers for nested sections.
+
+You should avoid skipping header levels.
+
+Bad:
+
+H1 - H3 - H4
+H1 - H1 - H3 - H4
+H1 - H2 - H3 - H1
+H2 - H3 - H4
+
+Good:
+
+H1 - H2 - H3 - H4
+
+Visual design of your headings
+may not match their semantic meaning.
+
+Don't use h1 only because you need
+a heading with large text. Use
+appropriate header (h2, h3, etc)
+and apply CSS styles to it to make
+it larger.
+
+
+Semantics
+
+HTML elements that convey meaning
+about the content they enclose.
+
+Benefits of semantic elements:
+
+- Improve accessibility for screen readers.
+- Improve SEO.
+- Enhance code readability.
+
+Example of non-semantic element:
+
+<div> This is navigation of my website </div>
+
+Correct semantic element:
+
+<nav> This is navigation of my website </nav>
+
+
+
+<section>
+
+Defines a section on a page.
+Typically, has a heading and content.
+
+<section>
+    <h1>Lorem ipsum</h1>
+    <p>Lorem ipsum dolor sit amet</p>
+</section>
+
+
+<article>
+
+Specifies independent content.
+
+<article>
+    <h2>Google Chrome</h2>
+    <p>Google Chrome is a web browser</p>
+</article>
+
+
+<main>
+
+Defines main content of the page.
+The content inside should be unique.
+Doesn't include: sidebars, nav, footer.
+
+<nav> links </nav>
+<main>
+  <h1>Most Popular Browsers</h1>
+  <p>Chrome, Firefox, and Edge are the most used browsers today.</p>
+  <article> ... </article>
+  <article> ... </article>
+</main>
+<footer> Copyright </footer>
+
+
+<header>
+
+Represents intro content and title.
+
+<article>
+  <header>
+    <h1>What Do You Do?</h1>
+    <p>My mission:</p>
+  </header>
+  <p>My mission is to stop the degradation.</p>
+</article>
+
+
+<footer>
+
+Defines footer for the page or section.
+Typically, has author info, copyright, contact.
+
+<footer>
+  <p>Author: Andrei Navumau</p>
+  <p><a href="mailto:andrei.navumau@humber.ca">email me</a></p>
+</footer>
+
+
+
+<nav>
+
+Defines set of navigation links.
+
+<nav>
+  <a href="/html/">HTML</a>
+  <a href="/css/">CSS</a>
+</nav>
+
+
+<img>
+
+This tag is not semantic.
+We need always to add 'alt' attribute
+to make it semantic and correct HTML
+
+Best practice creating a good alt text:
+
+1) Be descriptive but concise.
+
+Bad alt:
+"A close-up image of a fresh red apple
+sitting on a pristine white ceramic plate,
+slightly tilted, with a glossy surface
+that reflects light"
+
+Good alt:
+"Red apple on a white plate"
+
+2) Avoid Redundancy.
+
+HTML
+<h2>Sales Decrease in 2024</h2>
+<img src="2.png">
+
+Bad alt:
+
+"A bar chart showing sales decrease
+over the past year for the year 2024"
+
+Good alt:
+"Bar chart showing sales decrease
+over the past year"
+
+3) Don't use 'picture' or 'image'.
+
+Bad alt:
+"Image of a sunset over the ocean"
+
+Good alt:
+"Sunset over the ocean"
+
+4) Take context into account.
+
+Bad alt:
+"Logo"
+
+Good alt:
+"Company logo, link to homepage"
+
+5) Summarize key message for complex images.
+
+Bad alt:
+"Pie chart"
+
+Good alt:
+"Pie chart showing market share:
+30% for North America, 20% for Europe,
+25% for Asia"
+
+6) Consider the user’s perspective.
+
+Bad alt:
+"Two people shaking hands"
+
+Good alt:
+"Two colleagues shaking hands in
+a professional setting"
+
+Empty alt text
+
+For purely decorative images
+alt text may be empty, though
+'alt' attribute should still be present.
+
+<button>
+  Subscribe
+  <img src="bell.png" alt="">
+</button>

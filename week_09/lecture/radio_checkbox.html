@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Radio Button vs Checkbox Example</title>
+</head>
+<body>
+
+<h2>Radio Button Example (Only One Can Be Selected)</h2>
+<form>
+    <fieldset>
+        <legend>Choose Your Favorite Fruit</legend>
+        <label for="radio1">
+            <input type="radio" id="radio1" name="fruit" value="apple"> Apple
+        </label>
+        <br>
+        <label for="radio2">
+            <input type="radio" id="radio2" name="fruit" value="banana"> Banana
+        </label>
+        <br>
+        <label for="radio3">
+            <input type="radio" id="radio3" name="fruit" value="cherry"> Cherry
+        </label>
+    </fieldset>
+
+    <label for="radio4">
+        <input type="radio" id="radio4" name="fruits" value="apple"> Apple
+    </label>
+    <br>
+    <label for="radio5">
+        <input type="radio" id="radio5" name="fruits" value="banana"> Banana
+    </label>
+    <br>
+    <label for="radio6">
+        <input type="radio" id="radio6" name="fruits" value="cherry"> Cherry
+    </label>
+</form>
+
+<h3>Explanation:</h3>
+<p>In this group of radio buttons, only one option can be selected at a time because they all share the same <code>name="fruit"</code>. If you select "Apple", the other two options ("Banana" and "Cherry") will be automatically deselected, and vice versa.</p>
+
+<h2>Checkbox Example (Multiple Selections Allowed)</h2>
+<form>
+    <fieldset>
+        <legend>Select Your Favorite Fruits</legend>
+        <label for="check1">
+            <input type="checkbox" id="check1" name="fruits" value="apple"> Apple
+        </label>
+        <br>
+        <label for="check2">
+            <input type="checkbox" id="check2" name="fruits" value="banana"> Banana
+        </label>
+        <br>
+        <label for="check3">
+            <input type="checkbox" id="check3" name="fruits" value="cherry"> Cherry
+        </label>
+    </fieldset>
+</form>
+
+<h3>Explanation:</h3>
+<p>In this group of checkboxes, the user can select multiple options independently. For example, the user can select "Apple" and "Cherry" without deselecting "Banana", as each checkbox operates independently.</p>
+
+</body>
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tabbing Demo - Non-Accessible Links</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .header, .footer {
+            background-color: #333;
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+        }
+        .main-content {
+            padding: 20px;
+        }
+        .content-link {
+            display: block;
+            margin: 10px 0;
+            color: #0066cc;
+            text-decoration: none;
+        }
+        .content-link:focus {
+            outline: 2px solid red;
+        }
+        #nav {
+            display: flex;
+            gap: 8px;
+            justify-content: center;
+        }
+    </style>
+</head>
+<body>
+<header class="header">
+    <h1>Website Header</h1>
+    <nav id="nav">
+        <a href="#" class="content-link">Link 1</a>
+        <a href="#" class="content-link">Link 2</a>
+        <a href="#" class="content-link">Link 3</a>
+        <a href="#" class="content-link">Link 4</a>
+        <a href="#" class="content-link">Link 5</a>
+        <a href="#" class="content-link">Link 6</a>
+        <a href="#" class="content-link">Link 7</a>
+        <a href="#" class="content-link">Link 8</a>
+        <a href="#" class="content-link">Link 9</a>
+        <a href="#" class="content-link">Link 10</a>
+        <a href="#" class="content-link">Link 11</a>
+        <a href="#" class="content-link">Link 12</a>
+    </nav>
+</header>
+
+<main class="main-content">
+    <h2>Welcome to Our Website</h2>
+    <p>This is some content that describes various things but isn't very specific. Just random text for this demonstration.</p>
+
+    <a href="#" class="content-link">Click here</a>
+    <a href="#" class="content-link">Read this</a>
+    <a href="#" class="content-link">Another link</a>
+    <a href="#" class="content-link">More stuff</a>
+    <a href="#" class="content-link">More links</a>
+    <a href="#" class="content-link">Read more</a>
+    <a href="#" class="content-link">Some other link</a>
+</main>
+
+<footer class="footer">
+    <p>Footer Content</p>
+    <a href="#" class="content-link">Footer Link 1</a>
+    <a href="#" class="content-link">Footer Link 2</a>
+</footer>
+</body>
+</html>
