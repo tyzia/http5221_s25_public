@@ -1,0 +1,229 @@
+Recap from Week 9
+(delivered at Week 10)
+
+aria
+
+Special attributes to supplement regular
+HTML elements to make them accessible.
+
+We provide information for screen readers
+using aria attributes when:
+
+- No native text describing the role of this element.
+- It is not a semantic element: div/span
+
+aria-label
+
+Provides name to the element.
+
+Example with buttons
+
+<button (click)="close()"> X </button>
+
+With aria-label:
+<button aria-label="Close" (click)="close()"> X </button>
+
+Example (no aria needed)
+
+<button (click)="close()"> Close </button>
+
+A button's accessible name is the content
+between the opening & closing tag. We don't need
+to add aria-label in this case.
+
+
+Example with links
+
+<a href="#"> Read more </a>
+
+The problem here: read more about what?
+
+<a href="#" aria-label="Link to a page to read more
+about Humber courses"> Read more </a>
+
+
+
+aria-invalid
+
+Let users know what went wrong
+if their input is incorrect.
+
+Example
+<input name="email_field" aria-invalid="true">
+
+aria-describedby
+
+Use this attribute to connect
+an error message associated with the field.
+
+Example
+
+<input name="email_field"
+ aria-invalid="true"
+ aria-describedby="email-error">
+
+<div id="email-error" style="color: red;">
+   Please enter a valid email address.
+</div>
+
+
+
+aria-hidden
+
+It hides non-interactive content from screen readers.
+It doesn't hide the element visually.
+
+Use aria-hidden for:
+
+- Purely decorative content (icons, images)
+- Duplicated content (repeated text)
+- Collapsed content (menus, modals)
+
+Example (decorative element)
+
+<button>
+   <span aria-hidden="true">&#8635;</span>
+   <span> Refresh </span>
+</button>
+
+Example (duplicate content)
+
+<header>
+  <nav aria-label="Main navigation">
+    <ul>
+      <li><a href="#home">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main> ... </main>
+
+<footer>
+  <nav aria-label="Footer navigation" aria-hidden="true">
+    <ul>
+      <li><a href="#home">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+</footer>
+
+Display: none
+
+No need to add aria-hidden="true" to elements with CSS
+display: none.
+
+aria-hidden hides all children of the element.
+
+aria-hidden="false"
+
+Use when restoring accessibility
+state with JS.
+
+Example accordion.
+
+
+aria roles
+
+Provides information about element's purpose.
+
+But, we need to use semantic elements
+instead of aria roles.
+
+Bad:
+
+<div role="button"> Click me </div>
+
+Good:
+
+<button> Click me </button>
+
+Don't use these roles:
+
+- role="article" -> use element <article>
+- role="heading" -> use element <h1>, <h2>, ..., <h6>
+- role="main" -> use element <main>
+- role="navigation" -> use element <nav>
+
+Why these roles exist then?
+
+For built-in widget/library
+with non-semantic elements.
+
+Labels
+
+We add label to make form controls accessible.
+
+Example
+
+<label for="my-id"> First name: </label>
+<input type="text" id="my-id" name="first-name">
+
+Grouping
+
+<fieldset> groups related form elements together.
+<legend> provides label for the group.
+
+Example
+
+<form>
+    <fieldset>
+        <legend> Preferred Contact Method </legend>
+
+        <label for="email">Email:</label>
+        <input type="radio" id="email" name="contact" value="email">
+
+        <label for="phone">Phone:</label>
+        <input type="radio" id="phone" name="contact" value="phone">
+
+    </fieldset>
+</form>
+
+
+
+Tab
+
+We use tab key to navigate between focusable
+elements on a page.
+
+Focusable items:
+
+- form fields: <input>, <select>, <label>, etc.
+- links: <a>
+- buttons: <button>
+
+tabindex
+
+With tabindex you can:
+
+- Make non-focusable item to be focusable (tabindex="0").
+- Make focusable item to be non-focusable (tabindex="-1").
+- Change the tabbing order of items (tabindex="1").
+
+Example
+
+<div tabindex="0"> This div is focusable </div>
+
+<a href="#" tabindex="-1"> Read more (not focusable) </a>
+
+tabindex="1"   <- will be the first to get focus
+tabindex="2"   <- will be the second
+...
+tabindex="100" <- will be 100th
+
+Remember:
+Important interactive elements should be
+reachable by keyboard.
+
+
+Skip to main content
+
+A special link that allows users to bypass
+the navigation menu and "jump" to main
+content of the page.
+
+Usually placed at the very top of the page.
+Often hidden, not visible to regular users.
+Becomes visible if you "tab" into it.
