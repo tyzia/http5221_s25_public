@@ -1,0 +1,8 @@
+System boot completed
+User login: john
+ERROR: Disk space low on /dev/sda1
+Service started: apache2
+WARNING: High memory usage
+ERROR: Failed to connect to database
+Backup completed successfully
+ERROR: Permission denied for user 'guest'

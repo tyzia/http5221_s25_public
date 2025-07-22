@@ -1,0 +1,202 @@
+Recap from Week 3
+(delivered on Week 4)
+
+git merge conflict
+
+It occurs when two branches change the same line.
+
+git uses special markers to mark
+the conflicting changes:
+
+<<<<<<< HEAD  the beginning of the conflict.
+======= separates the changes from the two branches.
+>>>>>>> branch-name   marks the end of the conflict.
+
+Resolve the git conflict means:
+
+- Delete all that is not needed
+- Delete the markers
+- git add .
+- git commit
+
+
+Path === location of a file or resource
+
+The most common resources:
+
+- images (<img>)
+- scripts (*.js)
+- stylesheets (*.css)
+
+Root
+The root refers to the main folder.
+
+- Topmost directory of the Linux-based file system (/)
+- Main folder of a project (project root)
+- Web root or Document root (publicly available folder from the web)
+
+File system root (/)
+
+It’s the starting point of the entire file system .
+It is not actual name, root doesn't have a name.
+
+Example
+
+/var/www/domain/index.html
+
+Project root
+
+Main folder of the project.
+
+Example:
+/Users/andrei/projects/my_project/*
+
+The 'project root' is 'my_project/'.
+The 'file system root' is the leftmost /
+
+Web Root
+
+The folder accessible from the web
+
+Web root is a specific folder configured in
+the settings of a web server (Apache or Nginx).
+
+Any relative paths specified in your files
+will be resolved based on this web root folder.
+
+Example
+
+Web root:
+
+/var/www/my-super-domain.com/public_html/
+
+In your code:
+
+<script src="js/app.js"></script>
+
+This path will be resolved as:
+
+/var/www/my-super-domain.com/public_html/js/app.js
+
+
+Absolute path
+
+An absolute path specifies the exact
+location of a file from the root directory.
+
+Example:
+
+/users/projects/my-website.com/js/app.js
+
+
+Web Absolute path
+
+An absolute path in web context, has a domain name
+to specify exact location of a file,
+starts from the web root.
+
+Example:
+
+I want to refer this JS file:
+/users/projects/my-website.com/js/app.js
+
+From my index.html file:
+/users/projects/my-website.com/index.html
+
+Code:
+<script src="https://my-website.com/js/app.js"></script>
+
+Pros of Absolute paths:
+
+- Exactly point to a file.
+- Used by CDNs or libraries.
+
+Cons of Absolute Paths:
+
+- Project becomes less portable
+(paths rely on a specific location)
+
+
+
+Relative path
+
+A relative path specifies the location
+of a file relative to the current directory,
+not relative to root.
+
+Current directory - is the directory
+where your file with path is located.
+
+Example:
+
+You have an image:
+/var/www/domain/images/logo.png
+
+You need to add this image into your html:
+/var/www/domain/index.html
+
+Your current working directory is /var/www/domain/
+
+<img src="images/logo.png" alt="Logo">
+
+Why use relative path?
+
+You can move your files into other location
+on the server, and as long as you maintain
+the same file structure, the app will still works.
+
+Paths are fragile!
+
+If file structure changes, you need to update
+your paths. Otherwise, paths will be broken.
+
+
+. (single dot)
+
+A reference to the current directory, explicitly.
+
+./index.html
+index.html
+
+Both are exactly the same paths:
+"look for file index.html in current directory"
+
+
+.. (two dots)
+
+A reference to the parent directory.
+The directory one level up in the hierarchy.
+
+Example
+
+We are in /home/user/docs/
+
+This:
+../index.html
+
+Will result in this:
+
+/home/user/index.html
+
+
+Usability - how people use your website.
+
+Usability test - to determine if the website is usable.
+
+Heuristics - a checklist of usability best practices.
+
+Heuristic Evaluation - inspecting the website according
+to usability heuristics.
+
+10 Usability Heuristics of Jakob Nielsen
+
+1. Visibility of System Status
+2. Match Between System and the Real World
+3. User Control and Freedom
+4. Consistency and Standards
+5. Error Prevention
+6. Recognition Rather Than Recall
+7. Flexibility and Efficiency of Use
+8. Aesthetic and Minimalist Design
+9. Help Users Recognize, Diagnose, and Recover from Errors
+10. Help and Documentation

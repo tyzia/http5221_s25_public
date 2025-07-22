@@ -1,0 +1,864 @@
+
+
+
+
+Plan
+
+.gitignore
+HEAD
+git reflog
+Terminal
+Usability testing (Brief)
+
+
+
+
+
+
+
+
+
+
+
+
+
+.gitignore
+
+.gitignore is a special file listing
+all files or folders which
+you don't want to track with git.
+
+Usually we ignore:
+
+- log files (*.log)
+- node_modules folder for npm projects
+- files with sensitive data (API keys, private keys)
+- IDE config files
+
+Useful website to create .gitignore file:
+https://gitignore.io/
+
+
+Demo
+
+> mkdir 1
+> cd 1
+> git init
+> vim index.html :i hello world :x
+> git status  // new file: index.html
+open this project in IntelliJ
+> git status // new file: .idea index.html
+> vim .gitignore :i .idea :x
+> git add .gitignore
+> git commit -m "Create gitignore"
+> git status // now git ignores .idea file
+
+
+
+
+
+
+
+
+
+
+HEAD
+
+
+HEAD points to the current commit.
+Usually it is the latest commit in
+your branch
+
+Demo:
+> cd 1
+> git log --oneline
+This will show all commits and will
+show that HEAD points to the latest
+commit in the history
+
+HEAD helps you to navigate your commits
+for such commands as 'rebase', 'reset', 'checkout'
+
+~ (tilde)
+
+~ refers to previous commit from HEAD
+~n refers to nth commit from HEAD
+
+Example:
+
+abcs Update file   <- HEAD
+cs61 Create file   <- HEAD~1
+hd7s Create folder <- HEAD~2
+ad61 Init project  <- HEAD~3
+
+HEAD~1 = move one commit before the current commit.
+HEAD~2 = move two commits before the current commit.
+
+Usage:
+
+> git show HEAD
+shows latest commit
+
+> git show HEAD~1
+shows commit before the latest
+
+
+
+
+
+
+
+
+
+
+git reflog
+
+
+It is a reference log (reflog)
+of all changes tracked by git.
+
+It records:
+
+- Commits you’ve made
+- Branch checkouts
+- Resets, merges, and rebases
+
+Unlike git log, which shows the commit history,
+git reflog shows all actions in git.
+
+Example
+
+> git reflog
+
+f3a2b1d (HEAD -> main) HEAD@{0}: commit: Update homepage
+a7e4c90 HEAD@{1}: checkout: moving from feature/login to main
+d8e9f12 HEAD@{2}: commit: Add login button
+
+HEAD@{0}, HEAD@{1}, HEAD@{2} - special references
+
+When git reflog is useful?
+
+git reflog is like a time-travel machine:
+allows you to come back to the past state.
+
+1) Lost commits during rebase
+
+You rebased your branch and lost some commits.
+How to undo?
+
+Fix:
+
+Check reflog to find the lost commit:
+
+> git reflog
+
+f3a2b1d HEAD@{0}: reset: moving to HEAD~2
+a7e4c90 HEAD@{1}: commit: Important feature (LOST in next step)
+d8e9f12 HEAD@{2}: commit: Fix bug
+
+Restore the commit using its HEAD@{n} reference:
+
+git checkout HEAD@{1}
+
+
+2) Recover a Deleted Branch
+
+You deleted a branch (git branch -D)
+and realized you needed it.
+
+Fix:
+
+Find the last commit of the deleted branch in reflog:
+
+> git reflog
+
+f3a2b1d HEAD@{0}: reset: moving to HEAD~2
+a7e4c90 HEAD@{1}: commit: Important feature (LOST in next step)
+d8e9f12 HEAD@{2}: commit: Fix bug
+a7e4c90 HEAD@{3}: checkout: moving from main to feature/login
+
+Restore the branch:
+
+git branch feature/login a7e4c90
+
+3) Undo a Bad Rebase
+
+A git rebase went wrong, and you want to
+return to the pre-rebase state.
+
+Fix:
+
+Find the commit before the rebase.
+
+> git reflog
+
+a7e4c90 HEAD@{4}: rebase (finish): returning to refs/heads/main
+d8e9f12 HEAD@{5}: rebase (start): checkout main
+
+Reset to the pre-rebase state:
+
+> git reset --hard HEAD@{5}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Terminal
+
+
+
+
+
+
+
+
+
+
+Let's dive into the command-line world
+
+You’ve probably heard terms like:
+
+- Terminal
+- CLI
+- Console
+- Shell
+
+Are they the same?
+These are mostly the same.
+
+1) Terminal = software where you type commands
+for Operating System. Shell is a synonym.
+
+2) Console = same as terminal (except for browser console).
+
+browser console is used for debugging,
+console commands do not work in browser console.
+
+3) CLI (Command Line Interface) = The text-based
+way of interacting with the app.
+
+They all mean:
+"the place where you type commands
+instead of clicking buttons."
+
+
+Every major software has:
+
+1) GUI (Graphic User Interface)
+2) CLI (Command Line Interface)
+
+CLI allows us to control the app
+from terminal:
+
+- Running servers (npm start)
+- Installing tools (npm install)
+- Managing files (ls, cd, mkdir)
+- Using git (git add, git commit)
+
+
+Example:
+
+> git add index.html
+
+You're essentially saying:
+
+git - "Hey, git application"
+add - "Execute your 'add' command"
+index.html - "On index.html"
+
+CLI is "closer to the engine".
+You're speaking directly to the app's
+functionality without UI abstraction.
+
+GUI is like a layer between app & user.
+With CLI you are closer to the app.
+
+
+CLI gives us speed and efficiency.
+
+Example
+
+Task: Navigate to a folder projects/my_app/src
+
+In GUI (Graphic User Interface) clicking:
+
+- Click on Finder app (MacOS).
+- Click on projects.
+- Click on my_app.
+- Click on src.
+
+In CLI navigate instantly:
+
+> cd projects/my_app/src
+
+
+CLI power comes with flags
+
+Flags expose advanced features often not
+available in GUI.
+
+Example
+
+> git add . -p
+
+Interactive staging:
+Lets you partially stage changes
+(even single lines)
+
+GUI - no equivalent (most GUIs stage whole files)
+
+We can combine two flags in one:
+
+Example
+
+Instead of:
+> ls -l -a
+
+Have:
+> ls -la
+
+> ls -la
+Detailed file listing.
+
+-l → Long format (permissions, owner, size)
+-a → Show hidden files (like .gitignore)
+
+GUI  hide this metadata or bury it
+in properties dialogs
+
+Example
+
+> rm -rf
+
+Force recursive delete,
+meaning delete all inside, including
+subfolders.
+
+-r → Recursive (delete folders)
+-f → Force (no "Are you sure?" prompts)
+
+GUI either lack this or require multiple
+confirmations.
+
+
+
+How to know which flags are available?
+
+Use help or manual:
+
+> git add --help
+
+or
+
+> man git add
+
+To show the help page, your terminal
+uses less - the default pager to show help.
+
+How to navigate through help doc with less?
+
+j - one line down
+k - one line up
+space - one screen down
+b - one screen up
+g - go to top of file
+G - go to bottom of file
+/ - start search
+(e.g. /-p -> search for -p)
+n - next search match
+N - previous search match
+q - exit
+
+
+A short help doc comes with -h
+
+Example
+
+> git add -h
+
+
+Common flags:
+
+-v → Verbose output
+-f → Force action
+-r → Recursive
+-y → Auto-confirm
+
+
+
+
+
+
+Practice:
+
+Open terminal.
+Check which options are available for 'ls' command.
+
+
+
+
+
+
+
+
+We can run commands sequentially.
+
+&&
+
+Runs sequentially only if previous commands succeed.
+
+Example:
+
+> git add . && git commit -m "Add new file"
+
+This will run 'git add .' and if it is success,
+then run 'git commit'.
+
+We can do more:
+
+> git checkout main && git pull && git checkout -b new-branch && git cherry-pick abks1 && git push -u origin new-branch
+
+This sequence will break (stop doing anything) after first failed command.
+
+If git pull failed, for example,
+the command would stop and will not
+create a branch or anything else.
+
+
+
+
+Practice
+
+Open terminal.
+Create a folder 'demo', navigate to 'demo' folder,
+create another folder 'new', navigate to 'new' folder,
+show full path (current working directory).
+All in one line.
+
+
+Hints
+cd - to navigate to folder
+mkdir - to create a folder
+pwd - to show full path
+
+
+
+
+
+
+
+
+Answer
+(mkdir demo && cd demo && mkdir new && cd new && pwd)
+
+
+
+
+
+
+
+
+Piping
+
+The pipe (|) is one of the most powerful
+features in terminals.
+
+It lets you chain commands together,
+passing the output of one command
+as input to the next.
+
+Demo:
+
+demo/log.txt
+
+> cat log.txt | grep "ERROR" | wc -l
+
+Here:
+
+cat - Outputs the contents of a file
+grep - Filters the data
+wc - Word count
+
+Note: grep = Global Regular Expression Print
+
+GUI equivalent:
+
+- Open file
+- Ctrl+F
+- Manually count matches.
+
+Example
+
+> ps aux | sort -nk 3 | tail -n 3
+
+- ps aux = Lists all processes
+- sort -nk 3 = Sorts by CPU usage (column 3)
+- tail -n 3 = Shows the last 3 (highest CPU)
+
+GUI equivalent:
+
+- Open Task Manager
+- Sort by CPU
+- Scroll
+
+
+
+
+
+
+
+Practice
+
+Open file log.txt.
+Find all lines with "WARNING".
+Display them in the terminal.
+
+
+
+
+
+
+
+
+Answer
+(cat log.txt | grep "WARNING")
+
+
+
+
+
+
+
+
+Error: Command not found
+
+This means that my terminal
+doesn't "know" about command.
+
+Let's demo:
+
+1) Create a tiny program
+
+> cd install/
+> vim hello
+
+#!/bin/bash
+echo "Hello world! I am demo program"
+
+> chmod +x hello
+
+2) Try to run it
+
+> hello
+-bash: hello: command not found
+
+It says "not found". Where did it search?
+
+
+
+PATH
+
+PATH determines where the terminal
+looks for commands
+
+To see your PATH:
+
+> echo $PATH
+
+/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin
+
+: - separates different paths
+
+So my PATH has these:
+
+/usr/local/bin
+/usr/bin
+/bin
+/usr/sbin
+/sbin
+
+These are the locations on my machine,
+where terminal was looking for 'hello'
+command and didn't find.
+
+If I don't want to copy my command
+into one of these folders, a workaround
+is to specify path to my command.
+
+I have it in install/ folder, so:
+
+> ./hello
+Hello world! I am demo program
+
+If I want to be able to run this
+program from anywhere, I need to copy
+it into one of the folders specified in PATH:
+
+> sudo cp hello /usr/local/bin
+
+Now I can run my command:
+
+> hello
+Hello world! I am demo program
+
+
+(to clean up: sudo rm /usr/local/bin/hello )
+
+
+
+Navigation with terminal
+
+> pwd
+Show current directory
+
+> ls
+List files
+
+> ls -la
+List all files (incl. hidden)
+
+> cd folder
+Change directory
+
+> cd ..
+Go up one level
+
+> cd
+or
+> cd ~
+Go to home directory
+
+Each user on the system has their
+home directory specified in the
+profile. ~ goes there
+
+
+
+Manipulating files & folders
+
+> mkdir name
+Create a folder
+
+> touch file.txt
+Create a file
+
+> rm file.txt
+Delete a file
+
+> rm -r folder/
+Delete folder and contents
+
+> cp file.txt new.txt
+Copy file.txt as new.txt
+
+> mv file.txt name.txt
+Rename file.txt to name.txt
+
+> mv file.txt ..
+Move file.txt to parent directory
+
+
+
+Contents of the file
+
+> cat file.txt
+Print entire file
+
+
+
+Searching
+
+> grep "ERROR" log.txt
+Search for "ERROR" text in log.txt file
+
+> find . -name "file.txt"
+Find file by name
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Brief
+
+
+In usability testing, a Brief is a document that
+outlines the key objectives of the usability testing.
+
+It is a guide to ensure everyone understands the
+purpose and expectations of the test.
+
+
+Brief should consist of the following:
+
+- [09] Executive Summary.
+- [01] Scope.
+- [02] Questions.
+- [03] Participants.
+- [04] Methods.
+- [05] Metrics.
+- [06] Schedule & Location.
+- [07] Equipment.
+- [08] Scenarios.
+
+[N] - number in the brackets is the suggestion
+in which order to creat this parts.
+
+
+
+What to test?
+- Your website or app which you have built.
+
+Why yours?
+- It will give you insights into your own
+assumptions about the user.
+
+
+1) Scope
+
+What is the scope of the test?
+
+- Do not test the whole website.
+- Test certain functionality or feature.
+- Answer question 'Why' you have chosen these features.
+- Be as specific as possible about what exactly you are testing.
+- Especially mention what you are not testing and why.
+
+
+2) Questions
+
+Add questions which you are trying to get answers for:
+
+- Can users find Search button?
+- Does dropdown menu work better than breadcrumbs?
+- Do users learn the interface in under 3 seconds?
+
+Explain why these questions matter for website owner.
+
+
+3) Participants
+
+What are the demographics of people you are testing?
+
+- Age, sex, level of education, income.
+
+How many people you are testing?
+
+Recommended is 5 people:
+
+- Can be your classmates.
+- Can be your friends outside the classroom.
+
+Why you have chosen this group of people?
+
+- This group should be the best match for the scope of your testing.
+
+No need in personal details (name, address, contact details).
+
+
+
+4) Methods
+
+What methods you will use in your test?
+
+- Heuristics (specify which heuristics).
+- Discovery (finding problems by observing users perform tasks).
+- Benchmark (test how well solutions perform).
+- Is your test moderated or not?
+
+-- Moderated - when there is a moderator who tells participants what to do.
+-- Not moderated - when participants have a task and should complete it individually.
+
+
+5) Metrics
+
+- What you will measure.
+- How will you measure it?
+- What data you will be collecting.
+- Why this data is important?
+- Are you sure that a metric will help you to answer your question?
+
+Examples of metrics:
+
+- Successful task completion.
+How many participants have completed the task?
+
+- Critical Errors.
+How many critical errors did participants make?
+What are critical errors?
+Why they matter for your test?
+
+- Non-critical Errors.
+- Error-free rate.
+How many participants completed the task without any errors?
+
+- Time on Task.
+How much time did participant spend on task?
+Is it long?
+Why this matters?
+
+- Happiness from using the feature.
+"Is this reservation process was easy to complete"
+Strongly Agree - Agree - Neutral - Disagree - Strongly Disagree
+
+- Comments or Recommendations from the participants.
+
+
+6) Schedule and Location
+
+When you plan to perform the tests?
+Where this will happen?
+It can be online.
+
+
+
+7) Equipment
+
+Which OS, computer or device your participants will be using for testing.
+
+
+
+8) Scenarios
+
+- 'Heart' of your test plan.
+- A general set of objectives that guides your test participants.
+- Each scenario provides a context in order to allow participant to better
+understand the activity.
+- What are the most important things that every user must be able
+ to accomplish on your application?
+- Create tasks that address your test goals.
+- Base your scenarios on what do you want your users to do?
+- What do they usually look for on your website?
+
+
+
+9) Executive Summary
+
+The whole plan summarized in 1-2 paragraphs.
+
+
+
+
+
+
+Thank you
