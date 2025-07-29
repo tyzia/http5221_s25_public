@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Network Tab Practice</title>
+    <!-- Intentionally broken CSS link to trigger 404 -->
+    <link rel="stylesheet" href="nonexistent-styles.css">
+    <style>
+        /* Basic styling that will be overridden if CSS loads */
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            color: #333;
+        }
+        .instructions {
+            background-color: #f0f7ff;
+            padding: 20px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            border-left: 4px solid #0066cc;
+        }
+        .broken-section {
+            background-color: #ffeeee;
+            padding: 15px;
+            border: 2px dashed #cc0000;
+            margin: 20px 0;
+        }
+        .task {
+            margin-bottom: 15px;
+            padding: 15px;
+            background-color: #f9f9f9;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+<h1>Network Tab Practice Page</h1>
+
+<div class="instructions">
+    <h2>Exercise Instructions:</h2>
+    <ol>
+        <li>Open DevTools (F12) and go to the Network tab</li>
+        <li>Refresh the page and monitor network requests</li>
+        <li>Complete the tasks below</li>
+    </ol>
+</div>
+
+<div class="broken-section">
+    <h2>This section should be styled by external CSS</h2>
+    <p>But the CSS file is intentionally missing to create a 404 error.</p>
+</div>
+
+<div class="task">
+    <h3>Task 1: Monitor Requests</h3>
+    <ul>
+        <li>Refresh with Network tab open</li>
+        <li>Find the failed request for <code>nonexistent-styles.css</code></li>
+        <li>Note the status code (404)</li>
+    </ul>
+</div>
+
+<div class="task">
+    <h3>Task 2: Headers Analysis</h3>
+    <ul>
+        <li>Click the failed request</li>
+        <li>In <strong>Request Headers</strong> find:
+            <ul>
+                <li><code>User-Agent</code></li>
+                <li><code>Accept</code></li>
+            </ul>
+        </li>
+        <li>In <strong>Response Headers</strong> find:
+            <ul>
+                <li><code>Status</code></li>
+                <li><code>Content-Type</code></li>
+            </ul>
+        </li>
+    </ul>
+</div>
+
+<div class="task">
+    <h3>Bonus: Simulate Slow Network</h3>
+    <ul>
+        <li>In Network tab, try <strong>Slow 3G</strong> throttling</li>
+        <li>Refresh and observe request timing</li>
+    </ul>
+</div>
+
+<script>
+    // This will generate a network request
+    fetch('nonexistent-api.json')
+        .then(response => {
+            if (!response.ok) {
+                console.log('API request failed with status:', response.status);
+            }
+        })
+        .catch(error => console.log('Fetch error:', error));
+</script>
+</body>
+</html>

@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DevTools Sources Tab & Overrides Demo</title>
+    <!-- Intentionally broken CSS link -->
+    <link rel="stylesheet" href="broken-styles.css">
+    <style>
+        /* Basic fallback styling */
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            color: #333;
+            background-color: #f9f9f9;
+            line-height: 1.6;
+        }
+        .instructions {
+            background-color: #f0f7ff;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            border-left: 5px solid #2980b9;
+        }
+        .demo-area {
+            background-color: #ffeeee;
+            padding: 20px;
+            border: 2px dashed #cc0000;
+            margin: 25px 0;
+        }
+        .success-area {
+            display: none;
+            background-color: #eeffee;
+            padding: 20px;
+            border: 2px solid #27ae60;
+            margin: 25px 0;
+            animation: fadeIn 0.5s ease-in;
+        }
+        .task {
+            margin-bottom: 20px;
+            padding: 15px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        code {
+            background-color: #ebedef;
+            padding: 2px 5px;
+            border-radius: 3px;
+            font-family: monospace;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+<h1>DevTools Sources Tab: Overrides Demo</h1>
+
+<div class="instructions">
+    <h2>Lecture: Understanding Overrides</h2>
+    <p>Overrides allow you to:</p>
+    <ul>
+        <li>Make <strong>persistent changes</strong> to files directly in DevTools</li>
+        <li>Test fixes without modifying original source files</li>
+        <li>Debug CSS, HTML, and JavaScript in real-time</li>
+    </ul>
+</div>
+
+<div class="demo-area">
+    <h2>Current State: CSS Not Loaded</h2>
+    <p>This red dashed border indicates our <code>broken-styles.css</code> failed to load.</p>
+    <p>Check the <strong>Network tab</strong> to see the 404 error.</p>
+</div>
+
+<div class="success-area" id="successArea">
+    <h2>Success State: CSS Loaded!</h2>
+    <p>This green border appears when you fix the CSS path using Overrides.</p>
+</div>
+
+<div class="task">
+    <h3>Hands-On Exercise: Using Overrides</h3>
+
+    <div class="task-step">
+        <h4>Step 1: Enable Overrides</h4>
+        <ol>
+            <li>Open DevTools (<kbd>F12</kbd> or <kbd>Ctrl+Shift+I</kbd>)</li>
+            <li>Go to <strong>Sources</strong> tab</li>
+            <li>Select <strong>Overrides</strong> (click <code>>></code> if hidden)</li>
+            <li>Choose an empty folder on your computer</li>
+            <li>Click <strong>Allow</strong> when prompted</li>
+        </ol>
+        <div class="tip">
+            <strong>Tip:</strong> This creates a local copy where DevTools saves your changes.
+        </div>
+    </div>
+
+    <div class="task-step">
+        <h4>Step 2: Fix the CSS Path</h4>
+        <ol>
+            <li>In Sources tab, find this HTML file under <strong>Page</strong></li>
+            <li>Change <code>href="broken-styles.css"</code> to <code>href="styles.css"</code></li>
+            <li>Save (<kbd>Ctrl+S</kbd>/<kbd>Cmd+S</kbd>)</li>
+            <li>Refresh the page - changes will persist!</li>
+        </ol>
+        <div class="tip">
+            <strong>Note:</strong> The green success section should now appear.
+        </div>
+    </div>
+
+    <div class="task-step">
+        <h4>Step 3: Verify in Network Tab</h4>
+        <ol>
+            <li>Go to <strong>Network</strong> tab</li>
+            <li>Refresh and confirm <code>styles.css</code> loads with status 200</li>
+            <li>Notice the 404 error for <code>broken-styles.css</code> is gone</li>
+        </ol>
+    </div>
+</div>
+
+<div class="task">
+    <h3>Troubleshooting</h3>
+    <ul>
+        <li><strong>Overrides not working?</strong> Try:
+            <ul>
+                <li>Ensure you selected a folder and clicked "Allow"</li>
+                <li>Check Chrome is updated to latest version</li>
+                <li>Restart DevTools if changes don't appear</li>
+            </ul>
+        </li>
+        <li><strong>Want to reset?</strong> Disable overrides in Sources tab or delete the override folder.</li>
+    </ul>
+</div>
+
+<script>
+    // Auto-show success when CSS loads
+    const link = document.querySelector('link[rel="stylesheet"]');
+    link.onload = function() {
+        document.getElementById('successArea').style.display = 'block';
+        document.querySelector('.demo-area').style.display = 'none';
+    };
+
+    // Show override status
+    console.log('Override demo ready! Fix the CSS path to begin.');
+</script>
+</body>
+</html>

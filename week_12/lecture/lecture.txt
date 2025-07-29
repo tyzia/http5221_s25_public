@@ -1,0 +1,391 @@
+
+
+
+
+
+
+Plan
+
+
+
+
+git stash
+
+devtools
+Elements tab
+Console tab
+Network tab
+Sources tab
+
+Collecting data
+Compiling data
+Observing a User Test (Krug Method)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+git stash
+
+
+
+If I am in the middle of something
+and need to switch between tasks
+without committing incomplete work,
+I will use git stash.
+
+
+Git Stash allows to temporarily save changes
+that aren’t ready to be committed.
+
+
+
+
+> git stash
+Save all changes in temp location (stash)
+
+> git stash list
+See all changes in stash
+
+Example
+
+stash@{0}: WIP on main: abc1234 Initial commit
+
+> git stash apply
+Restore the most recent change from stash
+The change is still part of stash.
+
+> git stash pop
+Restore the most recent change and delete it from stash
+
+
+
+
+
+
+
+
+
+
+DevTools
+
+
+
+
+
+
+
+
+
+
+
+CSS in devtools
+
+The Elements tab in Chrome DevTools lets you inspect,
+edit, and debug the DOM (Document Object Model) in real time.
+
+
+demo: css/css.html
+
+- how to inspect DOM
+
+Go from html to body and then to p
+
+Styles
+- how to interpret CSS styles
+- topmost css rule in the list - the one which is applied
+- crossed out css rule = overridden
+- uncheck one by one and show how color changes
+- uncheck everything and still color is black (default)
+
+- show Computed tab
+- show how to add styles in browser (color: purple, color: white)
+- show how to update existing css rule value
+- show how to add more styles to existing rule (font-size)
+
+Elements
+- show how to delete elements from DOM
+- show how to 'hide' elements in DOM ('h)
+- show how to add elements to DOM (Edit as HTML) (<strong>bold text</strong>)
+- show how to edit text of element
+
+Margins, padding, borders
+- show what is margin
+- show what is padding
+- show what is border
+
+
+Console in DevTools
+
+The Console lets you run JavaScript,
+debug errors, and interact with the page.
+
+
+$0
+
+When you inspect an element, it becomes $0 in the Console.
+
+$0.textContent = 'hello world'
+$0.style.backgroundColor = "lightblue";
+
+
+window
+
+The window object represents the browser’s global scope.
+
+Create our own properties in window object:
+
+window.myVar = "DevTools Rocks!";
+
+
+
+
+Network Tab
+
+The Network Tab in Chrome DevTools is a
+powerful tool for debugging web requests.
+It logs every network activity
+(HTML, CSS, JS, API calls, images, etc.)
+when a page loads or interacts with a server.
+
+
+Preserve Log
+Check this to keep logs after page reloads.
+
+Disable Cache
+Check this to ensure fresh requests (no cached responses).
+
+
+Each entry in the Network tab represents a
+request-response cycle.
+
+Headers
+Request & response metadata (URL, method, status, headers).
+
+Payload
+Data sent with the request (for POST/PUT).
+
+Response
+The data returned from the server (JSON, HTML, etc.).
+
+Timing
+How long each request phase took (DNS, SSL, waiting, download).
+
+
+Headers
+
+Request Headers (Sent by the Browser)
+These are sent to the server when making a request.
+
+Example:
+
+Host: api.example.com
+The domain being requested.
+
+User-Agent: Mozilla/5.0.
+Identifies the browser/device.
+
+Accept: application/json
+What data formats our browser can handle.
+
+Authorization: Bearer token123
+Used for authentication.
+
+Content-Type: application/json
+Specifies request body format (for POST/PUT).
+
+
+
+Response Headers (Sent by the Server)
+These come back from the server with the response.
+
+Example:
+
+Content-Type: text/html
+Tells the browser how to interpret the response.
+
+Cache-Control: max-age=3600
+Caching rules for the browser.
+
+Set-Cookie: sessionid=abc123
+Sets cookies in the browser.
+
+Status: 200 OK
+HTTP status code (success/error).
+
+
+404 error
+
+demo/demo.html (change path to styles.css)
+
+demo: medium.com
+
+
+
+
+Sources Tab
+
+The Sources tab in Chrome DevTools allows you to:
+
+- View all loaded files (HTML, CSS, JS)
+- Debug JavaScript (breakpoints, stepping through code)
+- Modify files permanently using Overrides
+
+
+Overrides let you save changes to files
+directly from DevTools without editing source files.
+
+Why Use Overrides?
+
+- Test CSS/JS changes without modifying original files
+- Debug issues by tweaking code live
+- Persist changes across page refreshes
+
+How to Enable Overrides
+
+- Open DevTools → Sources tab
+- Click Overrides (if hidden, click >> to find it)
+- Select an empty folder (Chrome will save changes here)
+- Click Allow when prompted for permissions
+
+
+
+
+
+demo: overrides/overrides.html
+
+
+
+
+
+
+
+Practice
+
+practice/console.html
+practice/elements.html
+practice/network.html
+practice/overrides.html
+
+
+
+
+
+
+
+
+
+
+
+
+
+Usability
+
+
+
+
+
+
+
+
+Collecting data from Usability Test
+
+Plan for your data collection workflow.
+
+- How you will be taking notes.
+- Which software you will use: Google Forms, Excel.
+
+For example
+
+Note observations in two columns:
+
+1) Questions/Tasks
+"The task is to find how to contact us"
+
+2) What happened during the test
+"User clicked on 'Home' button instead of 'Contact us'"
+
+Task analysis
+
+When you observe how participants perform
+the tasks pay attention to:
+
+- What participants should know before starting the task?
+- What participants should know in order to complete the task?
+- What triggers participant to start the task?
+- How will participants know that task is complete?
+- What tools/information participants use to perform the task?
+
+
+How to perform tests
+
+- Set up test environment. Make sure that your website works.
+- Explain the purpose of the test, brief them on the tasks.
+- Each test should be performed in exact same manner according to test script.
+This ensures accurate data collection.
+
+
+If test is moderated, responsibilities:
+
+- Guide participants
+- Observe & take notes
+
+
+How to create a good test script?
+
+- Intro
+
+Set comfortable environment.
+Tell how long the test will be.
+Get their permissions to record the test if necessary.
+Ask demographic questions.
+Ask if participant has any questions.
+
+- Define tasks
+
+Explain 3-5 task scenarios.
+Prepare questions you want to ask during/after task completion.
+
+- Post-study
+
+After task is completed ask for a feedback.
+General impression of the test.
+Is website useful?
+
+
+
+Data Compilation
+
+Prepare your data for analysis
+
+For quantitative data (e.g. How many errors participant made?):
+
+- Sum up all the values.
+
+For qualitative data (e.g. Is error message visible?):
+
+- Write down the full answers from your participants or your observations.
+
+
+Usability Test Demo by Steve Krug:
+
+https://www.youtube.com/watch?v=1UCDUOB_aS8
+
+Test_Script_Example (PDF)
+
+https://sensible.com/downloads/test-script-web.pdf
+
+
+
+
+
+Thank you

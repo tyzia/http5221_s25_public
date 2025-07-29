@@ -1,0 +1,21 @@
+body {
+    font-family: sans-serif;
+    padding: 20px;
+}
+img {
+    margin: 10px 0;
+}
+pre {
+    background: #f4f4f4;
+    padding: 10px;
+    border-left: 3px solid #999;
+}
+.small {
+    height: 200px;
+}
+.form-field {
+    margin: 20px;
+}
+fieldset {
+    margin-bottom: 20px;
+}

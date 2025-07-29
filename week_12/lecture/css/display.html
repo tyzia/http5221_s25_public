@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Display Types Demo</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        h2 {
+            color: #333;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 10px;
+        }
+
+        .container {
+            background-color: #f9f9f9;
+            border: 1px dashed #ccc;
+            padding: 15px;
+            margin-bottom: 30px;
+        }
+
+        /* Block Elements Demo */
+        .block-demo div {
+            background-color: #ff9999;
+            padding: 10px;
+            margin: 5px 0;
+            border: 2px solid #ff3333;
+        }
+
+        /* Inline Elements Demo */
+        .inline-demo span {
+            background-color: #99ff99;
+            padding: 10px;
+            margin: 5px;
+            border: 2px solid #33ff33;
+        }
+
+        /* Inline-block Elements Demo */
+        .inline-block-demo div {
+            display: inline-block;
+            background-color: #9999ff;
+            padding: 10px;
+            margin: 5px;
+            border: 2px solid #3333ff;
+            width: 100px;
+            height: 60px;
+        }
+    </style>
+</head>
+<body>
+<h1>CSS Display Types Demo</h1>
+
+<!-- Block Elements Demo -->
+<div class="container block-demo">
+    <h2>Block Elements (default for div, p, etc.)</h2>
+    <p>Block elements take full width and stack vertically:</p>
+    <div>Block Box 1</div>
+    <div>Block Box 2</div>
+    <div>Block Box 3</div>
+    <p>Notice how each box starts on a new line and takes full width.</p>
+</div>
+
+<!-- Inline Elements Demo -->
+<div class="container inline-demo">
+    <h2>Inline Elements (default for span, a, etc.)</h2>
+    <p>Inline elements flow horizontally and ignore width/height:</p>
+    <span>Inline Box 1</span>
+    <span>Inline Box 2</span>
+    <span>Inline Box 3</span>
+    <p>Notice how boxes flow together horizontally, and padding/margin only affects horizontal space.</p>
+</div>
+
+<!-- Inline-block Elements Demo -->
+<div class="container inline-block-demo">
+    <h2>Inline-block Elements (hybrid)</h2>
+    <p>Inline-block elements flow horizontally but respect width/height:</p>
+    <div>Inline-block 1</div>
+    <div>Inline-block 2</div>
+    <div>Inline-block 3</div>
+    <p>Notice how boxes flow horizontally but maintain their specified dimensions.</p>
+</div>
+</body>
+</html>

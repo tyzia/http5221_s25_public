@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DevTools Console Practice</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f8f9fa;
+        }
+
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+        }
+
+        .container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        #target-paragraph {
+            color: #e74c3c;
+            padding: 15px;
+            border: 2px dashed #3498db;
+            margin: 20px 0;
+            background-color: #f1f1f1;
+        }
+
+        .instructions {
+            background-color: #e8f4f8;
+            padding: 15px;
+            border-left: 4px solid #3498db;
+            margin-bottom: 20px;
+        }
+
+        .task {
+            margin-bottom: 15px;
+            padding: 15px;
+            background-color: #f9f9f9;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>DevTools Console Practice</h1>
+
+    <div class="instructions">
+        <h2>Exercise Instructions:</h2>
+        <ol>
+            <li>Right-click the red paragraph below and select "Inspect"</li>
+            <li>Switch to the Console tab to complete the tasks</li>
+        </ol>
+    </div>
+
+    <div class="task">
+        <h3>Task 1: Using $0</h3>
+        <p id="target-paragraph">This is the paragraph you'll modify using $0. Right-click me and inspect!</p>
+        <ul>
+            <li>Change this text to: "I love DevTools!"</li>
+            <li>Make the background lightblue</li>
+        </ul>
+    </div>
+
+    <div class="task">
+        <h3>Task 2: Window Object</h3>
+        <ul>
+            <li>Create a global variable: window.studentName = "Your Name"</li>
+            <li>Log it: console.log(studentName)</li>
+        </ul>
+    </div>
+
+    <div class="task">
+        <h3>Bonus Challenge:</h3>
+        <p>Try these additional commands in the Console:</p>
+        <ul>
+            <li>$0.style.color = "green"</li>
+            <li>$0.style.fontSize = "24px"</li>
+            <li>console.dir($0) - to see all properties</li>
+        </ul>
+    </div>
+</div>
+
+<script>
+    // This script is here to demonstrate console interaction
+    console.log('Page loaded! Ready for DevTools practice.');
+
+    // You'll be working with the paragraph element above
+    // All your work will be done in the Console tab
+</script>
+</body>
+</html>

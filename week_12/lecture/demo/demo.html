@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>DevTools Network Tab Demo</title>
+    <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+<h1>DevTools Network Tab Demo</h1>
+
+<h2>Static Content</h2>
+<p>This is a paragraph. Below is an image that loads successfully:</p>
+<img class="small" src="https://images.unsplash.com/Ys-DBJeX0nE.JPG?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="unsplash Image" />
+
+<p>This image is broken (404):</p>
+<img src="https://via.placeholder.com/does-not-exist.jpg" alt="Broken Image" />
+
+<h2>Dynamic Content (XHR / Fetch)</h2>
+<button onclick="makeGetRequest()">Make GET Request</button>
+<button onclick="makePostRequest()">Make POST Request</button>
+<button onclick="makeFailRequest()">Make Failing Request (500)</button>
+
+<pre id="responseArea"></pre>
+
+<h2>Form Submission</h2>
+<form id="demoForm">
+    <fieldset>
+        <legend>Example of form submit</legend>
+        <div class="form-field">
+            <label for="title">Title</label>
+            <input type="text" id="title" name="title" placeholder="Title" required />
+        </div>
+        <div class="form-field">
+            <label for="body">Body</label>
+            <input type="text" id="body" name="body" placeholder="Body" required />
+        </div>
+    </fieldset>
+    <button type="submit">Submit via Fetch</button>
+</form>
+
+<script>
+    function makeGetRequest() {
+        fetch('https://jsonplaceholder.typicode.com/posts/1')
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('responseArea').textContent = JSON.stringify(data, null, 2);
+            });
+    }
+
+    function makePostRequest() {
+        fetch('https://jsonplaceholder.typicode.com/posts', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ title: 'foo', body: 'bar', userId: 1 })
+        })
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('responseArea').textContent = JSON.stringify(data, null, 2);
+            });
+    }
+
+    function makeFailRequest() {
+        fetch('https://httpstat.us/500')
+            .then(response => {
+                document.getElementById('responseArea').textContent = 'Status: ' + response.status;
+            });
+    }
+
+    document.getElementById('demoForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        const formData = new FormData(e.target);
+        const title = formData.get('title');
+        const body = formData.get('body');
+        const userId = 999;
+        fetch('https://jsonplaceholder.typicode.com/posts', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ title, body, userId })
+        })
+            .then(res => res.json())
+            .then(data => {
+                document.getElementById('responseArea').textContent = JSON.stringify(data, null, 2);
+            });
+    });
+</script>
+</body>
+</html>

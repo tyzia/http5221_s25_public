@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DevTools Elements Tab Exercise</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+        }
+
+        .container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        /* This rule sets the initial color */
+        .content p {
+            color: #3498db;
+            border: 1px solid lightgray;
+            padding: 10px;
+            margin: 20px 0;
+            transition: all 0.3s ease;
+        }
+
+        /* This rule could override the color */
+        .special-text {
+            color: #2ecc71;
+            font-weight: bold;
+        }
+
+        .instructions {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border-left: 4px solid #3498db;
+            margin-bottom: 20px;
+        }
+
+        .task {
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px dashed #ddd;
+        }
+        .box-model-demo {
+            border: 2px solid #e74c3c;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>DevTools Elements Tab Practice</h1>
+
+    <div class="instructions">
+        <h2>Exercise Instructions:</h2>
+        <ol>
+            <li>Right-click on the paragraph below and select "Inspect"</li>
+            <li>Complete the tasks in the Elements tab</li>
+        </ol>
+    </div>
+
+    <div class="task">
+        <h3>Task 1: Inspect and Modify DOM</h3>
+        <div class="content">
+            <p class="special-text">This is the paragraph you'll work with. Right-click me!</p>
+        </div>
+    </div>
+
+    <div class="task">
+        <h3>Task 2: Box Model Demonstration</h3>
+        <div class="box-model-demo">
+            <p>This paragraph should have visible borders, padding and margins to demonstrate the box model.</p>
+        </div>
+    </div>
+
+    <div class="task">
+        <h3>Tasks to Complete:</h3>
+        <h4>Task 1</h4>
+        <ul>
+            <li>Change the paragraph text to "Hello, DevTools!"</li>
+            <li>Identify which CSS rule sets the color</li>
+            <li>Disable rules to see how styling changes</li>
+            <li>Add new CSS rules (purple text, 20px font-size)</li>
+        </ul>
+        <h4>Task 2</h4>
+        <ul>
+            <li>Add padding 20px and observe Box Model</li>
+            <li>Add border 1px solid black and observe Box Model</li>
+            <li>Delete then undo the paragraph element</li>
+        </ul>
+    </div>
+</div>
+</body>
+</html>

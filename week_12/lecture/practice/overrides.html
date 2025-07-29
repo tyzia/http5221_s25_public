@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Network Tab Practice</title>
+    <!-- Intentionally broken CSS link -->
+    <link rel="stylesheet" href="nonexistent-styles.css">
+    <style>
+        /* Basic fallback styling */
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            color: #333;
+            background-color: #f9f9f9;
+        }
+        .instructions {
+            background-color: #f0f7ff;
+            padding: 20px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            border-left: 4px solid #0066cc;
+        }
+        .broken-section {
+            background-color: #ffeeee;
+            padding: 15px;
+            border: 2px dashed #cc0000;
+            margin: 20px 0;
+        }
+        .task {
+            margin-bottom: 15px;
+            padding: 15px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        .fixed-section {
+            display: none;
+            padding: 15px;
+            background-color: #eeffee;
+            border: 2px solid #00aa00;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+<h1>Network Tab Overrides Practice Page</h1>
+
+<div class="instructions">
+    <h2>Exercise Instructions:</h2>
+    <ol>
+        <li>Open DevTools (F12) → Network tab</li>
+        <li>Complete the tasks below</li>
+    </ol>
+</div>
+
+<div class="broken-section">
+    <h2>This section should be styled by external CSS</h2>
+    <p>The red dashed border indicates missing CSS file.</p>
+</div>
+
+<div class="fixed-section" id="fixedSection">
+    <h2>Success! CSS is now loaded</h2>
+    <p>This section appears when you fix the CSS path.</p>
+</div>
+
+<div class="task">
+    <h3>Task 1: Enable Overrides</h3>
+    <ol>
+        <li>Go to <strong>Sources</strong> tab</li>
+        <li>Open the <strong>Overrides</strong> tab (if not visible, see below)</li>
+        <li>Select an empty folder on your computer</li>
+        <li>Allow DevTools access when prompted</li>
+    </ol>
+
+    <div style="background:#fff8e1;padding:10px;margin-top:10px;">
+        <strong>Don't see Overrides?</strong> Try:
+        <ul>
+            <li>Click the <strong>>></strong> icon in Sources tab to find Overrides</li>
+            <li>Update Chrome to latest version</li>
+            <li>Alternatively, use <strong>Local Overrides</strong> in Chrome Flags</li>
+        </ul>
+    </div>
+</div>
+
+<div class="task">
+    <h3>Task 2: Fix the CSS Path</h3>
+    <ol>
+        <li>In Sources tab, find this HTML file</li>
+        <li>Change <code>nonexistent-styles.css</code> to <code>styles.css</code></li>
+        <li>Save (Ctrl+S/Cmd+S)</li>
+        <li>Refresh page to see changes</li>
+    </ol>
+</div>
+
+<script>
+    // Check if our CSS loaded successfully
+    function checkCSSLoaded() {
+        const style = getComputedStyle(document.querySelector('.fixed-section'));
+        if (style.display !== 'none') {
+            document.getElementById('fixedSection').style.display = 'block';
+            document.querySelector('.broken-section').style.display = 'none';
+        }
+    }
+
+    // Check every second
+    setInterval(checkCSSLoaded, 1000);
+</script>
+</body>
+</html>
