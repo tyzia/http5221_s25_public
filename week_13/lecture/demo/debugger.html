@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Breakpoints</title>
+    <style>
+        p { font-size: 48px; }
+    </style>
+</head>
+<body>
+<p>$100 + 10% tax = $<span id="tax"></span></p>
+  <script>
+      function calculateTotal(price) {
+          const tax = calculateTax(price);
+          // console.log(tax);
+          const total = price + tax;
+          return total;
+      }
+
+      function calculateTax(price) {
+          const taxAmount = '10%';
+          const tax = price * taxAmount;
+          console.log(tax);
+          // console.log(price);
+          // console.log(taxAmount);
+          // console.log('tax is calculated as ', tax)
+          return tax;
+      }
+
+      document.getElementById('tax').textContent = calculateTotal(100);
+  </script>
+</body>
+</html>

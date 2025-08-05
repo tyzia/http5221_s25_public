@@ -1,0 +1,359 @@
+
+
+
+
+Plan
+
+Data Analysis
+Report
+Debugging
+
+
+
+
+
+
+
+
+
+
+
+
+
+Data Analysis
+
+Involves reviewing collected data to identify:
+
+- Patterns
+- Pain points
+- Insights
+
+Steps include:
+
+Quantitative Analysis – Measuring metrics
+(completion rates, time efficiency, and error frequency).
+
+
+Example
+
+Question:
+"Are users regularly able to complete the 'checkout'
+task in under 120 seconds?"
+
+We collected the following data
+from usability test:
+
+96 sec - Average completion
+88 sec - Min completion
+104 sec - Max completion
+0 - Critical errors observed
+
+Conclusion:
+'checkout' task does not require a redesign.
+
+Facts, observed during tests, should support your conclusion.
+
+
+Question to keep in mind when creating the report
+
+What you did?
+Why you did it?
+How you did it?
+What you have learned?
+What should be done?
+What data backs up your findings?
+
+Reporting Findings – Summarize action items to improve usability.
+
+- Things to improve
+- Things to investigate further
+
+The goal of the report is to point to
+problems and propose solutions.
+
+- Keep solutions specific & positive, provide details.
+- Present pros & cons.
+- Organize your solutions based on severity
+- Don't recommend making small changes to a big problem.
+- Align with the client's priorities & help to prioritize.
+- Use formal language.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Debugging
+
+
+What is debugging?
+
+In 1947, while working on the Harvard Mark II
+electromechanical computer, computer scientist
+Grace Hopper and her team encountered an unexpected malfunction.
+
+After investigating, they discovered an actual moth
+(bug) trapped in Relay #70 of the machine,
+disrupting its operation.
+
+Nowadays, debugging is the way to find the error (bug)
+in code and fix it.
+
+
+When a program doesn’t behave as expected,
+developers use debugging techniques to:
+
+1) Locate the source of the problem.
+2) Understand why the error occurred.
+3) Apply a fix to ensure the code runs correctly.
+
+
+Common types of bugs in JavaScript
+
+- Syntax errors
+- Runtime errors
+- Logical errors
+
+
+Syntax errors (SyntaxError)
+
+- Occur when grammar is wrong.
+- Prevent the script from running at all.
+- Often caught by code editors (VS Code, IntelliJ).
+- Easy to debug.
+
+demo/syntax_error.html
+
+How to debug Syntax errors:
+
+- Check your IDE (VS Code, IntelliJ).
+- Check DevTools console
+-- it will have file name and line number
+   where error occurred
+
+
+Runtime errors (TypeError or ReferenceError)
+
+- Occur while the code is executing
+(after syntax checks pass).
+- Often caused by invalid operations.
+- Accessing properties of null or undefined.
+- Calling non-existent functions.
+- You don't usually see the error, until you
+run the app.
+- These are harder to debug.
+
+
+Example
+
+console.lg('Hi'); -> TypeError
+nonExistentFunction(); -> ReferenceError
+
+Why console.lg() is TypeError and not ReferenceError?
+
+console.lg()
+- console has no property called lg
+- JavaScript returns undefined.
+- undefined() trying to call as a function
+- undefined is not a function type -> hence TypeError
+
+nonExistentFunction()
+- You call or reference something that
+doesn’t exist -> hence ReferenceError
+
+demo/runtime_error.html
+
+
+Why we have syntax errors and runtime errors?
+Why not all errors are runtime?
+
+If both Syntax errors and Runtime errors
+appear when we run our app, why they are
+different?
+
+Let's see how JS engine works
+when we run our app:
+
+1) Parsing Phase, JS engine:
+
+- Reads your code.
+- Checks for grammatical correctness.
+- If syntax mistake found -> SyntaxError thrown
+- The code never runs.
+
+Example
+
+1: document.getElementsByTagName('h1')[0].textContent = 'Hello world';
+2: console.log('Hello world'; <- SyntaxError
+
+Because there is a SyntaxError on line 2,
+you don't see <h1>Hello world</h1> from line 1.
+
+The code from line 1 has never run, due to SyntaxError
+during Parsing Phase.
+
+
+2) Execution Phase
+
+- Only if parsing succeeds, the engine starts
+executing the code.
+- At this phase Runtime errors (TypeError or ReferenceError)
+may occur.
+
+
+Logical errors
+
+- The code runs without crashing.
+- App produces incorrect results.
+- Hardest to detect (no error message).
+
+demo/logical_error.html
+
+
+
+
+
+
+
+Breakpoints
+
+Breakpoints allow you to pause JavaScript execution
+at specific line to inspect:
+
+- variables
+- call stacks
+- program flow
+
+To set a breakpoint:
+
+- Open DevTools
+- Go to Sources tab
+- Select Page
+- Find file
+- Click the line number where to pause
+
+demo/breakpoints.html
+
+Once breakpoint is set, reload the page.
+It will pause and you will have options:
+
+- Resume Execution (F8)
+- Step over next function call (F10)
+- Step into next function call (F11)
+- Step out of current function (SHIFT + F11)
+
+
+F8: Runs the app.
+F10: Finishes line and jumps to next line.
+F11: Goes inside function on current line (if exist), or jumps to next line.
+Shift+F11: Finishes current function and jumps to the line right after.
+
+
+DOM breakpoints
+
+- Select element
+- Right click
+- Break on ->
+  Subtree modifications
+  Attribute modifications
+
+Subtree modifications - when child elements
+of a DOM element are updated.
+
+Attribute modifications - when attributes of
+a DOM element are updated.
+
+demo/dom_breakpoints.html
+
+
+
+Event Listener Breakpoints
+
+Allow to pause JavaScript execution whenever
+a specific type of event (click, submit, etc)
+is triggered on any element in the page.
+
+When useful?
+
+Debugging Mysterious Event Triggers.
+When you don’t know which JS code (handler)
+is causing an event (maybe yours or third-party).
+
+How to enable?
+
+- Open DevTools.
+- Go to Sources tab.
+- Expand the "Event Listener Breakpoints" panel
+- Select category and event
+Example: Check Mouse → click to pause on any click event.
+
+If you click on a button now,
+the debugger will pause execution
+and jump to the first line of the handler.
+
+If there is no event listener attached,
+the debugger will not pause.
+
+Example, click somewhere on the page
+and debugger will not pause the execution.
+
+
+demo/event_listener_breakpoints.html
+
+
+
+
+
+
+Debugging techniques
+
+debugger
+
+You can add 'debugger' in your JS
+code to pause the execution.
+You need to open devtools in order
+to see the pause.
+
+demo/debugger.html
+
+
+console.log()
+
+Log values to the console.
+Easiest way to debug.
+
+demo/debugger.html
+
+Let's say I want to understand
+why I get NaN?
+
+Add to calculateTax():
+
+console.log(price);
+console.log(taxAmount);
+console.log(tax);
+
+I can add labels to what I see
+in console:
+
+console.log('tax is calculated as ', tax)
+
+
+
+
+
+
+
+
+
+
+
+Thank you

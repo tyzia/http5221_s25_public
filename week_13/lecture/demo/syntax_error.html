@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Syntax Error</title>
+</head>
+<body>
+  <h1></h1>
+  <script>
+      document.getElementsByTagName('h1')[0].textContent = 'Hello world';
+      console.log('Hello world'; // missing )
+  </script>
+</body>
+</html>

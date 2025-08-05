@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Logical Error</title>
+    <style>
+        p { font-size: 48px; }
+    </style>
+</head>
+<body>
+<p>2 + 3 = <span id="sum"></span></p>
+<p>2 x 3 = <span id="mult"></span></p>
+  <script>
+
+      function sum(a, b) {
+          return a * b;
+      }
+
+      function mult(a, b) {
+          a * b;
+      }
+
+      document.getElementById('sum').textContent = sum(2, 3);
+      document.getElementById('mult').textContent = mult(2, 3);
+
+  </script>
+</body>
+</html>

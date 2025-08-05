@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DOM Breakpoints</title>
+    <style>
+        .highlight { background-color: yellow; }
+        div {
+            margin-bottom: 30px;
+        }
+        .buttons {
+            margin-top: 30px;
+        }
+    </style>
+</head>
+<body>
+<h1>DOM Breakpoint Demo</h1>
+
+<div id="attribute-demo">Click button <code>Change Div Class</code> to see yellow background color here.</div>
+
+<p>Example list below with one item</p>
+<ul id="subtree-demo">
+    <li>Original item #1</li>
+</ul>
+
+<div class="buttons">
+    <button id="add-item">Add List Item</button>
+    <button id="change-class">Change Div Class</button>
+</div>
+
+<script>
+    // 1) Add or remove .highlight (Attribute Modification)
+    document.getElementById('change-class').addEventListener('click', () => {
+        const div = document.getElementById('attribute-demo');
+        div.classList.toggle('highlight');
+    });
+
+    // 2) Add list item (Subtree Modification)
+    document.getElementById('add-item').addEventListener('click', () => {
+        const ul = document.getElementById('subtree-demo');
+        const li = document.createElement('li');
+        li.textContent = 'New item ' + (ul.children.length + 1);
+        ul.appendChild(li);
+    });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    // Many-many lines below
+    document.getElementById('add-item').addEventListener('click', () => {
+        const liElements = Array.from(document.getElementsByTagName('li'));
+        liElements.forEach(el => el.textContent = '');
+    });
+</script>
+</body>
+</html>

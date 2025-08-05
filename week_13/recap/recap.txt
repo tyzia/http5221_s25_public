@@ -1,0 +1,169 @@
+Recap from Week 11
+(delivered on Week 12)
+
+
+Collecting data from Usability Test
+
+Plan how you will be collecting data:
+
+- Taking notes
+- Using Google Forms, Excel
+- Using recording
+
+Each test should be performed in exact same manner.
+To ensure accuracy of the test - use test script.
+
+Test script structure:
+
+- Intro
+
+Set comfortable environment.
+Make sure your website works.
+Explain the purpose of the test, brief the tasks.
+What triggers the start of test.
+What is considered the end of the test.
+Which tools/info they can use.
+Tell how long the test will be.
+Get their permissions to record the test if necessary.
+Ask demographic questions.
+Ask if participant has any questions.
+
+- Define tasks
+
+Explain 3-5 task scenarios.
+Prepare questions you want to ask
+during/after task completion.
+
+- Post-study
+
+After task is completed ask for a feedback.
+General impression of the test.
+
+
+Data Compilation
+
+- Get average values for quantitative data
+(time, clicks, errors, etc)
+
+- Summarise qualitative data
+ (feedback, observations, answers from participants)
+
+
+Usability Test demo by Steve Krug:
+
+https://www.youtube.com/watch?v=1UCDUOB_aS8
+https://sensible.com/downloads/test-script-web.pdf
+
+
+
+
+git stash
+
+Temporarily save not committed changes.
+
+> git stash list
+See all changes in stash
+
+> git stash apply
+Restore the most recent change from stash
+
+> git stash pop
+Restore the most recent change and delete it from stash
+
+DevTools
+
+Elements tab allow to inspect DOM elements of the page.
+
+You can:
+
+'h' = hide element
+'delete' = delete element
+CTRL + Z = restore element
+
+Styles tab shows all CSS related to the
+selected element.
+
+Computed tab shows computed CSS styles (final styles).
+
+
+Console Tab
+
+Allows to debug your JS code.
+
+$0 - reference to the selected element.
+
+You can use $0 to change the element with JS.
+
+Example
+
+$0.textContent = 'hello world'
+$0.style.backgroundColor = "lightblue";
+
+You can inspect objects in console.
+
+window
+
+The window object represents the browser’s global scope.
+
+Create our own properties in window object:
+
+window.myVar = "DevTools Rocks!";
+
+
+Network tab
+
+Shows all network activity in the browser.
+
+Each entry represents a request-response cycle.
+
+- Headers - Metadata (URL, method, status, headers).
+- Payload - Data sent to the server.
+- Response - Data returned from the server.
+- Timing - How long request took.
+
+Request Headers
+
+User-Agent: Mozilla/5.0.
+Identifies the browser.
+
+Accept: application/json
+Data format which our browser can handle.
+
+Authorization: Bearer token123
+Used for authentication.
+
+Content-Type: application/json
+Format of the data sent to the server.
+
+
+Response Headers
+
+Content-Type: text/html
+Data format which server sent back
+
+Cache-Control: max-age=3600
+Caching rules for the browser.
+
+Set-Cookie: sessionid=abc123
+Sets cookies in the browser.
+
+
+Sources Tab
+
+Show all files involved in the running of our page.
+
+Overrides let you save changes to files
+directly from DevTools without editing source files.
+
+Why use overrides?
+
+- Test CSS/JS changes.
+- Debugging
+
+How to enable overrides
+
+- Open DevTools → Sources tab
+- Click Overrides
+- Select an empty folder
+- Click Allow when prompted
+

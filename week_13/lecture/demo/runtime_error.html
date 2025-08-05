@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Runtime Error</title>
+    <script>
+
+        // 1) Calling non-existent functions lg() instead log()
+        console.lg('Hello world');
+
+        // TypeError: console.lg is not a function
+
+        // - Checks if lg exists on console → it doesn't (returns undefined)
+        // - Tries to execute undefined() → This is invalid → Throws TypeError
+
+
+
+
+
+        // 2) Accessing properties of null or undefined
+        document.getElementsByTagName('h1')[0].textContent = 'Hello world';
+
+        // TypeError: Cannot set properties of undefined (setting 'textContent')
+
+        // - getElementsByTagName('h1') → returns empty HTMLCollection []
+        // - [0] → tries to access first item → returns undefined
+        // - undefined.textContent → tries to access property 'textContent' of undefined → throws TypeError
+
+
+        // 3) ReferenceError
+        nonExistentFunction();
+
+        // ReferenceError: nonExistentFunction is not defined
+
+    </script>
+</head>
+<body>
+  <h1></h1>
+</body>
+</html>

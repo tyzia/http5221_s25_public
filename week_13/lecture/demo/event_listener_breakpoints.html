@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Event Listener Breakpoints Demo</title>
+    <style>
+        div {
+            margin-bottom: 30px;
+            padding: 10px;
+            border: 1px solid #ddd;
+        }
+        form {
+            margin: 20px 0;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        input[type="text"] {
+            padding: 8px;
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+<h1>Event Listener Breakpoint Demo</h1>
+
+<div id="click-demo">
+    <h2>Click Event Demo</h2>
+    <button id="demo-button">Click Me to Trigger Event</button>
+    <p id="click-output">Button not clicked yet</p>
+</div>
+
+<div id="form-demo">
+    <h2>Form Submission Demo</h2>
+    <form id="demo-form">
+        <label for="user">User Name</label>
+        <input type="text" name="username" id="user" placeholder="Enter your name" required>
+        <button type="submit">Submit Form</button>
+    </form>
+    <p id="form-output">Form not submitted yet</p>
+</div>
+
+<script>
+    // 1. Click Event Handler
+    document.getElementById('demo-button').addEventListener('click', function(e) {
+        document.getElementById('click-output').textContent =
+            `Button clicked at ${new Date().toLocaleTimeString()}`;
+
+        // Nested event for demonstration
+        setTimeout(() => {
+            document.getElementById('click-output').textContent += ' (timeout completed)';
+        }, 1000);
+    });
+
+    // 2. Form Submission Handler
+    document.getElementById('demo-form').addEventListener('submit', function(e) {
+        e.preventDefault(); // Prevent actual form submission
+        const username = this.elements.username.value;
+        document.getElementById('form-output').textContent =
+            `Form submitted by ${username} at ${new Date().toLocaleTimeString()}`;
+    });
+
+</script>
+</body>
+</html>
