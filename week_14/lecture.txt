@@ -1,0 +1,399 @@
+
+
+
+Plan
+
+What's next?
+TypeScript
+
+
+
+
+
+
+
+
+
+What's next?
+
+You've leveled up your JavaScript skills,
+learned about coding standards,
+testing methodologies, security, and
+automation.
+
+1) Build real projects
+
+Apply your knowledge by creating small apps
+
+- a password generator with hashing
+- a unit-tested calculator
+- an E2E-tested form
+
+2) Contribute to open-source projects on GitHub.
+
+3) Deepen your knowledge
+
+- Explore testing libraries: Jest or Cypress further.
+- Security: Learn about JWT, OAuth, SQL injection prevention.
+- Advanced JS: Master async/await, closures, design patterns.
+
+4) Join the Developer Community
+
+- Stack Overflow
+- Dev.to
+- Reddit
+
+5) Keep Learning
+
+Take advanced courses on
+Node.js, React, or cybersecurity.
+
+6) Read books
+
+"You Don’t Know JS"
+
+https://github.com/getify/You-Dont-Know-JS
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+TypeScript
+
+TypeScript is a superset of JavaScript.
+It compiles down to JavaScript,
+so it runs anywhere JavaScript runs.
+
+TypeScript helps catch errors during development
+rather than runtime, making the code more robust
+and easier to maintain.
+
+Let's create a test project with
+vanilla JS first.
+
+I have two files:
+
+- index.html
+- script.js
+
+JS code:
+
+- get's element on the page with #demo
+- changes it's text
+- logs in the console a message
+- JS code is executed on button click
+
+demo: lecture_demo/index.html
+
+
+Now let's use TypeScript in the project.
+
+
+Install
+
+First, let's check if I have TypeScript installed:
+
+> cd lecture_demo
+> tsc -v
+
+-bash: tsc: command not found
+
+That means TypeScript is not installed.
+
+
+npm (Node Package Manager)
+
+The easiest way to install TypeScript
+is to use npm.
+
+1) Initiate npm project
+
+> cd lecture_demo
+> npm init -y
+
+2) Install TS as dev dependency
+
+> npm i typescript --save-dev
+
+It should be a dev dependency,
+because it is necessary
+only in development stage.
+
+Now let's see if TS was installed
+
+> tsc -v
+
+-bash: tsc: command not found
+
+That means TypeScript is still not installed.
+Because 'tsc' command tries to use global TS installation.
+
+If I want to use TS in local project I need npx:
+
+> npx tsc -v
+Version 5.9.2
+
+
+What is npx?
+
+npx allows to run binaries locally (from node_modules).
+
+node_modules - is a folder where all dependencies of my
+project are installed.
+
+
+Installing is not enough, we need to create
+TS settings.
+
+Basically it can be an empty json:
+
+> vim tsconfig.json
+
+{
+  "compilerOptions": {
+    "outDir": "./dist",
+  },
+}
+
+This is a configuration file for TS.
+Here we can specify:
+
+- which files to compile from TS to JS
+- where to save them
+- which version of JS we want to target
+- and many more
+
+
+Now we have TS installed, let's convert JS into TS.
+
+> mv script.js script.ts
+
+If we open the script.ts we will see an error.
+
+If ignoring the error and trying to compile it:
+
+> npx tsc
+
+error: 'paragraph' is possibly 'null'.
+
+Ok, it doesn’t work, why?
+Our JS was working before,
+but TS failed to compile.
+
+If 'paragraph' is actually null,
+we will get this error:
+
+paragraph.innerHTML = message;
+TypeError: Cannot set properties of null (setting 'innerHTML')
+
+What this means:
+
+- There is a possibility that 'paragraph' is null
+- Trying to access its property (paragraph.innerHTML)
+will produce runtime TypeError
+- And crash our app
+
+demo crash: demo/index.html (change id)
+
+
+Ok, thank you, TS,
+you helped me find a runtime bug during
+development stage.
+
+It is exactly why I am using TS!
+
+How to fix our TS code?
+
+
+
+
+
+
+
+
+
+Answer
+
+paragraph && (paragraph.innerHTML = message);
+
+OR
+
+if (paragraph) {
+  paragraph.innerHTML = message;
+}
+
+
+
+
+
+
+
+
+
+
+
+Compile again
+> npx tsc
+
+And we see the result JS file in dist/
+
+But!
+
+Why the compiled JS code
+has all vars which I was teaching
+you should never use?
+
+To fix it, we need to specify which
+version of JS the code should be compiled to.
+
+Add ‘target’: ‘ES6’ to tsconfig.json
+
+
+tsconfig.json
+{
+  "compilerOptions": {
+    "outDir": "./dist",
+    "target": "ES6"
+  },
+}
+
+
+Run npx tsc again.
+
+> npx tsc
+
+Now a better result
+
+
+
+
+Types
+
+Now that we know how TS is helping
+us let’s talk about other useful features of TS.
+
+When I design my code, I create
+variables for the specific types
+of data.
+
+Popular primitive types in TS:
+
+- string
+- number
+- boolean
+
+Example
+
+I am going to create a code
+for calculation of user age.
+Age is represented in numbers.
+
+I define variable 'age' with type 'number'
+
+let age: number;
+
+
+Example
+
+I need a flag in my code.
+This flag has boolean value:
+true or false.
+
+I define variable 'isActive' with type 'boolean'
+
+let isActive: boolean;
+
+
+Example
+
+I need a text in my code.
+I define variable 'message' with type 'string'
+
+let message: string;
+
+demo: demo/example.ts
+
+
+
+Types for functions
+
+Not only my variables can have types,
+my functions can also have types.
+
+Example
+
+I need a function which will generate
+user age. User age is a number type.
+
+function generateAge(): number {
+ return 18;
+}
+
+I can use both my variable and my function now:
+
+age = generateAge();
+
+If my function doesn't return anything,
+I can use type 'void'.
+
+demo: demo/examples.ts
+
+
+Types for parameters
+
+I can use types for function parameters.
+
+function isValid(isActive: boolean): void {
+    const isTruthy: boolean = isActive;
+}
+isValid(true);
+
+
+
+
+Types guard my code from wrong data.
+
+demo: demo/wrong_type.ts
+
+
+
+
+Now, let's update script.ts with types.
+And compile the code
+
+> npx tsc
+
+
+Demo mistakes in code:
+
+- change "Hello, you..." text to number
+- change type of 'message' to boolean
+- change return type of 'changeText()' to number
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Thank you
